@@ -8,4 +8,10 @@ public class ConstantFunction implements MathFunction{
     public double apply(double x){
         return constant;
     }
+
+    public CompositeFunction andThen(MathFunction afterFunction){
+        CompositeFunction newFunction = new CompositeFunction(this, afterFunction);
+        return newFunction;
+    }
+
 }
