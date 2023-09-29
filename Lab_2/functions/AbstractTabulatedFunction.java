@@ -1,7 +1,7 @@
 package functions;
 
 public abstract class AbstractTabulatedFunction {
-    private int count;
+    protected int count;
     public double[] arrayOfX;
     public double[] arrayOfY;
 
@@ -11,12 +11,15 @@ public abstract class AbstractTabulatedFunction {
 
     int indexOfX(double x){
         int index = 0;
-        while(index!=count) if(arrayOfX[index] == x) return index;
+        while(index!=count){
+            if(arrayOfX[index] == x) return index;
+            index++;
+        }
         return -1;
     }
     public int floorIndexOfX(double x){
         int index = 0;
-        while(arrayOfX[index] > x && index !=count) index++;
+        while(arrayOfX[index] < x && index !=count) index++;
         return index;
     }
 
@@ -28,7 +31,7 @@ public abstract class AbstractTabulatedFunction {
         newArrayOfX[0] = x;
         newArrayOfY[0] = newY;
         int index = 1;
-        while(index!=count+1){
+        while(index!=count){
             newArrayOfX[index] = arrayOfX[index-1];
             newArrayOfY[index] = arrayOfY[index-1];
             ++index;
@@ -40,14 +43,14 @@ public abstract class AbstractTabulatedFunction {
     }
 
     public double extrapolateRight(double x){
-        double newY =  arrayOfY[count-1] + (arrayOfY[count] - arrayOfY[count-1])/
-                (arrayOfX[count] - arrayOfX[count-1]) * (x - arrayOfX[count-1]);
+        double newY =  arrayOfY[count-2] + (arrayOfY[count-1] - arrayOfY[count-2])/
+                (arrayOfX[count-1] - arrayOfX[count-2]) * (x - arrayOfX[count-2]);
         double[] newArrayOfX = new double[count+1];
         double[] newArrayOfY = new double[count+1];
-        newArrayOfX[count+1] = x;
-        newArrayOfY[count+1] = newY;
+        newArrayOfX[count] = x;
+        newArrayOfY[count] = newY;
         int index = 0;
-        while(index!=count){
+        while(index!=count-1){
             newArrayOfX[index] = arrayOfX[index];
             newArrayOfY[index] = arrayOfY[index];
             ++index;
@@ -72,7 +75,7 @@ public abstract class AbstractTabulatedFunction {
             ++index;
         }
         ++index;
-        while(index!=count+1){
+        while(index!=count){
             newArrayOfX[index] = arrayOfX[index];
             newArrayOfY[index] = arrayOfY[index];
             ++index;
@@ -82,7 +85,7 @@ public abstract class AbstractTabulatedFunction {
         count++;
         return newY;
     }
-    double interpolate(double x, double leftX, double rightX, double leftY, double rightY){
+    public double interpolate(double x, double leftX, double rightX, double leftY, double rightY){
         double newY =  leftY + (rightY - leftY)/
                 (rightX - leftX) * (x - leftX);
         int floorIndex = floorIndexOfX(x);
@@ -107,13 +110,13 @@ public abstract class AbstractTabulatedFunction {
         count++;
         return newY;
     }
-    double apply(double x){
+    public double apply(double x){
         double result;
         if(x<arrayOfX[0]) result = this.extrapolateLeft(x);
-        else if(x>arrayOfX[count])result = this.extrapolateRight(x);
+        else if(x>arrayOfX[count-1])result = this.extrapolateRight(x);
         else{
             int indexOfX = indexOfX(x);
-            if(x>0) result = this.arrayOfY[indexOfX];
+            if(indexOfX>0) result = this.arrayOfY[indexOfX];
             else result = this.interpolate(x, floorIndexOfX(x));
         }
         return result;
