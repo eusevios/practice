@@ -1,124 +1,15 @@
 package functions;
 
 public abstract class AbstractTabulatedFunction {
-    protected int count;
-    public double[] arrayOfX;
-    public double[] arrayOfY;
 
-    int getCount(){
-        return count;
-    }
+    abstract protected int floorIndexOfX(double x);
 
-    int indexOfX(double x){
-        int index = 0;
-        while(index!=count){
-            if(arrayOfX[index] == x) return index;
-            index++;
-        }
-        return -1;
-    }
-    public int floorIndexOfX(double x){
-        int index = 0;
-        while(arrayOfX[index] < x && index !=count) index++;
-        return index;
-    }
+    abstract protected double extrapolateLeft(double x);
 
-    public double extrapolateLeft(double x){
-        double newY = arrayOfY[0] + (arrayOfY[1] - arrayOfY[0])/
-                (arrayOfX[1] - arrayOfX[0]) * (x - arrayOfX[0]);
-        double[] newArrayOfX = new double[count+1];
-        double[] newArrayOfY = new double[count+1];
-        newArrayOfX[0] = x;
-        newArrayOfY[0] = newY;
-        int index = 1;
-        while(index!=count){
-            newArrayOfX[index] = arrayOfX[index-1];
-            newArrayOfY[index] = arrayOfY[index-1];
-            ++index;
-        }
-        arrayOfX = newArrayOfX;
-        arrayOfY = newArrayOfY;
-        count++;
-        return newY;
-    }
+    abstract protected double extrapolateRight(double x);
 
-    public double extrapolateRight(double x){
-        double newY =  arrayOfY[count-2] + (arrayOfY[count-1] - arrayOfY[count-2])/
-                (arrayOfX[count-1] - arrayOfX[count-2]) * (x - arrayOfX[count-2]);
-        double[] newArrayOfX = new double[count+1];
-        double[] newArrayOfY = new double[count+1];
-        newArrayOfX[count] = x;
-        newArrayOfY[count] = newY;
-        int index = 0;
-        while(index!=count-1){
-            newArrayOfX[index] = arrayOfX[index];
-            newArrayOfY[index] = arrayOfY[index];
-            ++index;
-        }
-        arrayOfX = newArrayOfX;
-        arrayOfY = newArrayOfY;
-        count++;
-        return newY;
-    }
+    abstract protected double interpolate(double x, int floorIndex);
 
-    public double interpolate(double x, int floorIndex){
-        double newY =  arrayOfY[floorIndex-1] + (arrayOfY[floorIndex] - arrayOfY[floorIndex-1])/
-                (arrayOfX[floorIndex] - arrayOfX[floorIndex-1]) * (x - arrayOfX[floorIndex-1]);
-        double[] newArrayOfX = new double[count+1];
-        double[] newArrayOfY = new double[count+1];
-        newArrayOfX[floorIndex] = x;
-        newArrayOfY[floorIndex] = newY;
-        int index = 0;
-        while(index!=floorIndex){
-            newArrayOfX[index] = arrayOfX[index];
-            newArrayOfY[index] = arrayOfY[index];
-            ++index;
-        }
-        ++index;
-        while(index!=count){
-            newArrayOfX[index] = arrayOfX[index];
-            newArrayOfY[index] = arrayOfY[index];
-            ++index;
-        }
-        arrayOfX = newArrayOfX;
-        arrayOfY = newArrayOfY;
-        count++;
-        return newY;
-    }
-    public double interpolate(double x, double leftX, double rightX, double leftY, double rightY){
-        double newY =  leftY + (rightY - leftY)/
-                (rightX - leftX) * (x - leftX);
-        int floorIndex = floorIndexOfX(x);
-        double[] newArrayOfX = new double[count+1];
-        double[] newArrayOfY = new double[count+1];
-        newArrayOfX[floorIndex] = x;
-        newArrayOfY[floorIndex] = newY;
-        int index = 0;
-        while(index!=floorIndex){
-            newArrayOfX[index] = arrayOfX[index];
-            newArrayOfY[index] = arrayOfY[index];
-            ++index;
-        }
-        ++index;
-        while(index!=count+1){
-            newArrayOfX[index] = arrayOfX[index];
-            newArrayOfY[index] = arrayOfY[index];
-            ++index;
-        }
-        arrayOfX = newArrayOfX;
-        arrayOfY = newArrayOfY;
-        count++;
-        return newY;
-    }
-    public double apply(double x){
-        double result;
-        if(x<arrayOfX[0]) result = this.extrapolateLeft(x);
-        else if(x>arrayOfX[count-1])result = this.extrapolateRight(x);
-        else{
-            int indexOfX = indexOfX(x);
-            if(indexOfX>0) result = this.arrayOfY[indexOfX];
-            else result = this.interpolate(x, floorIndexOfX(x));
-        }
-        return result;
-    }
+    abstract protected double interpolate(double x, double leftX, double rightX, double leftY, double rightY);
+
 }
