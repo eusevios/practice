@@ -142,40 +142,6 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction{
         return newY;
     }
 
-
-    protected double interpolate(double x, double leftX, double rightX, double leftY, double rightY){
-        if (leftX>rightX){
-            double temp = rightX;
-            rightX = leftX;
-            leftX = temp;
-        }
-        if(count == 1) return arrayOfY[0];
-        double newY =  leftY + (rightY - leftY)/
-                (rightX - leftX) * (x - leftX);
-        int floorIndex = floorIndexOfX(x);
-        double[] newArrayOfX = new double[count+1];
-        double[] newArrayOfY = new double[count+1];
-        newArrayOfX[floorIndex+1] = x;
-        newArrayOfY[floorIndex+1] = newY;
-        int index = 0;
-        while(index!=floorIndex+1){
-            newArrayOfX[index] = arrayOfX[index];
-            newArrayOfY[index] = arrayOfY[index];
-            ++index;
-        }
-        ++index;
-        while(index!=count+1){
-            newArrayOfX[index] = arrayOfX[index-1];
-            newArrayOfY[index] = arrayOfY[index-1];
-            ++index;
-        }
-        arrayOfX = newArrayOfX;
-        arrayOfY = newArrayOfY;
-        count++;
-        return newY;
-    }
-
-
     public ArrayTabulatedFunction(MathFunction source, double xFrom, double xTo, int countOfThisValues){
         arrayOfY = new double[countOfThisValues];
         arrayOfX = new double[countOfThisValues];

@@ -102,20 +102,20 @@ class ArrayTabulatedFunctionTest {
     }
 
     @Test
-    void testInterpolate() {
-        ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
-        func1.interpolate(-2,-3,0,3,5);
-        func1.interpolate(1,2,0,5,7);
-        assertEquals(func1.getY(1),3.6666,0.0001);
-        assertEquals(func1.getY(3), 6);
-    }
-
-    @Test
     void andThen(){
+
         MathFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
         MathFunction func2 = new SqrFunction();
         CompositeFunction func = func1.andThen(func2);
         assertEquals(func.apply(Math.sqrt(2)),7);
+
+
+        double[] newArrX = {-8,1,10,16};
+        double[] newArrY = {-10,8,15,41};
+        MathFunction func3 = new ArrayTabulatedFunction(arrX, arrY);
+        MathFunction func4 = new ArrayTabulatedFunction(newArrX, newArrY);
+        CompositeFunction compFunc = func4.andThen(func3);
+        assertEquals(compFunc.apply(1),11.8888,0.0001);
 
     }
 
