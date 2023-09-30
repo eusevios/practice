@@ -2,5 +2,10 @@ package functions;
 
 public interface MathFunction {
     double apply(double x);
-    CompositeFunction andThen(MathFunction afterFunction);
+    
+    default CompositeFunction andThen(MathFunction afterFunction)
+    {
+        CompositeFunction newFunction = new CompositeFunction(this, afterFunction);
+        return newFunction;
+    };
 }
