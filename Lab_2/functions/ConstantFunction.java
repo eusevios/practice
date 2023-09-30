@@ -9,9 +9,4 @@ public class ConstantFunction implements MathFunction{
         return constant;
     }
 
-    public CompositeFunction andThen(MathFunction afterFunction){
-        CompositeFunction newFunction = new CompositeFunction(afterFunction, this);
-        return newFunction;
-    }
-
 }

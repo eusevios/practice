@@ -16,7 +16,7 @@ class AdditionalFunctionTest {
     void andThen() {
         AdditionalFunction func1 = new AdditionalFunction();
         SqrFunction func2 = new SqrFunction();
-        CompositeFunction func = func1.andThen(func2);
+        CompositeFunction func = func2.andThen(func1);
         assertEquals(func.apply(5),-26.5707,0.0001);
 
     }

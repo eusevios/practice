@@ -16,7 +16,7 @@ class ConstantFunctionTest {
     void andThen() {
         ConstantFunction func1 = new ConstantFunction(2);
         ConstantFunction func2 = new ConstantFunction(4);
-        CompositeFunction func3 = func1.andThen(func2);
+        CompositeFunction func3 = func2.andThen(func1);
         assertEquals(func3.apply(531), 2);
     }
 }

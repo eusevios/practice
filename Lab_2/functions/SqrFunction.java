@@ -5,8 +5,5 @@ public class SqrFunction implements MathFunction {
         return Math.pow(x,2);
     }
 
-    public CompositeFunction andThen(MathFunction afterFunction){
-        CompositeFunction newFunction = new CompositeFunction(this, afterFunction);
-        return newFunction;
-    }
+
 }

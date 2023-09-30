@@ -11,6 +11,7 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction {
 
     abstract protected double interpolate(double x, int floorIndex);
 
+
     public double apply(double x){
         double result;
         if(x<getX(0)) result = this.extrapolateLeft(x);

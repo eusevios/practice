@@ -7,8 +7,4 @@ class IdentityFunction implements MathFunction
         return x;
     }
 
-    public CompositeFunction andThen(MathFunction afterFunction){
-        CompositeFunction newFunction = new CompositeFunction(afterFunction, this);
-        return newFunction;
-    }
 }

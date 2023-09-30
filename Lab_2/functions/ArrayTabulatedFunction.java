@@ -159,10 +159,4 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction{
         }
     }
 
-
-    public CompositeFunction andThen(MathFunction afterFunction){
-        CompositeFunction newFunction = new CompositeFunction(afterFunction, this);
-        return newFunction;
-    }
-
 }

@@ -106,7 +106,7 @@ class ArrayTabulatedFunctionTest {
 
         MathFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
         MathFunction func2 = new SqrFunction();
-        CompositeFunction func = func1.andThen(func2);
+        CompositeFunction func = func2.andThen(func1);
         assertEquals(func.apply(Math.sqrt(2)),7);
 
 
@@ -114,7 +114,7 @@ class ArrayTabulatedFunctionTest {
         double[] newArrY = {-10,8,15,41};
         MathFunction func3 = new ArrayTabulatedFunction(arrX, arrY);
         MathFunction func4 = new ArrayTabulatedFunction(newArrX, newArrY);
-        CompositeFunction compFunc = func4.andThen(func3);
+        CompositeFunction compFunc = func3.andThen(func4);
         assertEquals(compFunc.apply(1),11.8888,0.0001);
 
     }
