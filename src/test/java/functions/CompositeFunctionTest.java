@@ -17,7 +17,7 @@ class CompositeFunctionTest {
         MathFunction func_2 = new NaturalLogarithm();
         MathFunction comp_func = new CompositeFunction(func_1, func_2);
 
-         double actual = comp_func.apply(7.62);
+        double actual = comp_func.apply(7.62);
         double expected = 2.03078;
         assertEquals(actual, expected, 0.00001);
 
@@ -29,4 +29,23 @@ class CompositeFunctionTest {
         assertEquals(actual, expected, 0.00001);
 
     }
+
+    @Test
+    void compositeFunctionTestOfAndThen(){
+
+        MathFunction func_1 = new NaturalLogarithm();
+        MathFunction func_2 = new SqrFunction();
+        MathFunction func_3 = new AdditionalFunction();
+        CompositeFunction func = func_1.andThen(func_2).andThen(func_3);
+        assertEquals(func.apply(0),0.90316,0.00001);
+
+        MathFunction func_5 = new NaturalLogarithm();
+        MathFunction func_6 = new ConstantFunction(1);
+        CompositeFunction newFunc = func_5.andThen(func_6);
+        assertEquals(newFunc.apply(513), 0);
+
+    }
+
+
+
 }

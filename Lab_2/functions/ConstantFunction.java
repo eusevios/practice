@@ -10,7 +10,7 @@ public class ConstantFunction implements MathFunction{
     }
 
     public CompositeFunction andThen(MathFunction afterFunction){
-        CompositeFunction newFunction = new CompositeFunction(this, afterFunction);
+        CompositeFunction newFunction = new CompositeFunction(afterFunction, this);
         return newFunction;
     }
 

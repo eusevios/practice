@@ -4,13 +4,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ZeroFunctionTest {
+class UnitFunctionTest {
     @Test
     void ConstructorTest() {
         try {
-            ZeroFunction func = new ZeroFunction();
+            UnitFunction func = new UnitFunction();
         }
         catch (Exception e) {}
 
     }
+
 }

@@ -3,10 +3,8 @@ package functions;
 import java.util.Arrays;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction{
-
-    protected int count;
-    public double[] arrayOfX;
-    public double[] arrayOfY;
+    protected double[] arrayOfX;
+    protected double[] arrayOfY;
 
     public int getCount(){
         return count;
@@ -16,13 +14,16 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction{
         return arrayOfX[index];
     }
 
+
     public double getY(int index){
         return arrayOfY[index];
     }
 
+
     public void setY(int index, double value){
         arrayOfY[index] = value;
     }
+
 
     public int indexOfX(double x){
         int index = 0;
@@ -36,7 +37,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction{
     public int indexOfY(double y){
         int index = 0;
         while(index!=count){
-            if(arrayOfX[index] == y) return index;
+            if(arrayOfY[index] == y) return index;
             index++;
         }
         return -1;
@@ -46,30 +47,45 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction{
         return arrayOfX[0];
     }
 
+
     public double rightBound() {
         return arrayOfX[count - 1];
     }
 
-    ArrayTabulatedFunction(double[] xValues, double[] yValues){
+
+    public ArrayTabulatedFunction(double[] xValues, double[] yValues){
         count = xValues.length;
         arrayOfX = Arrays.copyOf(xValues, count);
         arrayOfY = Arrays.copyOf(yValues, count);
 
     }
-    protected int floorIndexOfX(double x){
-        int index = 0;
+    protected int floorIndexOfX(double x)
+    {
+        if(x>arrayOfX[count-1]) return count;
+
+        if(x<arrayOfX[0]) return 0;
+
+        int index = 1;
         while(arrayOfX[index] < x && index !=count) index++;
-        return index;
+        return index-1;
+
     }
+
+    private double interpolationFormula(int leftIndex, int rightIndex, double x){
+        return arrayOfY[leftIndex]+((arrayOfY[rightIndex]-arrayOfY[leftIndex])/
+                (arrayOfX[rightIndex]-arrayOfX[leftIndex])) * (x-arrayOfX[leftIndex]);
+    }
+
+
     protected double extrapolateLeft(double x){
         if(count == 1) return arrayOfY[0];
-        double newY = arrayOfY[0] + (arrayOfY[1]-arrayOfY[0])/
-                (arrayOfX[1] - arrayOfX[0]) * (x - arrayOfY[0]);
+        double newY = interpolationFormula(0,1, x);
         double[] newArrayOfX = new double[count+1];
         double[] newArrayOfY = new double[count+1];
         newArrayOfX[0] = x;
         newArrayOfY[0] = newY;
         int index = 1;
+        count++;
         while(index!=count){
             newArrayOfX[index] = arrayOfX[index-1];
             newArrayOfY[index] = arrayOfY[index-1];
@@ -77,14 +93,13 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction{
         }
         arrayOfX = newArrayOfX;
         arrayOfY = newArrayOfY;
-        count++;
         return newY;
     }
 
+
     protected double extrapolateRight(double x){
         if(count == 1) return arrayOfY[0];
-        double newY =  arrayOfY[count-2] + (arrayOfY[count-1] - arrayOfY[count-2])/
-                (arrayOfX[count-1] - arrayOfX[count-2]) * (x - arrayOfX[count-2]);
+        double newY =  interpolationFormula(count-2, count-1,x);
         double[] newArrayOfX = new double[count+1];
         double[] newArrayOfY = new double[count+1];
         newArrayOfX[count] = x;
@@ -101,31 +116,32 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction{
         return newY;
     }
 
+
     protected double interpolate(double x, int floorIndex){
         if(count == 1) return arrayOfY[0];
-        double newY =  arrayOfY[floorIndex-1] + (arrayOfY[floorIndex] - arrayOfY[floorIndex-1])/
-                (arrayOfX[floorIndex] - arrayOfX[floorIndex-1]) * (x - arrayOfX[floorIndex-1]);
+        double newY =  interpolationFormula(floorIndex,floorIndex+1,x);
         double[] newArrayOfX = new double[count+1];
         double[] newArrayOfY = new double[count+1];
-        newArrayOfX[floorIndex] = x;
-        newArrayOfY[floorIndex] = newY;
+        newArrayOfX[floorIndex+1] = x;
+        newArrayOfY[floorIndex+1] = newY;
+        count++;
         int index = 0;
-        while(index!=floorIndex){
+        while(index!=floorIndex+1){
             newArrayOfX[index] = arrayOfX[index];
             newArrayOfY[index] = arrayOfY[index];
             ++index;
         }
         ++index;
         while(index!=count){
-            newArrayOfX[index] = arrayOfX[index];
-            newArrayOfY[index] = arrayOfY[index];
+            newArrayOfX[index] = arrayOfX[index-1];
+            newArrayOfY[index] = arrayOfY[index-1];
             ++index;
         }
         arrayOfX = newArrayOfX;
         arrayOfY = newArrayOfY;
-        count++;
         return newY;
     }
+
 
     protected double interpolate(double x, double leftX, double rightX, double leftY, double rightY){
         if (leftX>rightX){
@@ -139,18 +155,18 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction{
         int floorIndex = floorIndexOfX(x);
         double[] newArrayOfX = new double[count+1];
         double[] newArrayOfY = new double[count+1];
-        newArrayOfX[floorIndex] = x;
-        newArrayOfY[floorIndex] = newY;
+        newArrayOfX[floorIndex+1] = x;
+        newArrayOfY[floorIndex+1] = newY;
         int index = 0;
-        while(index!=floorIndex){
+        while(index!=floorIndex+1){
             newArrayOfX[index] = arrayOfX[index];
             newArrayOfY[index] = arrayOfY[index];
             ++index;
         }
         ++index;
         while(index!=count+1){
-            newArrayOfX[index] = arrayOfX[index];
-            newArrayOfY[index] = arrayOfY[index];
+            newArrayOfX[index] = arrayOfX[index-1];
+            newArrayOfY[index] = arrayOfY[index-1];
             ++index;
         }
         arrayOfX = newArrayOfX;
@@ -158,6 +174,8 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction{
         count++;
         return newY;
     }
+
+
     public ArrayTabulatedFunction(MathFunction source, double xFrom, double xTo, int countOfThisValues){
         arrayOfY = new double[countOfThisValues];
         arrayOfX = new double[countOfThisValues];
@@ -175,15 +193,10 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction{
         }
     }
 
-    public double apply(double x){
-        double result;
-        if(x<arrayOfX[0]) result = this.extrapolateLeft(x);
-        else if(x>arrayOfX[count-1])result = this.extrapolateRight(x);
-        else{
-            int indexOfX = indexOfX(x);
-            if(indexOfX>0) result = this.arrayOfY[indexOfX];
-            else result = this.interpolate(x, floorIndexOfX(x));
-        }
-        return result;
+
+    public CompositeFunction andThen(MathFunction afterFunction){
+        CompositeFunction newFunction = new CompositeFunction(afterFunction, this);
+        return newFunction;
     }
+
 }
