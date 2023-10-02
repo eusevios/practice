@@ -203,6 +203,7 @@ class LinkedListTabulatedFunctionTest {
     double[] arrayX_ = { 1,  2,    4,    8};
     double[] arrayY_ = { 12, 3.5, -10.6, 0.23};
     LinkedListTabulatedFunction Tab_Func = new LinkedListTabulatedFunction(arrayX_, arrayY_);
+
     @Test
     void insert(){
 
