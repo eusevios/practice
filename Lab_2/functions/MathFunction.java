@@ -5,7 +5,8 @@ public interface MathFunction {
     
     default CompositeFunction andThen(MathFunction afterFunction)
     {
-        CompositeFunction newFunction = new CompositeFunction(this, afterFunction);
+        CompositeFunction newFunction = new CompositeFunction(afterFunction, this);
         return newFunction;
-    };
+    }
 }
+// newfunc = f1.andthen(f2) = f1(f2)

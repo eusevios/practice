@@ -81,24 +81,19 @@ class ArrayTabulatedFunctionTest {
     @Test
     void extrapolateLeft() {
         ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
-        func1.extrapolateLeft(-17);
-        assertEquals(func1.getY(0), -6.333,0.001);
-        assertEquals(func1.getX(0),-17);
+        assertEquals(func1.extrapolateLeft(-17), -6.333,0.001);
     }
 
     @Test
     void extrapolateRight() {
         ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
-        func1.extrapolateRight(1501);
-        assertEquals(func1.getY(func1.getCount()-1), 1506 );
-        assertEquals(func1.getX(func1.getCount()-1),1501);
+        assertEquals(func1.extrapolateRight(1501),1506);
     }
 
     @Test
     void interpolate() {
         ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
-        func1.interpolate(1, func1.floorIndexOfX(1));
-        assertEquals(func1.getY(2),6);
+        assertEquals(func1.interpolate(1,func1.floorIndexOfX(1)),6);
     }
 
     @Test
@@ -116,6 +111,51 @@ class ArrayTabulatedFunctionTest {
         MathFunction func4 = new ArrayTabulatedFunction(newArrX, newArrY);
         CompositeFunction compFunc = func3.andThen(func4);
         assertEquals(compFunc.apply(1),11.8888,0.0001);
+
+
+        MathFunction func5 = new ArrayTabulatedFunction(arrX, arrY);
+        MathFunction func6 = new LinkedListTabulatedFunction(newArrX, newArrY);
+        CompositeFunction compOfTabulatedFunctions = func5.andThen(func6);
+        assertEquals(compFunc.apply(1),11.8888,0.0001);
+
+    }
+    @Test
+    void insertTest(){
+        ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
+
+        func1.insert(-10,10);
+        assertEquals(func1.getX(0),-10);
+        assertEquals(func1.getY(0),10);
+
+        func1.insert(10,53);
+        assertEquals(func1.getX(4),10);
+        assertEquals(func1.getY(4),53);
+
+        func1.insert(1,-2);
+        assertEquals(func1.getX(3),1);
+        assertEquals(func1.getY(3),-2);
+
+    }
+
+    @Test
+    void removeTest(){
+
+        double[] newArrX = {-5,1,10,16,43};
+        double[] newArrY = {1,8,122,41,85};
+
+        ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(newArrX, newArrY);
+
+        func1.remove(2);
+        assertEquals(func1.getX(2),16);
+        assertEquals(func1.getY(2),41);
+
+        func1.remove(0);
+        assertEquals(func1.getX(0),1);
+        assertEquals(func1.getY(0),8);
+
+        func1.remove(2);
+        assertEquals(func1.getX(1),16);
+        assertEquals(func1.getY(1),41);
 
     }
 

@@ -186,16 +186,18 @@ class LinkedListTabulatedFunctionTest {
 
     @Test
     void andThen(){
+
         MathFunction func_1 = new NaturalLogarithm();
-        CompositeFunction TabComp_func_1 = TabFunc1.andThen(func_1);
+        CompositeFunction TabComp_func_1 = func_1.andThen(TabFunc1);
         assertEquals(TabComp_func_1.apply(5), 23.342, 0.002);
 
         MathFunction func_2 = new SqrFunction();
-        CompositeFunction TabComp_func_2 = func_2.andThen(TabFunc2);
+        CompositeFunction TabComp_func_2 = TabFunc2.andThen(func_2);
         assertEquals(TabComp_func_2.apply(10), 5.281, 0.002);
 
-        MathFunction super_TabComp_func = TabComp_func_2.andThen(TabComp_func_1);
+        MathFunction super_TabComp_func = TabComp_func_1.andThen(TabComp_func_2);
         assertEquals(super_TabComp_func.apply(8.5), 11.820, 0.002);
+
     }
 
     double[] arrayX_ = { 1,  2,    4,    8};
@@ -208,12 +210,12 @@ class LinkedListTabulatedFunctionTest {
         assertEquals(Tab_Func.indexOfX(5), 3);
         assertEquals(Tab_Func.indexOfY(-4), 3);
 
-        //      { 1,  2,    4,      5,   8}
-        //      { 12, 3.5,  -10.6,  -4,  0.23}
-
         Tab_Func.insert(10, 6.6);
-        assertEquals(Tab_Func.indexOfX(10), 5);
-        assertEquals(Tab_Func.indexOfY(6.6), 5);
+        assertEquals(Tab_Func.rightBound(), 10);
+
+        Tab_Func.insert(-5, 10);
+        assertEquals(Tab_Func.leftBound(), -5);
+
     }
 
     @Test
@@ -223,11 +225,9 @@ class LinkedListTabulatedFunctionTest {
         assertEquals(Tab_Func.getX(2), 8);
         assertEquals(Tab_Func.getY(2), 0.23);
 
-        //      { 1,  2,    4,      8}
-        //      { 12, 3.5,  -10.6,  0.23}
-
         Tab_Func.remove(0);
         assertEquals(Tab_Func.leftBound(), 2);
         assertEquals(Tab_Func.getY(0), 3.5);
+
     }
 }

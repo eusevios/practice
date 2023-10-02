@@ -4,12 +4,15 @@ import java.util.Arrays;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable {
 
-    protected int count;
     protected double[] arrayOfX;
     protected double[] arrayOfY;
 
 
-    public int getCount(){ return count; }
+    public int getCount(){
+
+        return count;
+
+    }
 
 
     public double getX(int index){
@@ -74,12 +77,12 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     protected int floorIndexOfX(double x)
     {
-        if(x>arrayOfX[count-1]) return count;
+        if(x>arrayOfX[count-1]) return count-1;
 
         if(x<arrayOfX[0]) return 0;
 
         int index = 1;
-        while(arrayOfX[index] < x && index !=count) index++;
+        while(arrayOfX[index] < x) index++;
         return index-1;
 
     }
@@ -94,35 +97,71 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
 
     protected double extrapolateLeft(double x){
-
         if(count == 1) return arrayOfY[0];
 
         double newY = interpolationFormula(0,1, x);
 
-        return newY;
+        double[] newArrayOfX = new double[count+1];
+        double[] newArrayOfY = new double[count+1];
+        newArrayOfX[0] = x;
+        newArrayOfY[0] = newY;
 
+        int index = 1;
+        count++;
+        while(index!=count){
+            newArrayOfX[index] = arrayOfX[index-1];
+            newArrayOfY[index] = arrayOfY[index-1];
+            ++index;
+        }
+        arrayOfX = newArrayOfX;
+        arrayOfY = newArrayOfY;
+        return newY;
     }
 
 
     protected double extrapolateRight(double x){
-
         if(count == 1) return arrayOfY[0];
-
         double newY =  interpolationFormula(count-2, count-1,x);
-
+        double[] newArrayOfX = new double[count+1];
+        double[] newArrayOfY = new double[count+1];
+        newArrayOfX[count] = x;
+        newArrayOfY[count] = newY;
+        int index = 0;
+        while(index!=count-1){
+            newArrayOfX[index] = arrayOfX[index];
+            newArrayOfY[index] = arrayOfY[index];
+            ++index;
+        }
+        arrayOfX = newArrayOfX;
+        arrayOfY = newArrayOfY;
+        count++;
         return newY;
-
     }
 
 
     protected double interpolate(double x, int floorIndex){
-
         if(count == 1) return arrayOfY[0];
-
         double newY =  interpolationFormula(floorIndex,floorIndex+1,x);
-
+        double[] newArrayOfX = new double[count+1];
+        double[] newArrayOfY = new double[count+1];
+        newArrayOfX[floorIndex+1] = x;
+        newArrayOfY[floorIndex+1] = newY;
+        count++;
+        int index = 0;
+        while(index!=floorIndex+1){
+            newArrayOfX[index] = arrayOfX[index];
+            newArrayOfY[index] = arrayOfY[index];
+            ++index;
+        }
+        ++index;
+        while(index!=count){
+            newArrayOfX[index] = arrayOfX[index-1];
+            newArrayOfY[index] = arrayOfY[index-1];
+            ++index;
+        }
+        arrayOfX = newArrayOfX;
+        arrayOfY = newArrayOfY;
         return newY;
-
     }
 
 
@@ -132,7 +171,8 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         arrayOfX = new double[countOfThisValues];
         count = countOfThisValues;
 
-        arrayOfX[0] = xFrom; arrayOfY[0] = source.apply(xFrom);
+        arrayOfX[0] = xFrom;
+        arrayOfY[0] = source.apply(xFrom);
 
         arrayOfX[countOfThisValues-1] = xTo;
         arrayOfY[countOfThisValues-1] = source.apply(xTo);
@@ -176,12 +216,95 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     @Override
     public void insert(double x, double y) {
+        int index = indexOfX(x);
+
+        if(index>0) {
+
+            arrayOfY[index] = y;
+
+        }
+
+        else{
+
+            double[] newArrayOfX = new double[count+1];
+            double[] newArrayOfY = new double[count+1];
+
+            if(getX(0)>x){
+
+                newArrayOfX[0] = x;
+                newArrayOfY[0] = y;
+
+                System.arraycopy( arrayOfX,0, newArrayOfX, 1, count);
+                System.arraycopy( arrayOfY,0, newArrayOfY, 1, count);
+
+            }
+            else if(getX(count-1) < x){
+
+                System.arraycopy( arrayOfX,0, newArrayOfX, 0, count);
+                System.arraycopy( arrayOfY,0, newArrayOfY, 0, count);
+
+                newArrayOfX[count] = x;
+                newArrayOfY[count] = y;
+
+            }
+
+            else{
+
+                int floorIndex = floorIndexOfX(x);
+
+                System.arraycopy( arrayOfX,0, newArrayOfX, 0, floorIndex+1);
+                System.arraycopy( arrayOfY,0, newArrayOfY, 0, floorIndex+1);
+
+                newArrayOfX[floorIndex+1] = x;
+                newArrayOfY[floorIndex+1] = y;
+
+                System.arraycopy( arrayOfX,floorIndex+1, newArrayOfX, floorIndex+2, count-floorIndex-1);
+                System.arraycopy( arrayOfY,floorIndex+1, newArrayOfY, floorIndex+2, count-floorIndex-1);
+
+            }
+
+            arrayOfX = newArrayOfX;
+            arrayOfY = newArrayOfY;
+            count++;
+
+        }
 
 
     }
 
     @Override
     public void remove(int index) {
+
+        double[] newArrayOfX = new double[count-1];
+        double[] newArrayOfY = new double[count-1];
+
+        if(index == 0){
+
+            System.arraycopy(arrayOfX, 1, newArrayOfX, 0, count-1);
+            System.arraycopy(arrayOfY, 1, newArrayOfY, 0, count-1);
+
+        }
+
+        if(index == count-1){
+
+            System.arraycopy(arrayOfX, 0, newArrayOfX, 0, count-1);
+            System.arraycopy(arrayOfY, 0, newArrayOfY, 0, count-1);
+
+        }
+
+        else {
+
+            System.arraycopy(arrayOfX, 0, newArrayOfX, 0, index);
+            System.arraycopy(arrayOfY, 0, newArrayOfY, 0, index);
+
+            System.arraycopy(arrayOfX, index + 1, newArrayOfX, index, count - index - 1);
+            System.arraycopy(arrayOfY, index + 1, newArrayOfY, index, count - index - 1);
+
+        }
+
+        arrayOfX = newArrayOfX;
+        arrayOfY = newArrayOfY;
+        count--;
 
 
     }
