@@ -9,4 +9,3 @@ public interface MathFunction {
         return newFunction;
     }
 }
-// newfunc = f1.andthen(f2) = f1(f2)
