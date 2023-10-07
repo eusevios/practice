@@ -24,18 +24,20 @@ class IdentityFunction implements MathFunction
     @Override
     public int hashCode(){
 
-        return 0;
-
-        //Непонятно, не ясно что тут делать
+        return this.getClass().hashCode();
 
     }
+
     @Override
     public IdentityFunction clone(){
 
         IdentityFunction newFunc = new IdentityFunction();
+
         return newFunc;
 
     }
+
+
 
 
 

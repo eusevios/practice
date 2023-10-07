@@ -1,5 +1,6 @@
 package functions;
 
+import com.sun.source.tree.ArrayAccessTree;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -159,4 +160,39 @@ class ArrayTabulatedFunctionTest {
 
     }
 
+    @Test
+    void toStringTest(){
+
+        ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
+        assertEquals(func1.toString(),"[-3.0, 0.0, 2.0]" + "\n" + "[3.0, 5.0, 7.0]");
+
+    }
+
+    @Test
+    void equalsTest(){
+
+        ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulatedFunction func2 = new ArrayTabulatedFunction(arrX, arrY);
+        assertTrue(func1.equals(func2));
+
+    }
+
+    @Test
+    void hashCodeTest(){
+
+        ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulatedFunction func2 = new ArrayTabulatedFunction(arrX, arrY);
+        assertEquals(func1.hashCode(), -1054581067);
+        assertEquals(func1.hashCode(), func2.hashCode());
+
+    }
+    
+    @Test
+    void cloneTest(){
+
+        ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
+        Object func2 = func1.clone();
+        assertTrue(func1.equals(func2));
+
+    }
 }

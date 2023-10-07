@@ -280,18 +280,23 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     @Override
     public boolean equals(Object o){
 
-        return true;
-
-        //тут тоже какаята точка
+        return this.getClass() == o.getClass() &&
+                Arrays.equals(((ArrayTabulatedFunction) o).arrayOfX, arrayOfX) &&
+                Arrays.equals(((ArrayTabulatedFunction) o).arrayOfY, arrayOfY);
 
     }
 
     @Override
     public int hashCode(){
-        return 0;
 
-        //и тут непонятно
+        return 31 * count + 37 * Arrays.hashCode(arrayOfX) + 131 * Arrays.hashCode(arrayOfY);
+
     }
 
+    @Override
+    public Object clone()  {
 
+        return new ArrayTabulatedFunction(arrayOfX.clone(), arrayOfY.clone());
+
+    }
 }
