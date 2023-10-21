@@ -1,5 +1,7 @@
 package functions;
 
+
+
 public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable
 {
     static class Node {
