@@ -136,6 +136,10 @@ class ArrayTabulatedFunctionTest {
         assertEquals(func1.getX(3),1);
         assertEquals(func1.getY(3),-2);
 
+        func1.insert(0,75);
+        assertEquals(func1.getX(2),0);
+        assertEquals(func1.getY(2),75);
+
     }
 
     @Test
@@ -172,8 +176,11 @@ class ArrayTabulatedFunctionTest {
     void equalsTest(){
 
         ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
-        ArrayTabulatedFunction func2 = new ArrayTabulatedFunction(arrX, arrY);
+        LinkedListTabulatedFunction func2 = new LinkedListTabulatedFunction(arrX, arrY);
         assertTrue(func1.equals(func2));
+
+        IdentityFunction func3 = new IdentityFunction();
+        assertFalse(func1.equals(func3));
 
     }
 
@@ -182,7 +189,7 @@ class ArrayTabulatedFunctionTest {
 
         ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
         ArrayTabulatedFunction func2 = new ArrayTabulatedFunction(arrX, arrY);
-        assertEquals(func1.hashCode(), -1054581067);
+        assertEquals(func1.hashCode(), -1073217536);
         assertEquals(func1.hashCode(), func2.hashCode());
 
     }

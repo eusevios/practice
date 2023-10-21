@@ -278,18 +278,55 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     }
 
     @Override
-    public boolean equals(Object o){
+    public boolean equals(Object o) {
 
-        return this.getClass() == o.getClass() &&
-                Arrays.equals(((ArrayTabulatedFunction) o).arrayOfX, arrayOfX) &&
-                Arrays.equals(((ArrayTabulatedFunction) o).arrayOfY, arrayOfY);
+        if (o instanceof ArrayTabulatedFunction) {
+
+            ArrayTabulatedFunction newO = (ArrayTabulatedFunction) o;
+
+            return Arrays.equals(newO.arrayOfX, arrayOfX) &&
+                    Arrays.equals(((ArrayTabulatedFunction) o).arrayOfY, arrayOfY);
+
+        }
+        else if (o instanceof LinkedListTabulatedFunction) {
+
+            LinkedListTabulatedFunction newO = (LinkedListTabulatedFunction) o;
+
+            if (newO.getCount() == this.getCount()) {
+
+                for (int i = 0; i < this.count; i++) {
+                    if (newO.getX(i) != this.getX(i) && (newO.getY(i) != this.getY(i))) return false;
+                }
+                return true;
+
+            }
+
+        }
+
+        return false;
 
     }
 
     @Override
     public int hashCode(){
 
-        return 31 * count + 37 * Arrays.hashCode(arrayOfX) + 131 * Arrays.hashCode(arrayOfY);
+        long longNum;
+        int firstNum;
+        int secondNum;
+        int result = 0;
+        for(int i = 0; i<count; i++){
+
+            longNum = Double.doubleToLongBits(getX(i));
+            firstNum = (int)(longNum & (long)0x00000000FFFFFFFF) ^ (int)(longNum >>> 32);
+
+            longNum = Double.doubleToLongBits(getY(i));
+            secondNum = (int)(longNum & (long)0x00000000FFFFFFFF) ^ (int)(longNum >>> 32);
+
+            result ^= firstNum ^ secondNum;
+
+        }
+
+        return result;
 
     }
 

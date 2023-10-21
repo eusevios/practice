@@ -24,7 +24,7 @@ class IdentityFunction implements MathFunction
     @Override
     public int hashCode(){
 
-        return this.getClass().hashCode();
+        return 640134561;
 
     }
 
