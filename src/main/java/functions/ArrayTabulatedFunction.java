@@ -1,6 +1,11 @@
 package functions;
 
+import exceptions.InterpolationException;
+
 import java.util.Arrays;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable {
 
@@ -68,6 +73,10 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
 
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
+
+        checkLengthIsTheSame(xValues, yValues);
+        checkSorted(xValues);
+
         count = xValues.length;
 
         arrayOfX = Arrays.copyOf(xValues, count);
@@ -100,7 +109,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
         double newY = interpolationFormula(0, 1, x);
 
-        insert(x,newY);
+        insert(x, newY);
 
         return newY;
 
@@ -113,7 +122,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
         double newY = interpolationFormula(count - 2, count - 1, x);
 
-        insert(x,newY);
+        insert(x, newY);
 
         return newY;
 
@@ -122,11 +131,13 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     protected double interpolate(double x, int floorIndex) {
 
+        if (!(x > getX(floorIndex) && x < getX(floorIndex + 1))) throw new InterpolationException("Incorrect value");
+
         if (count == 1) return arrayOfY[0];
 
         double newY = interpolationFormula(floorIndex, floorIndex + 1, x);
 
-        insert(x,newY);
+        insert(x, newY);
 
         return newY;
 
@@ -271,7 +282,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     }
 
     @Override
-    public String toString(){
+    public String toString() {
 
         return Arrays.toString(arrayOfX) + '\n' + Arrays.toString(arrayOfY);
 
@@ -280,22 +291,14 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     @Override
     public boolean equals(Object o) {
 
-        if (o instanceof ArrayTabulatedFunction) {
+        if (o instanceof TabulatedFunction) {
 
-            ArrayTabulatedFunction newO = (ArrayTabulatedFunction) o;
-
-            return Arrays.equals(newO.arrayOfX, arrayOfX) &&
-                    Arrays.equals(((ArrayTabulatedFunction) o).arrayOfY, arrayOfY);
-
-        }
-        else if (o instanceof LinkedListTabulatedFunction) {
-
-            LinkedListTabulatedFunction newO = (LinkedListTabulatedFunction) o;
+            TabulatedFunction newO = (TabulatedFunction) o;
 
             if (newO.getCount() == this.getCount()) {
 
                 for (int i = 0; i < this.count; i++) {
-                    if (newO.getX(i) != this.getX(i) && (newO.getY(i) != this.getY(i))) return false;
+                    if (newO.getX(i) != this.getX(i) || (newO.getY(i) != this.getY(i))) return false;
                 }
                 return true;
 
@@ -308,19 +311,19 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
 
         long longNum;
         int firstNum;
         int secondNum;
         int result = 0;
-        for(int i = 0; i<count; i++){
+        for (int i = 0; i < count; i++) {
 
             longNum = Double.doubleToLongBits(getX(i));
-            firstNum = (int)(longNum & (long)0x00000000FFFFFFFF) ^ (int)(longNum >>> 32);
+            firstNum = (int) (longNum & (long) 0x00000000FFFFFFFF) ^ (int) (longNum >> 32);
 
             longNum = Double.doubleToLongBits(getY(i));
-            secondNum = (int)(longNum & (long)0x00000000FFFFFFFF) ^ (int)(longNum >>> 32);
+            secondNum = (int) (longNum & (long) 0x00000000FFFFFFFF) ^ (int) (longNum >>> 32);
 
             result ^= firstNum ^ secondNum;
 
@@ -331,9 +334,39 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     }
 
     @Override
-    public Object clone()  {
+    public Object clone() {
 
         return new ArrayTabulatedFunction(arrayOfX.clone(), arrayOfY.clone());
 
     }
+
+    public Iterator<Point> iterator() {
+
+        Iterator<Point> iterator = new Iterator<Point>() {
+
+            int i;
+
+            @Override
+            public boolean hasNext() {
+                return i < count;
+            }
+
+            @Override
+            public Point next() {
+
+                if (!hasNext()) throw new NoSuchElementException();
+
+                Point newPoint = new Point(getX(i), getY(i));
+                ++i;
+                return newPoint;
+
+            }
+
+        };
+
+        return iterator;
+
+    }
+
+
 }
