@@ -1,7 +1,7 @@
 package functions;
 
 public class UnitFunction extends ConstantFunction {
-    public UnitFunction(){
+    public UnitFunction() {
         super(1);
     }
 }
