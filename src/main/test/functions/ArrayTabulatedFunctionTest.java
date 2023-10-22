@@ -1,7 +1,11 @@
 package functions;
 
 import com.sun.source.tree.ArrayAccessTree;
+import exceptions.ArrayIsNotSortedException;
+import exceptions.DifferentLengthOfArraysException;
+import exceptions.InterpolationException;
 import org.junit.jupiter.api.Test;
+import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -95,6 +99,7 @@ class ArrayTabulatedFunctionTest {
     void interpolate() {
         ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
         assertEquals(func1.interpolate(1,func1.floorIndexOfX(1)),6);
+        assertThrows(InterpolationException.class, () -> {func1.interpolate(111, func1.floorIndexOfX(1));});
     }
 
     @Test
@@ -202,4 +207,41 @@ class ArrayTabulatedFunctionTest {
         assertTrue(func1.equals(func2));
 
     }
+
+    @Test
+    void checkLengthIsTheSameTest(){
+        double[] arr1 = {3,5,7,5};
+        double[] arr2 = {3,5,7};
+        assertThrows(DifferentLengthOfArraysException.class, () -> {ArrayTabulatedFunction.checkLengthIsTheSame(arr1,arr2);});
+    }
+
+    @Test
+    void checkSortedTest(){
+        double[] arr1 = {3,5,16,9};
+        assertThrows(ArrayIsNotSortedException.class, () -> {ArrayTabulatedFunction.checkSorted(arr1);});
+    }
+
+    @Test
+    void IteratorTest(){
+        ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
+        Iterator<Point> iter = func1.iterator();
+        int i = 0;
+        while(iter.hasNext()){
+            Point point = iter.next();
+            assertEquals(point.x,arrX[i]);
+            assertEquals(point.y,arrY[i]);
+            ++i;
+        }
+        i = 0;
+        Iterator<Point> iter2 = func1.iterator();
+        for (Point point : func1){
+            point = iter2.next();
+            assertEquals(point.x,arrX[i]);
+            assertEquals(point.y,arrY[i]);
+            i++;
+        }
+    }
+
+
+
 }
