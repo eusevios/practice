@@ -1,5 +1,7 @@
 package functions;
 import java.lang.IllegalArgumentException;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable
 {
@@ -356,5 +358,27 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
         LinkedListTabulatedFunction clone = new LinkedListTabulatedFunction(arrayOfX, arrayOfY);
         return clone;
+    }
+
+    @Override
+    public Iterator<Point> iterator() {
+        Iterator<Point> iterator = new Iterator<Point>() {
+            Node node = head;
+            @Override
+            public boolean hasNext() {
+                return (node != null);
+            }
+            @Override
+            public Point next() {
+
+                if (!hasNext()) throw new NoSuchElementException();
+
+                Point newPoint = new Point(node.x, node.y);
+                if (node != head.prev) node = node.next;
+                else node = null;
+                return newPoint;
+            }
+        };
+        return iterator;
     }
 }
