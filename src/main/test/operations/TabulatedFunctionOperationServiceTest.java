@@ -36,9 +36,13 @@ class TabulatedFunctionOperationServiceTest {
 
     TabulatedFunctionFactory fact1 = new LinkedListTabulatedFunctionFactory();
     TabulatedFunctionOperationService oper1 = new TabulatedFunctionOperationService(fact1);
+    TabulatedFunctionOperationService oper2 = new TabulatedFunctionOperationService();
 
-    TabulatedFunctionFactory fact2 = new ArrayTabulatedFunctionFactory();
-    TabulatedFunctionOperationService oper2 = new TabulatedFunctionOperationService(fact1);
+    @Test
+    void getTest(){
+        assertDoesNotThrow(()->oper2.setFactory(fact1));
+        assertEquals(LinkedListTabulatedFunctionFactory.class, oper2.getFactory().getClass());
+    }
 
     @Test
     void additionTest(){

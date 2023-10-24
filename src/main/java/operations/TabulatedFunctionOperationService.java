@@ -42,7 +42,7 @@ public class TabulatedFunctionOperationService {
 
     private TabulatedFunction doOperation(TabulatedFunction a, TabulatedFunction b, BiOperation operation){
 
-        if (a.getCount()!=b.getCount()) throw new InconsistentFunctionsException();
+        if (a.getCount()!=b.getCount()) throw new InconsistentFunctionsException("Different lenghts of arrays");
 
         Point[] aArray = asPoints(a);
         Point[] bArray = asPoints(b);
@@ -52,7 +52,7 @@ public class TabulatedFunctionOperationService {
         for(int i = 0; i<a.getCount(); i++){
 
             if (aArray[i].x == bArray[i].x) xValues[i] = aArray[i].x;
-            else throw new InconsistentFunctionsException();
+            else throw new InconsistentFunctionsException("X-values is not equals");
 
             yValues[i] = operation.apply(aArray[i].y, bArray[i].y);
 
