@@ -383,8 +383,6 @@ class LinkedListTabulatedFunctionTest {
         }
     }
 
-    /*  double[] arrayOfX = {3, 4, 6};
-        double[] arrayOfY = {5, 2, -2}; */
     @Test
     void iterator(){
 
