@@ -183,7 +183,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
             int indexOfX = indexOfX(x);
 
-            if (indexOfX > 0) result = this.getY(indexOfX);
+            if (indexOfX >= 0) result = this.getY(indexOfX);
 
             else result = this.interpolate(x, floorIndexOfX(x));
 

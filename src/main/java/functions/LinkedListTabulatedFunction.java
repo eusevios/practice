@@ -318,6 +318,12 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     @Override
     public boolean equals(Object o) {
 
+        if(o instanceof Node){
+
+            return false;
+
+        }
+
         if (o instanceof TabulatedFunction) {
 
             TabulatedFunction newO = (TabulatedFunction) o;

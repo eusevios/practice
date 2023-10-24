@@ -265,11 +265,13 @@ class LinkedListTabulatedFunctionTest {
         double[] arrayOfX2 = {3, 5, 6};
         double[] arrayOfY2 = {5, 2, -2};
 
+        MathFunction log = new NaturalLogarithm();
         LinkedListTabulatedFunction tabFunc2 = new LinkedListTabulatedFunction(arrayOfX, arrayOfY);
         ArrayTabulatedFunction tabFunc3 = new ArrayTabulatedFunction(arrayOfX2, arrayOfY2);
         LinkedListTabulatedFunction.Node node = new LinkedListTabulatedFunction.Node();
         node.x = 12; node.y = -6;
 
+        assertFalse(tabFunc.equals(log));
         assertTrue(tabFunc.equals(tabFunc2));
         assertFalse(tabFunc.equals(tabFunc3));
         assertFalse(tabFunc.equals(node));
