@@ -81,4 +81,42 @@ class TabulatedFunctionOperationServiceTest {
         }
     }
 
+    @Test
+    void MultiplyTest(){
+        TabulatedFunction result1 = oper1.toMultiply(func1, func2);
+        for(int i = 0; i<result1.getCount(); i++){
+            assertEquals(firstArrayOfY[i]*secondArrayOfY[i], result1.getY(i));
+        }
+
+        TabulatedFunction result2 = oper2.toMultiply(func4, func3);
+        for(int i = 0; i<result2.getCount(); i++){
+            assertEquals(firstArrayOfY[i]*secondArrayOfY[i], result2.getY(i));
+        }
+
+
+        TabulatedFunction result3 = oper2.toMultiply(func1, func3);
+        for(int i = 0; i<result3.getCount(); i++){
+            assertEquals(firstArrayOfY[i]*secondArrayOfY[i], result3.getY(i));
+        }
+    }
+
+    @Test
+    void DivideTest(){
+        TabulatedFunction result1 = oper1.toDivide(func1, func2);
+        for(int i = 0; i<result1.getCount(); i++){
+            assertEquals(firstArrayOfY[i]/secondArrayOfY[i], result1.getY(i));
+        }
+
+        TabulatedFunction result2 = oper2.toDivide(func4, func3);
+        for(int i = 0; i<result2.getCount(); i++){
+            assertEquals(firstArrayOfY[i]/secondArrayOfY[i], result2.getY(i));
+        }
+
+
+        TabulatedFunction result3 = oper2.toDivide(func1, func3);
+        for(int i = 0; i<result3.getCount(); i++){
+            assertEquals(firstArrayOfY[i]/secondArrayOfY[i], result3.getY(i));
+        }
+    }
+
 }

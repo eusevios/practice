@@ -3,7 +3,6 @@ import exceptions.InconsistentFunctionsException;
 import functions.*;
 import factory.*;
 
-import javax.swing.table.TableCellEditor;
 import java.util.Iterator;
 public class TabulatedFunctionOperationService {
 
@@ -54,6 +53,7 @@ public class TabulatedFunctionOperationService {
 
             if (aArray[i].x == bArray[i].x) xValues[i] = aArray[i].x;
             else throw new InconsistentFunctionsException();
+
             yValues[i] = operation.apply(aArray[i].y, bArray[i].y);
 
         }
@@ -69,14 +69,22 @@ public class TabulatedFunctionOperationService {
     }
 
     public TabulatedFunction toAdd(TabulatedFunction firstFunction, TabulatedFunction secondFunction ){
-        BiOperation operation;
-        operation = (u,v)->u+v;
+        BiOperation operation = (u,v)->u+v;
         return doOperation(firstFunction, secondFunction, operation);
     }
 
     public TabulatedFunction toSubstract(TabulatedFunction firstFunction, TabulatedFunction secondFunction ){
-        BiOperation operation;
-        operation = (u,v)->u-v;
+        BiOperation operation  = (u,v)->u-v;
+        return doOperation(firstFunction, secondFunction, operation);
+    }
+
+    public TabulatedFunction toMultiply(TabulatedFunction firstFunction, TabulatedFunction secondFunction){
+        BiOperation operation  = (u,v)->u*v;
+        return doOperation(firstFunction, secondFunction, operation);
+    }
+
+    public TabulatedFunction toDivide(TabulatedFunction firstFunction, TabulatedFunction secondFunction){
+        BiOperation operation  = (u,v)->u/v;
         return doOperation(firstFunction, secondFunction, operation);
     }
 

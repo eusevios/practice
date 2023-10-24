@@ -212,13 +212,17 @@ class ArrayTabulatedFunctionTest {
     void checkLengthIsTheSameTest(){
         double[] arr1 = {3,5,7,5};
         double[] arr2 = {3,5,7};
+        double[] arr3 = {1,2,3,4};
         assertThrows(DifferentLengthOfArraysException.class, () -> {ArrayTabulatedFunction.checkLengthIsTheSame(arr1,arr2);});
+        assertDoesNotThrow(() -> {ArrayTabulatedFunction.checkLengthIsTheSame(arr1,arr3);});
     }
 
     @Test
     void checkSortedTest(){
         double[] arr1 = {3,5,16,9};
+        double[] arr2 = {4,5,9,12};
         assertThrows(ArrayIsNotSortedException.class, () -> {ArrayTabulatedFunction.checkSorted(arr1);});
+        assertDoesNotThrow(() -> {ArrayTabulatedFunction.checkSorted(arr2);});
     }
 
     @Test
