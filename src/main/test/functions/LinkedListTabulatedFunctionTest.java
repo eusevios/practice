@@ -3,6 +3,8 @@ package functions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Iterator;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedListTabulatedFunctionTest {
@@ -379,7 +381,26 @@ class LinkedListTabulatedFunctionTest {
             assertTrue(exceptionThrown);
             exceptionThrown = false;
         }
+    }
 
+    /*  double[] arrayOfX = {3, 4, 6};
+        double[] arrayOfY = {5, 2, -2}; */
+    @Test
+    void iterator(){
 
+        Iterator<Point> iterator = tabFunc.iterator();
+        int i = 0;
+        while(iterator.hasNext()) {
+            Point point = iterator.next();
+            assertEquals(point.x, tabFunc.getX(i));
+            assertEquals(point.y, tabFunc.getY(i));
+            ++i;
+        }
+        i = 0;
+        for (Point point : tabFunc) {
+            assertEquals(point.x, tabFunc.getX(i));
+            assertEquals(point.y, tabFunc.getY(i));
+            ++i;
+        }
     }
 }
