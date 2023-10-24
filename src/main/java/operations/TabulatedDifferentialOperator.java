@@ -1,8 +1,10 @@
 package operations;
 
-import factory.ArrayTabulatedFunctionFactory;
-import factory.TabulatedFunctionFactory;
+import functions.factory.ArrayTabulatedFunctionFactory;
+import functions.factory.TabulatedFunctionFactory;
 import functions.*;
+
+import javax.swing.text.TabableView;
 
 
 public class TabulatedDifferentialOperator implements DifferentialOperator<TabulatedFunction> {
@@ -33,8 +35,10 @@ public class TabulatedDifferentialOperator implements DifferentialOperator<Tabul
     public TabulatedFunction derive(TabulatedFunction function){
 
         Point[] arrayOfPoints = TabulatedFunctionOperationService.asPoints(function);
+
         double[] arrayOfX = new double[function.getCount()];
         double[] arrayOfY = new double[function.getCount()];
+
         int i = 0;
         while(i<arrayOfX.length-1){
             arrayOfX[i] = arrayOfPoints[i].x;

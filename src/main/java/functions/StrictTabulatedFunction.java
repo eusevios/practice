@@ -35,7 +35,6 @@ public class StrictTabulatedFunction implements TabulatedFunction{
     @Override
     public void setY(int index, double value) {
         function.setY(index, value);
-
     }
 
     @Override

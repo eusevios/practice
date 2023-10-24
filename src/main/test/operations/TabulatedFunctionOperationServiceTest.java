@@ -1,11 +1,12 @@
 package operations;
 
 import functions.ArrayTabulatedFunction;
+import functions.factory.LinkedListTabulatedFunctionFactory;
+import functions.factory.TabulatedFunctionFactory;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import functions.*;
-import factory.*;
 
 class TabulatedFunctionOperationServiceTest {
 

@@ -1,7 +1,6 @@
 package exceptions;
-import exceptions.*;
-import factory.ArrayTabulatedFunctionFactory;
-import factory.TabulatedFunctionFactory;
+import functions.factory.ArrayTabulatedFunctionFactory;
+import functions.factory.TabulatedFunctionFactory;
 import functions.*;
 import operations.TabulatedFunctionOperationService;
 import org.junit.jupiter.api.Test;

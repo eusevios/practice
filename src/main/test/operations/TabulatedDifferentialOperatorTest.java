@@ -1,11 +1,9 @@
 package operations;
 
-import factory.LinkedListTabulatedFunctionFactory;
+import functions.factory.LinkedListTabulatedFunctionFactory;
 import functions.ArrayTabulatedFunction;
-import functions.LinkedListTabulatedFunction;
 import functions.TabulatedFunction;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.engine.execution.DefaultExecutableInvoker;
 
 import static org.junit.jupiter.api.Assertions.*;
 

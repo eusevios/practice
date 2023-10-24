@@ -1,7 +1,8 @@
 package operations;
 import exceptions.InconsistentFunctionsException;
 import functions.*;
-import factory.*;
+import functions.factory.ArrayTabulatedFunctionFactory;
+import functions.factory.TabulatedFunctionFactory;
 
 import java.util.Iterator;
 public class TabulatedFunctionOperationService {
@@ -30,10 +31,9 @@ public class TabulatedFunctionOperationService {
 
     public static Point[] asPoints(TabulatedFunction tabulatedFunction){
         Point[] arrayOfPoints = new Point[tabulatedFunction.getCount()];
-        Iterator<Point> iter = tabulatedFunction.iterator();
         int i = 0;
-        for (Point point : tabulatedFunction){
-            arrayOfPoints[i] = iter.next();
+        for (Point point : tabulatedFunction) {
+            arrayOfPoints[i] = point;
             ++i;
         }
         return arrayOfPoints;
