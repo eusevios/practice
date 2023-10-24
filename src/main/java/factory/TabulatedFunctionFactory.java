@@ -1,8 +1,6 @@
 package factory;
 import functions.*;
 
-import java.util.Iterator;
-
 public interface TabulatedFunctionFactory {
 
     TabulatedFunction create(double[] xValues, double[] yValues);

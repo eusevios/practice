@@ -4,7 +4,6 @@ import factory.ArrayTabulatedFunctionFactory;
 import factory.TabulatedFunctionFactory;
 import functions.*;
 
-import java.util.Iterator;
 
 public class TabulatedDifferentialOperator implements DifferentialOperator<TabulatedFunction> {
 

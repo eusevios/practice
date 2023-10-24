@@ -342,7 +342,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     public Iterator<Point> iterator() {
 
-        Iterator<Point> iterator = new Iterator<Point>() {
+        Iterator<Point> iterator = new Iterator() {
 
             int i;
 

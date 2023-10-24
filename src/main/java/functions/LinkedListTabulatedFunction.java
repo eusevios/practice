@@ -368,7 +368,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     @Override
     public Iterator<Point> iterator() {
-        Iterator<Point> iterator = new Iterator<Point>() {
+        Iterator<Point> iterator = new Iterator() {
             Node node = head;
             @Override
             public boolean hasNext() {
