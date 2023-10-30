@@ -302,18 +302,18 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         }
     }
 
-    @Override
-    public String toString() {
-        String result = "{ ";
-        Node curr = head;
-        int temp = count;
-        while(temp-- > 0){
-            result += curr.toString() + ' ';
-            curr = curr.next;
-        }
-        result += "}";
-        return result;
-    }
+//    @Override
+//    public String toString() {
+//        String result = "{ ";
+//        Node curr = head;
+//        int temp = count;
+//        while(temp-- > 0){
+//            result += curr.toString() + ' ';
+//            curr = curr.next;
+//        }
+//        result += "}";
+//        return result;
+//    }
 
     @Override
     public boolean equals(Object o) {

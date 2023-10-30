@@ -403,4 +403,12 @@ class LinkedListTabulatedFunctionTest {
             ++i;
         }
     }
+
+    @Test
+    void ToString(){
+
+        AbstractTabulatedFunction func = new LinkedListTabulatedFunction(arrayOfX, arrayOfY);
+        assertEquals("LinkedListTabulatedFunction size = 3\n[3.0; 5.0]\n[4.0; 2.0]\n[6.0; -2.0]",
+                func.toString());
+    }
 }
