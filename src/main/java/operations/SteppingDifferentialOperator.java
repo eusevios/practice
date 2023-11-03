@@ -14,7 +14,7 @@ public abstract class SteppingDifferentialOperator implements DifferentialOperat
     public void setStep(double step){
 
         this.step = step;
-        
+
     }
 
     public double getStep(){

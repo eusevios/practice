@@ -15,14 +15,14 @@ public class TabulatedFunctionFileWriter {
             BufferedWriter firstBuffWriter = new BufferedWriter(firstFWriter);
             BufferedWriter secondBuffWriter = new BufferedWriter(secondFWriter);
 
-            double[] x = {};
-            double[] y = {};
+            double[] x = {1,2,3};
+            double[] y = {4,5,6};
 
             ArrayTabulatedFunction arrayTabFunc = new ArrayTabulatedFunction(x,y);
-            LinkedListTabulatedFunction linedListTabFunc = new LinkedListTabulatedFunction(x,y);
+            LinkedListTabulatedFunction linkedListTabFunc = new LinkedListTabulatedFunction(x,y);
 
             FunctionsIO.writeTabulatedFunction(firstBuffWriter, arrayTabFunc);
-            FunctionsIO.writeTabulatedFunction(secondBuffWriter, linedListTabFunc);
+            FunctionsIO.writeTabulatedFunction(secondBuffWriter, linkedListTabFunc);
 
         }
         catch(IOException e){

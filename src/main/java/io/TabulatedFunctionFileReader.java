@@ -19,8 +19,9 @@ public class TabulatedFunctionFileReader {
             TabulatedFunction readedArrFunc;
             TabulatedFunction readedLLFunc;
             try {
-                 readedArrFunc = FunctionsIO.readTabulatedFunction(firstBuffWriter, arrFact);
-                 readedLLFunc = FunctionsIO.readTabulatedFunction(secondBuffWriter, llFact);
+
+                readedArrFunc = FunctionsIO.readTabulatedFunction(firstBuffWriter, arrFact);
+                readedLLFunc = FunctionsIO.readTabulatedFunction(secondBuffWriter, llFact);
 
                 System.out.println(readedArrFunc.toString());
                 System.out.println(readedLLFunc.toString());
@@ -29,8 +30,6 @@ public class TabulatedFunctionFileReader {
             catch (IOException e){
                 e.printStackTrace();
             }
-
-
 
         }
         catch (IOException e){
