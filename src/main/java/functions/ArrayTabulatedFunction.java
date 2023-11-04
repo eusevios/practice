@@ -1,5 +1,8 @@
 package functions;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import exceptions.InterpolationException;
 
 import java.io.Serializable;
@@ -10,7 +13,11 @@ import java.util.NoSuchElementException;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable, Serializable {
 
+    @JsonFormat(shape = JsonFormat.Shape.ARRAY)
+    @JsonProperty(value = "xValues")
     protected double[] arrayOfX;
+    @JsonFormat(shape = JsonFormat.Shape.ARRAY)
+    @JsonProperty(value = "yValues")
     protected double[] arrayOfY;
     private static final long serialVersionUID = -1656790083418112490L;
 
@@ -74,7 +81,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         return arrayOfX[count - 1];
     }
 
-
+    @JsonCreator
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
 
         checkLengthIsTheSame(xValues, yValues);

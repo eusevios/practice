@@ -1,5 +1,6 @@
 package io;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.security.AnyTypePermission;
 import functions.*;
@@ -128,4 +129,13 @@ final public class FunctionsIO {
         return func;
     }
 
+    public static void serializeJson(BufferedWriter writer, ArrayTabulatedFunction function) throws IOException{
+        ObjectMapper objMap = new ObjectMapper();
+        writer.write(objMap.writeValueAsString(function));
+    }
+
+    public static ArrayTabulatedFunction deserializeJson(BufferedReader reader) throws IOException{
+        ObjectMapper objMap = new ObjectMapper();
+        return (objMap.readerFor(AbstractTabulatedFunction.class)).readValue(reader);
+    }
 }

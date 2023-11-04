@@ -1,11 +1,19 @@
 package functions;
+import java.io.Serial;
 import java.lang.IllegalArgumentException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.io.Serializable;
 
-public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable
+public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
+        implements Insertable, Removable, Serializable
 {
-    static class Node {
+    @Serial
+    private static final long serialVersionUID = 1L;
+    static class Node implements Serializable {
+
+        @Serial
+        private static final long serialVersionUID = 1L;
         public Node next, prev;
         public double x, y;
 
