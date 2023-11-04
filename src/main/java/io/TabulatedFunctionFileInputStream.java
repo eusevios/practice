@@ -36,9 +36,9 @@ public class TabulatedFunctionFileInputStream {
             LinkedListTabulatedFunctionFactory listFact = new LinkedListTabulatedFunctionFactory();
             TabulatedFunction func2 = FunctionsIO.readTabulatedFunction(bufRead, listFact);
 
-            LinkedListTabulatedFunctionFactory funcFact = new LinkedListTabulatedFunctionFactory();
-            TabulatedDifferentialOperator difOper = new TabulatedDifferentialOperator();
-            System.out.println(difOper.derive(func2).toString());
+            TabulatedDifferentialOperator difOper = new TabulatedDifferentialOperator(listFact);
+            TabulatedFunction func3 = difOper.derive(func2);
+            System.out.println(func3.toString());
         }
         catch(IOException e){
             e.printStackTrace();

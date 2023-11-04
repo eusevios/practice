@@ -10,8 +10,8 @@ import java.io.*;
 
 public class TabulatedFunctionFileReader {
     public static void main(String[] args){
-        try(FileReader firstFReader = new FileReader("C:/Users/Иван/IdeaProjects/practice/input/function.txt");
-            FileReader secondFReader = new FileReader("C:/Users/Иван/IdeaProjects/practice/input/function.txt")){
+        try(FileReader firstFReader = new FileReader("input/function.txt");
+            FileReader secondFReader = new FileReader("input/function.txt")){
             BufferedReader firstBuffWriter = new BufferedReader(firstFReader);
             BufferedReader secondBuffWriter = new BufferedReader(secondFReader);
             ArrayTabulatedFunctionFactory arrFact = new ArrayTabulatedFunctionFactory();

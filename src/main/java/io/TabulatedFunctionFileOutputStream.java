@@ -10,7 +10,7 @@ public class TabulatedFunctionFileOutputStream {
     public static void main(String[] args) {
 
 
-        try(FileOutputStream out1 = new FileOutputStream("output/arrayfunction.bin");
+        try(FileOutputStream out1 = new FileOutputStream("output/binaryfunction.bin");
         FileOutputStream out2 = new FileOutputStream("output/linkedlistfunction.bin");) {
 
             BufferedOutputStream buf_out1 = new BufferedOutputStream(out1);
@@ -23,6 +23,7 @@ public class TabulatedFunctionFileOutputStream {
 
             FunctionsIO.writeTabulatedFunction(buf_out1, arrFunc);
             FunctionsIO.writeTabulatedFunction(buf_out2, listFunc);
+
         }
         catch(IOException e){
             e.printStackTrace();

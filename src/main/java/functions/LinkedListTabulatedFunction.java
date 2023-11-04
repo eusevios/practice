@@ -10,6 +10,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
 {
     @Serial
     private static final long serialVersionUID = 1L;
+
     static class Node implements Serializable {
 
         @Serial
@@ -76,6 +77,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
             throw new IllegalArgumentException("The length is less than min");
 
         for (int i = 0; i < xValues.length; i++){
+
             this.addNode(xValues[i],yValues[i]);
         }
     }

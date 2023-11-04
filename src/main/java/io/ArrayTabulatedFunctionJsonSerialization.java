@@ -21,7 +21,7 @@ public class ArrayTabulatedFunctionJsonSerialization {
 
             FileReader reader = new FileReader("output/serializedArrayFunctionsJson.json");
             BufferedReader bufReader = new BufferedReader(reader);
-            TabulatedFunction tabFunc = FunctionsIO.deserializeXml(bufReader);
+            TabulatedFunction tabFunc = FunctionsIO.deserializeJson(bufReader);
             System.out.println(tabFunc.toString());
             reader.close();
         }

@@ -8,7 +8,7 @@ import java.io.*;
 
 public class ArrayTabulatedFunctionSerialization {
     public static void main(String[] args){
-        try(FileOutputStream fileOutStream = new FileOutputStream("C:/Users/Иван/IdeaProjects/practice/output/serializedarrayfunctions.bin")){
+        try(FileOutputStream fileOutStream = new FileOutputStream("output/serializedarrayfunctions.bin")){
 
             BufferedOutputStream buffOut = new BufferedOutputStream(fileOutStream);
 
@@ -32,19 +32,16 @@ public class ArrayTabulatedFunctionSerialization {
                 e.printStackTrace();
             }
 
-            FileInputStream fOut = new FileInputStream("C:/Users/Иван/IdeaProjects/practice/output/serializedarrayfunctions.bin");
-            BufferedInputStream secondBuffOut = new BufferedInputStream(fOut);
 
-            try {
+            try(FileInputStream fOut = new FileInputStream("output/serializedarrayfunctions.bin");) {
 
-                TabulatedFunction function1 = FunctionsIO.deserialize(secondBuffOut);
-                System.out.println(function1.toString());
+                BufferedInputStream secondBuffOut = new BufferedInputStream(fOut);
 
-                TabulatedFunction function2 = FunctionsIO.deserialize(secondBuffOut);
-                System.out.println(function2.toString());
+                System.out.println(FunctionsIO.deserialize(secondBuffOut).toString());
 
-                TabulatedFunction function3 = FunctionsIO.deserialize(secondBuffOut);
-                System.out.println(function3.toString());
+                System.out.println(FunctionsIO.deserialize(secondBuffOut).toString());
+
+                System.out.println(FunctionsIO.deserialize(secondBuffOut).toString());
 
 
             }
@@ -53,9 +50,6 @@ public class ArrayTabulatedFunctionSerialization {
                 e.printStackTrace();
             }
 
-            finally {
-                fOut.close();
-            }
         }
 
         catch (IOException e){

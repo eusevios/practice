@@ -1,6 +1,8 @@
 package io;
 
 import functions.LinkedListTabulatedFunction;
+import functions.TabulatedFunction;
+import functions.factory.LinkedListTabulatedFunctionFactory;
 import operations.TabulatedDifferentialOperator;
 
 import java.io.BufferedOutputStream;
@@ -22,7 +24,8 @@ public class LinkedListTabulatedFunctionSerialization {
             double[] arrY = {5, 2, -2};
             LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(arrX,arrY);
 
-            TabulatedDifferentialOperator difOper = new TabulatedDifferentialOperator();
+            LinkedListTabulatedFunctionFactory fact = new LinkedListTabulatedFunctionFactory();
+            TabulatedDifferentialOperator difOper = new TabulatedDifferentialOperator(fact);
             FunctionsIO.serialize(bufOut, func);
             FunctionsIO.serialize(bufOut, difOper.derive(func));
             FunctionsIO.serialize(bufOut, difOper.derive(difOper.derive(func)));
@@ -31,9 +34,13 @@ public class LinkedListTabulatedFunctionSerialization {
             e.printStackTrace();
         }
 
-        try(FileInputStream in = new FileInputStream("input/serializedlinkedlistfunctions.bin");){
+        try(FileInputStream in = new FileInputStream("output/serializedlinkedlistfunctions.bin");){
 
             BufferedInputStream bufIn = new BufferedInputStream(in);
+
+            System.out.println(FunctionsIO.deserialize(bufIn).toString());
+
+            System.out.println(FunctionsIO.deserialize(bufIn).toString());
 
             System.out.println(FunctionsIO.deserialize(bufIn).toString());
         }

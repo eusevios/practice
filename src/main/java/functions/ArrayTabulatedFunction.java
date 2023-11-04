@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import exceptions.InterpolationException;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Arrays;
 
@@ -14,12 +15,12 @@ import java.util.NoSuchElementException;
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable, Serializable {
 
     @JsonFormat(shape = JsonFormat.Shape.ARRAY)
-    @JsonProperty(value = "xValues")
     protected double[] arrayOfX;
     @JsonFormat(shape = JsonFormat.Shape.ARRAY)
-    @JsonProperty(value = "yValues")
     protected double[] arrayOfY;
-    private static final long serialVersionUID = -1656790083418112490L;
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
 
 
@@ -82,7 +83,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     }
 
     @JsonCreator
-    public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
+    public ArrayTabulatedFunction( @JsonProperty(value = "arrayOfX")double[] xValues, @JsonProperty(value = "arrayOfY") double[] yValues) {
 
         checkLengthIsTheSame(xValues, yValues);
         checkSorted(xValues);
@@ -291,12 +292,12 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     }
 
-    @Override
-    public String toString() {
-
-        return Arrays.toString(arrayOfX) + '\n' + Arrays.toString(arrayOfY);
-
-    }
+//    @Override
+//    public String toString() {
+//
+//        return Arrays.toString(arrayOfX) + '\n' + Arrays.toString(arrayOfY);
+//
+//    }
 
     @Override
     public boolean equals(Object o) {

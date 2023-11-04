@@ -8,7 +8,7 @@ import java.io.*;
 
 public class ArrayTabulatedFunctionXMLSerialization {public static void main(String[] args){
 
-    try(FileWriter fWrit = new FileWriter("C:/Users/Иван/IdeaProjects/practice/output/serializedarrayfunctionsXML.xml")) {
+    try(FileWriter fWrit = new FileWriter("output/serializedarrayfunctionsXML.xml", true)) {
 
         BufferedWriter buffOut = new BufferedWriter(fWrit);
 
@@ -18,7 +18,7 @@ public class ArrayTabulatedFunctionXMLSerialization {public static void main(Str
 
         FunctionsIO.serializeXml(buffOut, arrTabFunc);
 
-        FileReader fOut = new FileReader("C:/Users/Иван/IdeaProjects/practice/output/serializedarrayfunctionsXML.xml");
+        FileReader fOut = new FileReader("output/serializedarrayfunctionsXML.xml");
         BufferedReader secondBuffOut = new BufferedReader(fOut);
         TabulatedFunction function1 = FunctionsIO.deserializeXml(secondBuffOut);
         System.out.println(function1.toString());

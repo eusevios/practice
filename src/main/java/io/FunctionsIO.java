@@ -16,7 +16,7 @@ import functions.factory.*;
 
 final public class FunctionsIO {
 
-    FunctionsIO() {
+    private FunctionsIO() {
         throw new UnsupportedOperationException();
     }
 
@@ -80,9 +80,7 @@ final public class FunctionsIO {
 
     public static void serialize(BufferedOutputStream stream, TabulatedFunction function) throws IOException {
 
-        ObjectOutputStream outStream;
-
-        outStream = new ObjectOutputStream(stream);
+        ObjectOutputStream outStream = new ObjectOutputStream(stream);
         outStream.writeObject(function);
         stream.flush();
 
@@ -120,6 +118,7 @@ final public class FunctionsIO {
     public static void serializeXml(BufferedWriter writer, ArrayTabulatedFunction function) throws IOException {
         XStream xStream = new XStream();
         writer.write(xStream.toXML(function));
+        writer.flush();
     }
 
     public static ArrayTabulatedFunction deserializeXml(BufferedReader reader) {
@@ -132,10 +131,11 @@ final public class FunctionsIO {
     public static void serializeJson(BufferedWriter writer, ArrayTabulatedFunction function) throws IOException{
         ObjectMapper objMap = new ObjectMapper();
         writer.write(objMap.writeValueAsString(function));
+        writer.flush();
     }
 
     public static ArrayTabulatedFunction deserializeJson(BufferedReader reader) throws IOException{
         ObjectMapper objMap = new ObjectMapper();
-        return (objMap.readerFor(AbstractTabulatedFunction.class)).readValue(reader);
+        return (objMap.readerFor(ArrayTabulatedFunction.class)).readValue(reader);
     }
 }

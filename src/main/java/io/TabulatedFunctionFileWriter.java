@@ -9,8 +9,8 @@ import java.io.*;
 public class TabulatedFunctionFileWriter {
 
     public static void main(String args[]){
-        try(FileWriter firstFWriter = new FileWriter("C:/Users/Иван/IdeaProjects/practice/output/arrayfunction.txt");
-        FileWriter secondFWriter = new FileWriter("C:/Users/Иван/IdeaProjects/practice/output/linkedlistfunction.txt")){
+        try(FileWriter firstFWriter = new FileWriter("output/arrayfunction.txt");
+        FileWriter secondFWriter = new FileWriter("output/linkedlistfunction.txt")){
 
             BufferedWriter firstBuffWriter = new BufferedWriter(firstFWriter);
             BufferedWriter secondBuffWriter = new BufferedWriter(secondFWriter);

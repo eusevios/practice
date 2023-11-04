@@ -20,16 +20,6 @@ class FunctionsIOTest {
     ArrayTabulatedFunction tabFunc = new ArrayTabulatedFunction(arrX, arrY);
 
     @Test
-    void testConstructor(){
-        boolean exceptionThrown = false;
-        try{ FunctionsIO funcIO = new FunctionsIO(); }
-        catch (UnsupportedOperationException exp){
-            exceptionThrown = true;
-        }
-        assertTrue(exceptionThrown);
-    }
-
-    @Test
     void writeTabulatedFunction() {
         try(FileWriter fileWriter = new FileWriter("temp/out.txt")){
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
