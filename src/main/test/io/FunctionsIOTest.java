@@ -2,6 +2,7 @@ package io;
 
 import functions.ArrayTabulatedFunction;
 import functions.LinkedListTabulatedFunction;
+import functions.Point;
 import functions.TabulatedFunction;
 import functions.factory.ArrayTabulatedFunctionFactory;
 import functions.factory.LinkedListTabulatedFunctionFactory;
@@ -135,10 +136,98 @@ class FunctionsIOTest {
 
     @Test
     void serializeXml() {
+        try(FileWriter fWrit = new FileWriter("temp/serializedarrayfunctionsXML.xml")) {
+
+            BufferedWriter buffOut = new BufferedWriter(fWrit);
+
+            ArrayTabulatedFunction arrTabFunc = new ArrayTabulatedFunction(arrX, arrY);
+
+            assertDoesNotThrow(()->{FunctionsIO.serializeXml(buffOut, arrTabFunc);});
+
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @Test
     void deserializeXml() {
+        try(FileWriter fWrit = new FileWriter("temp/serializedarrayfunctionsXML.xml")) {
+
+            BufferedWriter buffOut = new BufferedWriter(fWrit);
+
+            ArrayTabulatedFunction arrTabFunc = new ArrayTabulatedFunction(arrX, arrY);
+
+            assertDoesNotThrow(()->{FunctionsIO.serializeXml(buffOut, arrTabFunc);});
+
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        try(FileReader fReader = new FileReader("temp/serializedarrayfunctionsXML.xml")){
+            BufferedReader BuffRead = new BufferedReader(fReader);
+            TabulatedFunction function1 = FunctionsIO.deserializeXml(BuffRead);
+            int i = 0;
+            assertEquals(function1.getCount(), 3);
+            for(Point point: function1){
+                assertEquals(point.x, arrX[i]);
+                assertEquals(point.y, arrY[i]);
+                ++i;
+            }
+
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    void serializeJson(){
+        try(FileWriter fWrit = new FileWriter("temp/serializedarrayfunctionsXML.json")) {
+
+            BufferedWriter buffOut = new BufferedWriter(fWrit);
+
+            double[] arrX = {1, 2, 3};
+            double[] arrY = {4, 4.22, -5.52};
+            ArrayTabulatedFunction arrTabFunc = new ArrayTabulatedFunction(arrX, arrY);
+
+            assertDoesNotThrow(()->{FunctionsIO.serializeJson(buffOut, arrTabFunc);});
+
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    void deserializeJson() {
+        try(FileWriter fWrit = new FileWriter("temp/serializedarrayfunctionsXML.json")) {
+
+            BufferedWriter buffOut = new BufferedWriter(fWrit);
+
+            ArrayTabulatedFunction arrTabFunc = new ArrayTabulatedFunction(arrX, arrY);
+
+            assertDoesNotThrow(()->{FunctionsIO.serializeJson(buffOut, arrTabFunc);});
+
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        try(FileReader fReader = new FileReader("temp/serializedarrayfunctionsXML.json")){
+            BufferedReader BuffRead = new BufferedReader(fReader);
+            TabulatedFunction function1 = FunctionsIO.deserializeJson(BuffRead);
+            int i = 0;
+            assertEquals(function1.getCount(), 3);
+            for(Point point: function1){
+                assertEquals(point.x, arrX[i]);
+                assertEquals(point.y, arrY[i]);
+                ++i;
+            }
+
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @AfterAll
