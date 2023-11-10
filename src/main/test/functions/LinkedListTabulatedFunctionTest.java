@@ -330,14 +330,14 @@ class LinkedListTabulatedFunctionTest {
         {
             IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () ->
             {
-                double[] arrX = {1, 2};
-                double[] arrY = {1, 2, 3};
+                double[] arrX = {1};
+                double[] arrY = {3};
                 LinkedListTabulatedFunction tabFunc = new LinkedListTabulatedFunction(arrX, arrY); });
             Assertions.assertEquals("The length is less than min", thrown.getMessage());
 
             thrown = assertThrows(IllegalArgumentException.class, () ->
             {
-                LinkedListTabulatedFunction tabFunc = new LinkedListTabulatedFunction(source, xFrom, xTo, 1); });
+                LinkedListTabulatedFunction tabFunc = new LinkedListTabulatedFunction(source, 2, 5, 1); });
             Assertions.assertEquals("The length is less than min", thrown.getMessage());
         }
 
@@ -381,7 +381,6 @@ class LinkedListTabulatedFunctionTest {
                 exceptionThrown = true;
             }
             assertTrue(exceptionThrown);
-            exceptionThrown = false;
         }
     }
 

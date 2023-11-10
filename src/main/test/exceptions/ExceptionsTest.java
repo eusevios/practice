@@ -21,7 +21,7 @@ class ExceptionsTest {
         assertThrows(DifferentLengthOfArraysException.class, ()->{ TabulatedFunction func = new ArrayTabulatedFunction(arrayOfX, arrayOfY1);});
     }
     @Test
-    void InconsistentFunctionsExceptionTest(){
+    void inconsistentFunctionsExceptionTest(){
 
         assertThrows(InconsistentFunctionsException.class, ()->{throw new InconsistentFunctionsException();});
 
