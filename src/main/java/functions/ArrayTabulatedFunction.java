@@ -86,6 +86,8 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     public ArrayTabulatedFunction( @JsonProperty(value = "arrayOfX")double[] xValues, @JsonProperty(value = "arrayOfY") double[] yValues) {
 
         checkLengthIsTheSame(xValues, yValues);
+        if (xValues.length < 2)
+            throw new IllegalArgumentException("The length is less than min");
         checkSorted(xValues);
 
         count = xValues.length;

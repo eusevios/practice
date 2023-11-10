@@ -226,7 +226,7 @@ class ArrayTabulatedFunctionTest {
     }
 
     @Test
-    void IteratorTest(){
+    void iteratorTest(){
         ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
         Iterator<Point> iter = func1.iterator();
         int i = 0;
@@ -237,9 +237,7 @@ class ArrayTabulatedFunctionTest {
             ++i;
         }
         i = 0;
-        Iterator<Point> iter2 = func1.iterator();
         for (Point point : func1){
-            point = iter2.next();
             assertEquals(point.x,arrX[i]);
             assertEquals(point.y,arrY[i]);
             i++;

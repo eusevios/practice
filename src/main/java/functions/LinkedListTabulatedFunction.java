@@ -73,8 +73,10 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
         count++;
     }
     public LinkedListTabulatedFunction(double[] xValues, double[] yValues) {
-        if (xValues.length < 2 || yValues.length != xValues.length)
+        checkLengthIsTheSame(xValues, yValues);
+        if (xValues.length < 2)
             throw new IllegalArgumentException("The length is less than min");
+        checkSorted(xValues);
 
         for (int i = 0; i < xValues.length; i++){
 
@@ -378,7 +380,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
 
     @Override
     public Iterator<Point> iterator() {
-        Iterator<Point> iterator = new Iterator() {
+        Iterator<Point> iterator = new Iterator<Point>() {
             Node node = head;
             @Override
             public boolean hasNext() {
