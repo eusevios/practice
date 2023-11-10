@@ -16,7 +16,7 @@ import functions.factory.*;
 
 final public class FunctionsIO {
 
-    FunctionsIO() {
+    private FunctionsIO() {
         throw new UnsupportedOperationException();
     }
 
@@ -120,6 +120,7 @@ final public class FunctionsIO {
     public static void serializeXml(BufferedWriter writer, ArrayTabulatedFunction function) throws IOException {
         XStream xStream = new XStream();
         writer.write(xStream.toXML(function));
+        writer.flush();
     }
 
     public static ArrayTabulatedFunction deserializeXml(BufferedReader reader) {
