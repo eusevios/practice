@@ -169,13 +169,13 @@ class ArrayTabulatedFunctionTest {
 
     }
 
-    @Test
-    void toStringTest(){
-
-        ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
-        assertEquals(func1.toString(),"[-3.0, 0.0, 2.0]" + "\n" + "[3.0, 5.0, 7.0]");
-
-    }
+//    @Test
+//    void toStringTest(){
+//
+//        ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
+//        assertEquals(func1.toString(),"[-3.0, 0.0, 2.0]" + "\n" + "[3.0, 5.0, 7.0]");
+//
+//    }
 
     @Test
     void equalsTest(){

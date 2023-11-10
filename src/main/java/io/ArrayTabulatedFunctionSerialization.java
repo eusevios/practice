@@ -35,13 +35,13 @@ public class ArrayTabulatedFunctionSerialization {
 
             try(FileInputStream fOut = new FileInputStream("output/serializedarrayfunctions.bin");) {
 
-                BufferedInputStream secondBuffOut = new BufferedInputStream(fOut);
+                BufferedInputStream BuffOut = new BufferedInputStream(fOut);
 
-                System.out.println(FunctionsIO.deserialize(secondBuffOut).toString());
+                System.out.println(FunctionsIO.deserialize(BuffOut).toString());
 
-                System.out.println(FunctionsIO.deserialize(secondBuffOut).toString());
+                System.out.println(FunctionsIO.deserialize(BuffOut).toString());
 
-                System.out.println(FunctionsIO.deserialize(secondBuffOut).toString());
+                System.out.println(FunctionsIO.deserialize(BuffOut).toString());
 
 
             }

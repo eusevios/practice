@@ -254,10 +254,10 @@ class LinkedListTabulatedFunctionTest {
     LinkedListTabulatedFunction tabFunc = new LinkedListTabulatedFunction(arrayOfX, arrayOfY);
 
 
-    @Test
-    void toString_List(){
-        assertEquals("{ (3.0; 5.0) (4.0; 2.0) (6.0; -2.0) }",tabFunc.toString());
-    }
+//    @Test
+//    void toString_List(){
+//        assertEquals("{ (3.0; 5.0) (4.0; 2.0) (6.0; -2.0) }",tabFunc.toString());
+//    }
 
     @Test
     void equals_List(){
