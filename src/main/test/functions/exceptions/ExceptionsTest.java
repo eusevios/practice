@@ -1,4 +1,8 @@
-package exceptions;
+package functions.exceptions;
+import exceptions.ArrayIsNotSortedException;
+import exceptions.DifferentLengthOfArraysException;
+import exceptions.InconsistentFunctionsException;
+import exceptions.InterpolationException;
 import functions.factory.ArrayTabulatedFunctionFactory;
 import functions.factory.TabulatedFunctionFactory;
 import functions.*;
@@ -29,7 +33,7 @@ class ExceptionsTest {
         double[] array2 = {5,2,4};
         double[] array3 = {5,6,9,15};
         double[] array4 = {5,2,4,5};
-        double[] array5 = {4,3,1};
+        double[] array5 = {1,4,5};
 
         TabulatedFunction func1= new ArrayTabulatedFunction(array1, array2);
         TabulatedFunction func2 = new ArrayTabulatedFunction(array3, array4);
