@@ -9,8 +9,7 @@ import java.util.concurrent.*;
 
 public class IntegrationTask implements Callable<Double> {
 
-    int from;
-    int to;
+    int from, to;
     Point[] points;
 
 
@@ -19,23 +18,16 @@ public class IntegrationTask implements Callable<Double> {
         this.from = from;
         this.to = to;
         this.points=points;
-
     }
 
     @Override
     public Double call() {
 
         double partialSum = 0;
-
-        for(int i = from; i<10; i++){
-
+        for(int i = from; i < to - 1; i++){
             partialSum+=(points[i].y+points[i+1].y)*(points[i+1].x-points[i].x)/2;
-
         }
-
         return partialSum;
-
     }
-
 
 }

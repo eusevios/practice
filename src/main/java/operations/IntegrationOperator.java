@@ -3,55 +3,48 @@ package operations;
 
 import com.sun.source.tree.ArrayAccessTree;
 import concurrent.IntegrationTask;
+import functions.ArrayTabulatedFunction;
 import functions.Point;
 import functions.TabulatedFunction;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.*;
+import java.math.*;
 
 public class IntegrationOperator {
 
-    public static double toIntegrate(TabulatedFunction source) throws ExecutionException, InterruptedException {
+    private static int pointsInThread(int length, int graduate)
+    {
+        if (length <= Math.pow(10,graduate+1)){
+            return (int)Math.pow(10,graduate); }
+    	else{
+            return pointsInThread(length, ++graduate); }
+    }
 
-        Point[] points = TabulatedFunctionOperationService.asPoints(source);
+    public static double integrate(TabulatedFunction tabFunc) throws ExecutionException, InterruptedException {
 
-        ExecutorService service = Executors.newFixedThreadPool(10);
+        Point[] points = TabulatedFunctionOperationService.asPoints(tabFunc);
 
-        ArrayList<Future<Double>> futList = new ArrayList<>();
+        int lengthThread = IntegrationOperator.pointsInThread(tabFunc.getCount(), 2);
+        int countThread = (int)Math.ceil((double)(tabFunc.getCount()) / lengthThread);
+        ExecutorService service = Executors.newFixedThreadPool(countThread);
 
         ArrayList<IntegrationTask> callList = new ArrayList<>();
 
-        int size = source.getCount();
-
-        long startTime = System.nanoTime();
-
-
-        for(int i = 0; i< size/100-1; i+=100){
-            IntegrationTask task = new IntegrationTask(i, i+100, points);
+        for (int i = 0, j = 0; i < countThread; i++, j += lengthThread) {
+            IntegrationTask task = new IntegrationTask(j, j + lengthThread, points);
             callList.add(task);
         }
 
-        long endTime = System.nanoTime();
+        List<Future<Double>> futList = service.invokeAll(callList);
 
-        long timeElapsed = endTime - startTime;
-
-        System.out.println(timeElapsed);
-
-//        double sum = 0;
-//        for(int i = 0; i<size; i++){
-//
-//            sum+=futList.get(i).get();
-//
-//        }
+        double sum = 0;
+        for(int i = 0; i < countThread; i++){
+            sum += futList.get(i).get();
+        }
 
         service.shutdown();
-
-        return 1;
-
-
-
-
-
+        return sum;
     }
-
 }
