@@ -16,14 +16,17 @@ public class MultiplyingTaskExecutor {
             Thread thread = new Thread(task, "Thread-"+i);
             list.add(thread);
         }
+
         for(Thread thread1: list){
             thread1.start();
         }
+
         while(!taskList.isEmpty()){
             for (int i = 0; i<taskList.size(); i++){
                 if(taskList.get(i).isEnded) taskList.remove(i);
             }
         }
+
         System.out.println(func);
 
     }

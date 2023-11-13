@@ -4,6 +4,8 @@ import functions.ArrayTabulatedFunction;
 import functions.Point;
 import org.junit.jupiter.api.Test;
 
+import java.awt.image.AreaAveragingScaleFilter;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,5 +41,39 @@ public class SynchronizedTabulatedFunctionTest {
             assertEquals(point.y, syncTabFunc.getY(i));
             ++i;
         }
+    }
+    
+    @Test
+
+    void doSyncronouslyIntTest(){
+
+        SynchronizedTabulatedFunction.Operation<double[]> op1 = function -> {
+            double[] arr = new double[function.getCount()];
+            for(int i = 0; i< function.getCount(); i++){
+                arr[i] = function.getY(i);
+            }
+            return arr;
+        };
+        double[] arr = syncTabFunc.doSynchronously(op1);
+        for(int i = 0; i<syncTabFunc.getCount(); i++){
+            assertEquals(arr[i], syncTabFunc.getY(i));
+        }
+
+        SynchronizedTabulatedFunction.Operation<Void> op2 = function -> {
+
+            for(int i = 0; i<syncTabFunc.getCount(); i++){
+                syncTabFunc.setY(i, syncTabFunc.getY(i)*2);
+            }
+            return null;
+
+        };
+
+        op2.apply(syncTabFunc);
+
+        for(int i = 0; i<syncTabFunc.getCount(); i++){
+            assertEquals(Y[i]*2, syncTabFunc.getY(i));
+        }
+
+
     }
 }

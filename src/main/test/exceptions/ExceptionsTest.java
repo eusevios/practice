@@ -1,4 +1,4 @@
-package functions.exceptions;
+package exceptions;
 import exceptions.ArrayIsNotSortedException;
 import exceptions.DifferentLengthOfArraysException;
 import exceptions.InconsistentFunctionsException;

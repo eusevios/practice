@@ -1,4 +1,4 @@
-package factory;
+package functions.factory;
 
 import functions.ArrayTabulatedFunction;
 import functions.LinkedListTabulatedFunction;
