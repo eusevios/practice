@@ -25,19 +25,19 @@ public class IntegrationOperator {
         }
         for(int i = 0; i < countThread - points.length % countThread; i++){
             int lengthTread = points.length / countThread;
-            lengthList.add(lengthTread);
+            if (lengthTread != 0) lengthList.add(lengthTread);
         }
 
 
         ExecutorService service = Executors.newFixedThreadPool(countThread);
-        Future<Double>[] results = new Future[countThread];
+        Future<Double>[] results = new Future[lengthList.size()];
         for (int i = 0, j = 0; i < points.length; i += lengthList.get(j), j++) {
             IntegrationTask task = new IntegrationTask(i, lengthList.get(j), points);
             results[j] = service.submit(task);
         }
 
         double sum = 0;
-        for(int i = 0; i < points.length; i++){
+        for(int i = 0; i < results.length; i++){
             sum += results[i].get();
         }
 
