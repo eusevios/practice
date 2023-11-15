@@ -37,7 +37,7 @@ public class IntegrationOperator {
         }
 
         double sum = 0;
-        for(int i = 0; i < countThread; i++){
+        for(int i = 0; i < points.length; i++){
             sum += results[i].get();
         }
 
