@@ -2,18 +2,19 @@ package functions;
 
 import java.util.Iterator;
 
-public class StrictTabulatedFunction implements TabulatedFunction{
+public class StrictTabulatedFunction implements TabulatedFunction {
 
     TabulatedFunction function;
 
 
-    public StrictTabulatedFunction(TabulatedFunction function){
+    public StrictTabulatedFunction(TabulatedFunction function) {
         this.function = function;
     }
+
     @Override
     public double apply(double x) {
         int index = function.indexOfX(x);
-        if(index==-1) throw new UnsupportedOperationException();
+        if (index == -1) throw new UnsupportedOperationException();
         else return function.getX(index);
     }
 

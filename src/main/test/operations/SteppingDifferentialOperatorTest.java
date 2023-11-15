@@ -3,20 +3,20 @@ package operations;
 import functions.*;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class SteppingDifferentialOperatorTest {
-MathFunction addFunc = new AdditionalFunction();
-MathFunction sqrt = new SqrFunction();
-MathFunction log = new NaturalLogarithm();
-double[] arrayOfX = {3,4,5};
-double[] arrayOfY = {6,7,8};
-MathFunction tab = new ArrayTabulatedFunction(arrayOfX, arrayOfY);
+    MathFunction addFunc = new AdditionalFunction();
+    MathFunction sqrt = new SqrFunction();
+    MathFunction log = new NaturalLogarithm();
+    double[] arrayOfX = {3, 4, 5};
+    double[] arrayOfY = {6, 7, 8};
+    MathFunction tab = new ArrayTabulatedFunction(arrayOfX, arrayOfY);
 
 
     @Test
-    void LeftSteppingDifferentialOperatorTest(){
+    void LeftSteppingDifferentialOperatorTest() {
 
         SteppingDifferentialOperator leftOper = new LeftSteppingDifferentialOperator(5);
         MathFunction differentialAddFunc = leftOper.derive(addFunc);
@@ -28,19 +28,19 @@ MathFunction tab = new ArrayTabulatedFunction(arrayOfX, arrayOfY);
 
         leftOper.setStep(250.5311);
 
-        assertEquals(-1,differentialAddFunc.apply(0));
+        assertEquals(-1, differentialAddFunc.apply(0));
 
         leftOper.setStep(Math.E);
 
-        assertEquals(0.10071,differentialLog.apply(11.35), 0.00001);
+        assertEquals(0.10071, differentialLog.apply(11.35), 0.00001);
 
         leftOper.setStep(1);
 
-        assertEquals(1,differentialTab.apply(4));
+        assertEquals(1, differentialTab.apply(4));
     }
 
     @Test
-    void RightSteppingDifferentialOperatorTest(){
+    void RightSteppingDifferentialOperatorTest() {
 
         SteppingDifferentialOperator rightOper = new RightSteppingDifferentialOperator(3);
         MathFunction differentialAddFunc = rightOper.derive(addFunc);
@@ -52,19 +52,20 @@ MathFunction tab = new ArrayTabulatedFunction(arrayOfX, arrayOfY);
 
         rightOper.setStep(250.5311);
 
-        assertEquals(-1,differentialAddFunc.apply(0));
+        assertEquals(-1, differentialAddFunc.apply(0));
 
-        rightOper.setStep(Math.pow(Math.E,2));
+        rightOper.setStep(Math.pow(Math.E, 2));
 
-        assertEquals(0.05420,differentialLog.apply(15), 0.00001);
+        assertEquals(0.05420, differentialLog.apply(15), 0.00001);
 
         rightOper.setStep(1);
 
-        assertEquals(1,differentialTab.apply(4));
+        assertEquals(1, differentialTab.apply(4));
 
     }
+
     @Test
-    void MiddleSteppingDifferentialOperatorTest(){
+    void MiddleSteppingDifferentialOperatorTest() {
 
         SteppingDifferentialOperator middleOper = new MiddleSteppingDifferentialOperator(3);
         MathFunction differentialAddFunc = middleOper.derive(addFunc);
@@ -76,17 +77,17 @@ MathFunction tab = new ArrayTabulatedFunction(arrayOfX, arrayOfY);
 
         middleOper.setStep(250.5311);
 
-        assertEquals(-1,differentialAddFunc.apply(0));
+        assertEquals(-1, differentialAddFunc.apply(0));
 
-        middleOper.setStep(Math.pow(Math.E,2));
+        middleOper.setStep(Math.pow(Math.E, 2));
 
-        assertEquals(Math.pow(Math.E,2), middleOper.getStep());
+        assertEquals(Math.pow(Math.E, 2), middleOper.getStep());
 
-        assertEquals(0.07301,differentialLog.apply(15), 0.00001);
+        assertEquals(0.07301, differentialLog.apply(15), 0.00001);
 
         middleOper.setStep(1);
 
-        assertEquals(1,differentialTab.apply(4));
+        assertEquals(1, differentialTab.apply(4));
 
 
     }

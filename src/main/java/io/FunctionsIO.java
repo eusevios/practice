@@ -3,15 +3,15 @@ package io;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.security.AnyTypePermission;
-import functions.*;
+import functions.ArrayTabulatedFunction;
+import functions.Point;
+import functions.TabulatedFunction;
+import functions.factory.TabulatedFunctionFactory;
 
 import java.io.*;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Locale;
-
-import functions.factory.*;
-
 
 
 final public class FunctionsIO {
@@ -30,15 +30,13 @@ final public class FunctionsIO {
 
     }
 
-    public static TabulatedFunction readTabulatedFunction(BufferedReader reader, TabulatedFunctionFactory factory) throws IOException  {
+    public static TabulatedFunction readTabulatedFunction(BufferedReader reader, TabulatedFunctionFactory factory) throws IOException {
 
         int count = 0;
 
         try {
             count = Integer.parseInt(reader.readLine());
-        }
-
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -53,9 +51,7 @@ final public class FunctionsIO {
 
             try {
                 str = reader.readLine();
-            }
-
-            catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
 
@@ -130,13 +126,13 @@ final public class FunctionsIO {
         return func;
     }
 
-    public static void serializeJson(BufferedWriter writer, ArrayTabulatedFunction function) throws IOException{
+    public static void serializeJson(BufferedWriter writer, ArrayTabulatedFunction function) throws IOException {
         ObjectMapper objMap = new ObjectMapper();
         writer.write(objMap.writeValueAsString(function));
         writer.flush();
     }
 
-    public static ArrayTabulatedFunction deserializeJson(BufferedReader reader) throws IOException{
+    public static ArrayTabulatedFunction deserializeJson(BufferedReader reader) throws IOException {
         ObjectMapper objMap = new ObjectMapper();
         return (objMap.readerFor(ArrayTabulatedFunction.class)).readValue(reader);
     }

@@ -2,16 +2,16 @@ package operations;
 
 import functions.MathFunction;
 
-public class LeftSteppingDifferentialOperator extends SteppingDifferentialOperator{
+public class LeftSteppingDifferentialOperator extends SteppingDifferentialOperator {
 
-    LeftSteppingDifferentialOperator(double step){
+    LeftSteppingDifferentialOperator(double step) {
         super(step);
     }
 
     @Override
     public MathFunction derive(MathFunction function) {
 
-        MathFunction differentialFunc = (x)->(function.apply(x)-function.apply(x-step))/ step;
+        MathFunction differentialFunc = (x) -> (function.apply(x) - function.apply(x - step)) / step;
         return differentialFunc;
 
     }

@@ -1,6 +1,5 @@
 package concurrent;
 
-import functions.MathFunction;
 import functions.Point;
 import functions.TabulatedFunction;
 import operations.TabulatedFunctionOperationService;
@@ -12,80 +11,81 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
 
     TabulatedFunction function;
 
-    public SynchronizedTabulatedFunction(TabulatedFunction function){
+    public SynchronizedTabulatedFunction(TabulatedFunction function) {
         this.function = function;
     }
 
 
     @Override
     public double apply(double x) {
-        synchronized (this){
+        synchronized (this) {
             return function.apply(x);
         }
     }
 
     @Override
     public int getCount() {
-        synchronized (this){
+        synchronized (this) {
             return function.getCount();
         }
     }
 
     @Override
     public double getX(int index) {
-        synchronized (this){
+        synchronized (this) {
             return function.getX(index);
         }
     }
 
     @Override
     public double getY(int index) {
-        synchronized (this){
+        synchronized (this) {
             return function.getY(index);
         }
     }
 
     @Override
     public void setY(int index, double value) {
-        synchronized (this){
+        synchronized (this) {
             function.setY(index, value);
         }
     }
 
     @Override
     public int indexOfX(double x) {
-        synchronized (this){
+        synchronized (this) {
             return function.indexOfX(x);
         }
     }
 
     @Override
     public int indexOfY(double y) {
-        synchronized (this){
+        synchronized (this) {
             return function.indexOfY(y);
         }
     }
 
     @Override
     public double leftBound() {
-        synchronized (this){
+        synchronized (this) {
             return function.leftBound();
         }
     }
 
     @Override
     public double rightBound() {
-        synchronized (this){
+        synchronized (this) {
             return function.rightBound();
         }
     }
 
     @Override
     public Iterator<Point> iterator() {
-        synchronized (this){
+        synchronized (this) {
             Point[] pointsList = TabulatedFunctionOperationService.asPoints(function);
             return new Iterator<Point>() {
                 int i;
+
                 @Override
                 public boolean hasNext() {
                     return i < pointsList.length;
@@ -103,13 +103,13 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
         }
     }
 
-    <T> T doSynchronously(Operation<T > op){
-        synchronized (this){
+    <T> T doSynchronously(Operation<T> op) {
+        synchronized (this) {
             return op.apply(this);
         }
     }
 
-    public interface Operation<T>{
+    public interface Operation<T> {
         public T apply(SynchronizedTabulatedFunction function);
     }
 }

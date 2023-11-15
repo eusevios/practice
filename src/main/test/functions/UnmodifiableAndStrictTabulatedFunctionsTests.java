@@ -10,6 +10,10 @@ class UnmodifiableAndStrictTabulatedFunctionsTests {
 
     double[] arrX = {-3, 0, 2};
     double[] arrY = {3, 5, 7};
+    ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
+    UnmodifiableTabulatedFunction unModFunc = new UnmodifiableTabulatedFunction(func1);
+    LinkedListTabulatedFunction func2 = new LinkedListTabulatedFunction(arrX, arrY);
+    StrictTabulatedFunction strictFunc = new StrictTabulatedFunction(func2);
 
     @Test
     void setYTest() {
@@ -70,11 +74,6 @@ class UnmodifiableAndStrictTabulatedFunctionsTests {
         });
 
     }
-
-    ArrayTabulatedFunction func1 = new ArrayTabulatedFunction(arrX, arrY);
-    LinkedListTabulatedFunction func2 = new LinkedListTabulatedFunction(arrX, arrY);
-    UnmodifiableTabulatedFunction unModFunc = new UnmodifiableTabulatedFunction(func1);
-    StrictTabulatedFunction strictFunc = new StrictTabulatedFunction(func2);
 
     @Test
     void getCount() {

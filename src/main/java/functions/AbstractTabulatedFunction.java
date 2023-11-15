@@ -13,14 +13,6 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction, Se
 
     protected int count;
 
-    abstract protected int floorIndexOfX(double x);
-
-    abstract protected double extrapolateLeft(double x);
-
-    abstract protected double extrapolateRight(double x);
-
-    abstract protected double interpolate(double x, int floorIndex);
-
     static void checkLengthIsTheSame(double[] xValues, double[] yValues) {
 
         if (xValues.length != yValues.length)
@@ -38,14 +30,22 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction, Se
 
     }
 
+    abstract protected int floorIndexOfX(double x);
+
+    abstract protected double extrapolateLeft(double x);
+
+    abstract protected double extrapolateRight(double x);
+
+    abstract protected double interpolate(double x, int floorIndex);
+
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
         str.append(getClass().getSimpleName() + " size = " + count + '\n');
-        for(Point point : this){
+        for (Point point : this) {
             str.append("[" + point.x + "; " + point.y + "]" + "\n");
         }
-        str.deleteCharAt(str.length()-1);
+        str.deleteCharAt(str.length() - 1);
         return str.toString();
     }
 }

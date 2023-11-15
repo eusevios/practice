@@ -1,16 +1,17 @@
 package operations;
 
-import functions.factory.LinkedListTabulatedFunctionFactory;
 import functions.ArrayTabulatedFunction;
 import functions.TabulatedFunction;
+import functions.factory.LinkedListTabulatedFunctionFactory;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TabulatedDifferentialOperatorTest {
 
-    double[] firstArrayOfX = {1,2,3,4};
-    double[] firstArrayOfY = {2,4,8,16};
+    double[] firstArrayOfX = {1, 2, 3, 4};
+    double[] firstArrayOfY = {2, 4, 8, 16};
 
     @Test
     void setFactory() {

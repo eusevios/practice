@@ -1,9 +1,9 @@
 package functions;
 
-import org.junit.jupiter.api.IndicativeSentencesGeneration;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class IdentityFunctionTest {
 
@@ -15,16 +15,17 @@ class IdentityFunctionTest {
         double expected = 5.5;
         assertEquals(actual, expected, 0.0);
     }
+
     @Test
-    void andThenTest(){
+    void andThenTest() {
         MathFunction func1 = new IdentityFunction();
         MathFunction func2 = new NaturalLogarithm();
         CompositeFunction func = func1.andThen(func2);
-        assertEquals(func.apply(Math.E),1);
+        assertEquals(func.apply(Math.E), 1);
     }
 
     @Test
-    void ToStringTest(){
+    void ToStringTest() {
 
         MathFunction func = new IdentityFunction();
 
@@ -33,7 +34,7 @@ class IdentityFunctionTest {
     }
 
     @Test
-    void equalsTest(){
+    void equalsTest() {
 
         IdentityFunction func1 = new IdentityFunction();
         IdentityFunction func2 = new IdentityFunction();
@@ -42,7 +43,7 @@ class IdentityFunctionTest {
     }
 
     @Test
-    void HashCodeTest(){
+    void HashCodeTest() {
 
         IdentityFunction func1 = new IdentityFunction();
         assertEquals(func1.hashCode(), 640134561);
@@ -50,7 +51,7 @@ class IdentityFunctionTest {
     }
 
     @Test
-    void cloneTest(){
+    void cloneTest() {
 
         IdentityFunction func1 = new IdentityFunction();
         IdentityFunction func2 = func1.clone();

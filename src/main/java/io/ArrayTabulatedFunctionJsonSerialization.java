@@ -9,7 +9,7 @@ public class ArrayTabulatedFunctionJsonSerialization {
 
     public static void main(String[] args) {
 
-        try(FileWriter writer = new FileWriter("output/serializedArrayFunctionsJson.json")) {
+        try (FileWriter writer = new FileWriter("output/serializedArrayFunctionsJson.json")) {
 
             BufferedWriter bufWriter = new BufferedWriter(writer);
 
@@ -24,8 +24,7 @@ public class ArrayTabulatedFunctionJsonSerialization {
             TabulatedFunction tabFunc = FunctionsIO.deserializeJson(bufReader);
             System.out.println(tabFunc.toString());
             reader.close();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

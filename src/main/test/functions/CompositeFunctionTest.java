@@ -2,7 +2,7 @@ package functions;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CompositeFunctionTest {
 
@@ -10,8 +10,8 @@ class CompositeFunctionTest {
     void apply() {
 
         /*  h(x) = g(f(x))
-        *   g(x) - func2
-        *   f(x) - func1 */
+         *   g(x) - func2
+         *   f(x) - func1 */
 
         MathFunction func_1 = new IdentityFunction();
         MathFunction func_2 = new NaturalLogarithm();
@@ -31,13 +31,13 @@ class CompositeFunctionTest {
     }
 
     @Test
-    void compositeFunctionTestOfAndThen(){
+    void compositeFunctionTestOfAndThen() {
 
         MathFunction func_1 = new NaturalLogarithm();
         MathFunction func_2 = new SqrFunction();
         MathFunction func_3 = new AdditionalFunction();
         CompositeFunction func = (func_3.andThen(func_2)).andThen(func_1);
-        assertEquals(func.apply(0),0.90316,0.00001);
+        assertEquals(func.apply(0), 0.90316, 0.00001);
 
         MathFunction func_5 = new NaturalLogarithm();
         MathFunction func_6 = new ConstantFunction(1);
@@ -45,7 +45,6 @@ class CompositeFunctionTest {
         assertEquals(newFunc.apply(513), 0);
 
     }
-
 
 
 }

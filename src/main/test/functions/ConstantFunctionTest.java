@@ -2,14 +2,14 @@ package functions;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ConstantFunctionTest {
 
     @Test
     void apply() {
         ConstantFunction func = new ConstantFunction(2);
-        assertEquals(func.apply(553.31531),2);
+        assertEquals(func.apply(553.31531), 2);
     }
 
     @Test

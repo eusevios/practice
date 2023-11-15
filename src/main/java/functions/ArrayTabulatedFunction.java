@@ -8,82 +8,21 @@ import exceptions.InterpolationException;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Arrays;
-
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable, Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 1L;
     @JsonFormat(shape = JsonFormat.Shape.ARRAY)
     protected double[] arrayOfX;
     @JsonFormat(shape = JsonFormat.Shape.ARRAY)
     protected double[] arrayOfY;
 
-    @Serial
-    private static final long serialVersionUID = 1L;
-
-
-
-    public int getCount() {
-
-        return count;
-
-    }
-
-
-    public double getX(int index) {
-        return arrayOfX[index];
-    }
-
-
-    public double getY(int index) {
-        return arrayOfY[index];
-    }
-
-
-    public void setY(int index, double value) {
-        arrayOfY[index] = value;
-    }
-
-
-    public int indexOfX(double x) {
-
-        int index = 0;
-
-        while (index != count) {
-            if (arrayOfX[index] == x) return index;
-            index++;
-        }
-
-        return -1;
-
-    }
-
-
-    public int indexOfY(double y) {
-
-        int index = 0;
-
-        while (index != count) {
-            if (arrayOfY[index] == y) return index;
-            index++;
-        }
-
-        return -1;
-
-    }
-
-    public double leftBound() {
-        return arrayOfX[0];
-    }
-
-
-    public double rightBound() {
-        return arrayOfX[count - 1];
-    }
 
     @JsonCreator
-    public ArrayTabulatedFunction( @JsonProperty(value = "arrayOfX")double[] xValues, @JsonProperty(value = "arrayOfY") double[] yValues) {
+    public ArrayTabulatedFunction(@JsonProperty(value = "arrayOfX") double[] xValues, @JsonProperty(value = "arrayOfY") double[] yValues) {
 
         checkLengthIsTheSame(xValues, yValues);
         if (xValues.length < 2)
@@ -94,65 +33,6 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
         arrayOfX = Arrays.copyOf(xValues, count);
         arrayOfY = Arrays.copyOf(yValues, count);
-
-    }
-
-    protected int floorIndexOfX(double x) {
-        if (x > arrayOfX[count - 1]) return count - 1;
-
-        if (x < arrayOfX[0]) return 0;
-
-        int index = 1;
-        while (arrayOfX[index] < x) index++;
-        return index - 1;
-
-    }
-
-
-    private double interpolationFormula(int leftIndex, int rightIndex, double x) {
-
-        return arrayOfY[leftIndex] + ((arrayOfY[rightIndex] - arrayOfY[leftIndex]) /
-                (arrayOfX[rightIndex] - arrayOfX[leftIndex])) * (x - arrayOfX[leftIndex]);
-
-    }
-
-
-    protected double extrapolateLeft(double x) {
-        if (count == 1) return arrayOfY[0];
-
-        double newY = interpolationFormula(0, 1, x);
-
-        insert(x, newY);
-
-        return newY;
-
-    }
-
-
-    protected double extrapolateRight(double x) {
-
-        if (count == 1) return arrayOfY[0];
-
-        double newY = interpolationFormula(count - 2, count - 1, x);
-
-        insert(x, newY);
-
-        return newY;
-
-    }
-
-
-    protected double interpolate(double x, int floorIndex) {
-
-        if (!(x > getX(floorIndex) && x < getX(floorIndex + 1))) throw new InterpolationException("Incorrect value");
-
-        if (count == 1) return arrayOfY[0];
-
-        double newY = interpolationFormula(floorIndex, floorIndex + 1, x);
-
-        insert(x, newY);
-
-        return newY;
 
     }
 
@@ -183,6 +63,112 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     }
 
+    public int getCount() {
+
+        return count;
+
+    }
+
+    public double getX(int index) {
+        return arrayOfX[index];
+    }
+
+    public double getY(int index) {
+        return arrayOfY[index];
+    }
+
+    public void setY(int index, double value) {
+        arrayOfY[index] = value;
+    }
+
+    public int indexOfX(double x) {
+
+        int index = 0;
+
+        while (index != count) {
+            if (arrayOfX[index] == x) return index;
+            index++;
+        }
+
+        return -1;
+
+    }
+
+    public int indexOfY(double y) {
+
+        int index = 0;
+
+        while (index != count) {
+            if (arrayOfY[index] == y) return index;
+            index++;
+        }
+
+        return -1;
+
+    }
+
+    public double leftBound() {
+        return arrayOfX[0];
+    }
+
+    public double rightBound() {
+        return arrayOfX[count - 1];
+    }
+
+    protected int floorIndexOfX(double x) {
+        if (x > arrayOfX[count - 1]) return count - 1;
+
+        if (x < arrayOfX[0]) return 0;
+
+        int index = 1;
+        while (arrayOfX[index] < x) index++;
+        return index - 1;
+
+    }
+
+    private double interpolationFormula(int leftIndex, int rightIndex, double x) {
+
+        return arrayOfY[leftIndex] + ((arrayOfY[rightIndex] - arrayOfY[leftIndex]) /
+                (arrayOfX[rightIndex] - arrayOfX[leftIndex])) * (x - arrayOfX[leftIndex]);
+
+    }
+
+    protected double extrapolateLeft(double x) {
+        if (count == 1) return arrayOfY[0];
+
+        double newY = interpolationFormula(0, 1, x);
+
+        insert(x, newY);
+
+        return newY;
+
+    }
+
+    protected double extrapolateRight(double x) {
+
+        if (count == 1) return arrayOfY[0];
+
+        double newY = interpolationFormula(count - 2, count - 1, x);
+
+        insert(x, newY);
+
+        return newY;
+
+    }
+
+    protected double interpolate(double x, int floorIndex) {
+
+        if (!(x > getX(floorIndex) && x < getX(floorIndex + 1))) throw new InterpolationException("Incorrect value");
+
+        if (count == 1) return arrayOfY[0];
+
+        double newY = interpolationFormula(floorIndex, floorIndex + 1, x);
+
+        insert(x, newY);
+
+        return newY;
+
+    }
 
     public double apply(double x) {
 

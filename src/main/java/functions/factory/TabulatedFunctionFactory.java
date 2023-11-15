@@ -1,25 +1,28 @@
 package functions.factory;
-import functions.*;
+
+import functions.StrictTabulatedFunction;
+import functions.TabulatedFunction;
+import functions.UnmodifiableTabulatedFunction;
 
 public interface TabulatedFunctionFactory {
 
     TabulatedFunction create(double[] xValues, double[] yValues);
 
-    default TabulatedFunction createUnmodifiable(double[] xValues, double[] yValues){
+    default TabulatedFunction createUnmodifiable(double[] xValues, double[] yValues) {
 
         TabulatedFunction func = this.create(xValues, yValues);
         return new UnmodifiableTabulatedFunction(func);
 
     }
 
-    default TabulatedFunction createStrict(double[] xValues, double[] yValues){
+    default TabulatedFunction createStrict(double[] xValues, double[] yValues) {
 
         TabulatedFunction func = this.create(xValues, yValues);
         return new StrictTabulatedFunction(func);
 
     }
 
-    default TabulatedFunction createStrictUnmodifiable(double[] xValues, double[] yValues){
+    default TabulatedFunction createStrictUnmodifiable(double[] xValues, double[] yValues) {
 
         TabulatedFunction func = this.create(xValues, yValues);
         StrictTabulatedFunction strictFunc = new StrictTabulatedFunction(func);

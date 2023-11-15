@@ -1,17 +1,17 @@
 package io;
 
-import functions.*;
-import functions.LinkedListTabulatedFunction;
+import functions.TabulatedFunction;
 import functions.factory.ArrayTabulatedFunctionFactory;
 import functions.factory.LinkedListTabulatedFunctionFactory;
-import functions.factory.TabulatedFunctionFactory;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class TabulatedFunctionFileReader {
-    public static void main(String[] args){
-        try(FileReader firstFReader = new FileReader("input/function.txt");
-            FileReader secondFReader = new FileReader("input/function.txt")){
+    public static void main(String[] args) {
+        try (FileReader firstFReader = new FileReader("input/function.txt");
+             FileReader secondFReader = new FileReader("input/function.txt")) {
             BufferedReader firstBuffWriter = new BufferedReader(firstFReader);
             BufferedReader secondBuffWriter = new BufferedReader(secondFReader);
             ArrayTabulatedFunctionFactory arrFact = new ArrayTabulatedFunctionFactory();
@@ -26,13 +26,11 @@ public class TabulatedFunctionFileReader {
                 System.out.println(readedArrFunc.toString());
                 System.out.println(readedLLFunc.toString());
 
-            }
-            catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
 
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
