@@ -37,8 +37,8 @@ public class IntegrationOperator {
         }
 
         double sum = 0;
-        for(int i = 0; i < results.length; i++){
-            sum += results[i].get();
+        for (Future<Double> result : results) {
+            sum += result.get();
         }
 
         service.shutdown();
