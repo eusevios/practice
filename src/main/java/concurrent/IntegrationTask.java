@@ -21,9 +21,12 @@ public class IntegrationTask implements Callable<Double> {
     @Override
     public Double call() {
 
-        double partialSum = 0; int condition = from + length;
-        if(from + length == points.length){ --condition; }
-        for(int i = from; i < condition; i++){
+        double partialSum = 0;
+        int condition = from + length;
+        if (from + length == points.length) {
+            --condition;
+        }
+        for (int i = from; i < condition; i++) {
             partialSum += Math.abs((points[i].y + points[i + 1].y) * (points[i + 1].x - points[i].x) / 2);
         }
         return partialSum;

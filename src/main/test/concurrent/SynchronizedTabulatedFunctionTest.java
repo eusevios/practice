@@ -69,6 +69,14 @@ public class SynchronizedTabulatedFunctionTest {
             assertEquals(Y[i] * 2, syncTabFunc.getY(i));
         }
 
+        SynchronizedTabulatedFunction.Operation<Double> op3 = function -> {
+
+            return function.leftBound();
+
+        };
+
+        assertEquals(syncTabFunc.doSynchronously(op3), 2);
+
 
     }
 }

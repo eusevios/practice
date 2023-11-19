@@ -4,8 +4,7 @@ import functions.TabulatedFunction;
 
 public class MultiplyingTask implements Runnable {
 
-    boolean isEnded = false;
-    private TabulatedFunction tabFunc;
+    private final TabulatedFunction tabFunc;
 
     public MultiplyingTask(TabulatedFunction function) {
         tabFunc = function;
@@ -21,8 +20,6 @@ public class MultiplyingTask implements Runnable {
         }
 
         System.out.println(Thread.currentThread().getName() + " has ended");
-
-        isEnded = true;
 
     }
 

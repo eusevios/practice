@@ -9,79 +9,83 @@ import java.util.NoSuchElementException;
 
 public class SynchronizedTabulatedFunction implements TabulatedFunction {
 
-    TabulatedFunction function;
+    private final TabulatedFunction function;
+
+    private final Object lock;
 
     public SynchronizedTabulatedFunction(TabulatedFunction function) {
+
         this.function = function;
+        this.lock = this;
     }
 
 
     @Override
     public double apply(double x) {
-        synchronized (this) {
+        synchronized (lock) {
             return function.apply(x);
         }
     }
 
     @Override
     public int getCount() {
-        synchronized (this) {
+        synchronized (lock) {
             return function.getCount();
         }
     }
 
     @Override
     public double getX(int index) {
-        synchronized (this) {
+        synchronized (lock) {
             return function.getX(index);
         }
     }
 
     @Override
     public double getY(int index) {
-        synchronized (this) {
+        synchronized (lock) {
             return function.getY(index);
         }
     }
 
     @Override
     public void setY(int index, double value) {
-        synchronized (this) {
+        synchronized (lock) {
             function.setY(index, value);
         }
     }
 
     @Override
     public int indexOfX(double x) {
-        synchronized (this) {
+        synchronized (lock) {
             return function.indexOfX(x);
         }
     }
 
     @Override
     public int indexOfY(double y) {
-        synchronized (this) {
+        synchronized (lock) {
             return function.indexOfY(y);
         }
     }
 
     @Override
     public double leftBound() {
-        synchronized (this) {
+        synchronized (lock) {
             return function.leftBound();
         }
     }
 
     @Override
     public double rightBound() {
-        synchronized (this) {
+        synchronized (lock) {
             return function.rightBound();
         }
     }
 
     @Override
     public Iterator<Point> iterator() {
-        synchronized (this) {
+        synchronized (lock) {
             Point[] pointsList = TabulatedFunctionOperationService.asPoints(function);
             return new Iterator<Point>() {
                 int i;
@@ -103,8 +107,8 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
         }
     }
 
-    <T> T doSynchronously(Operation<T> op) {
-        synchronized (this) {
+    public <T> T doSynchronously(Operation<T> op) {
+        synchronized (lock) {
             return op.apply(this);
         }
     }

@@ -1,8 +1,10 @@
 package concurrent;
 
-import functions.*;
+import functions.ArrayTabulatedFunction;
+import functions.MathFunction;
+import functions.NaturalLogarithm;
+import functions.TabulatedFunction;
 import operations.IntegrationOperator;
-import operations.TabulatedFunctionOperationService;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;

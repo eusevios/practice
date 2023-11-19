@@ -4,6 +4,7 @@ import functions.LinkedListTabulatedFunction;
 import functions.UnitFunction;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class MultiplyingTaskExecutor {
     public static void main(String[] args) throws InterruptedException {
@@ -21,9 +22,10 @@ public class MultiplyingTaskExecutor {
             thread1.start();
         }
 
-        while (!taskList.isEmpty()) {
-            for (int i = 0; i < taskList.size(); i++) {
-                if (taskList.get(i).isEnded) taskList.remove(i);
+        while (!list.isEmpty()) {
+            Iterator<Thread> iter = list.iterator();
+            while (iter.hasNext()) {
+                if (!iter.next().isAlive()) iter.remove();
             }
         }
 

@@ -60,8 +60,13 @@ public class TabulatedDifferentialOperator implements DifferentialOperator<Tabul
 
         if (function.getClass() != SynchronizedTabulatedFunction.class) {
             func = new SynchronizedTabulatedFunction(function);
+        } else {
+            func = function;
         }
 
-        return function;
+        SynchronizedTabulatedFunction.Operation<TabulatedFunction> op = tabFunc -> this.derive(tabFunc);
+
+        return ((SynchronizedTabulatedFunction) func).doSynchronously(op);
+
     }
 }
