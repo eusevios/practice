@@ -40,7 +40,7 @@ public class SynchronizedTabulatedFunctionTest {
     }
 
     @Test
-    void doSyncronouslyIntTest() {
+    void doSyncronouslyTest() {
 
         SynchronizedTabulatedFunction.Operation<double[]> op1 = function -> {
             double[] arr = new double[function.getCount()];
@@ -56,9 +56,10 @@ public class SynchronizedTabulatedFunctionTest {
 
         SynchronizedTabulatedFunction.Operation<Void> op2 = function -> {
 
-            for (int i = 0; i < syncTabFunc.getCount(); i++) {
-                syncTabFunc.setY(i, syncTabFunc.getY(i) * 2);
-            }
+
+            syncTabFunc.setY(0, syncTabFunc.getY(0) * 2);
+            syncTabFunc.setY(1, syncTabFunc.getY(1) * 2);
+
             return null;
 
         };
@@ -69,11 +70,7 @@ public class SynchronizedTabulatedFunctionTest {
             assertEquals(Y[i] * 2, syncTabFunc.getY(i));
         }
 
-        SynchronizedTabulatedFunction.Operation<Double> op3 = function -> {
-
-            return function.leftBound();
-
-        };
+        SynchronizedTabulatedFunction.Operation<Double> op3 = function -> function.leftBound();
 
         assertEquals(syncTabFunc.doSynchronously(op3), 2);
 

@@ -87,7 +87,7 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
     public Iterator<Point> iterator() {
         synchronized (lock) {
             Point[] pointsList = TabulatedFunctionOperationService.asPoints(function);
-            return new Iterator<Point>() {
+            return new Iterator<>() {
                 int i;
 
                 @Override
@@ -114,6 +114,6 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
     }
 
     public interface Operation<T> {
-        public T apply(SynchronizedTabulatedFunction function);
+        T apply(SynchronizedTabulatedFunction function);
     }
 }
