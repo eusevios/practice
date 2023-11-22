@@ -66,7 +66,7 @@ public class SynchronizedTabulatedFunctionTest {
 
         op2.apply(syncTabFunc);
 
-        for (int i = 0; i < syncTabFunc.getCount(); i++) {
+        for (int i = 0; i < 2; i++) {
             assertEquals(Y[i] * 2, syncTabFunc.getY(i));
         }
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.uiController">
+   <children>
+      <TableView fx:id="Table" layoutX="127.0" layoutY="42.0">
+        <columns>
+          <TableColumn prefWidth="124.0" text="X" fx:id="xColumn" />
+          <TableColumn fx:id="yColumn" prefWidth="123.0" text="Y" />
+        </columns>
+      </TableView>
+      <Text fx:id="EnterSize" layoutX="178.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите количество точек" wrappingWidth="144.990234375" />
+      <TextField fx:id="textF" layoutX="176.0" layoutY="177.0" onAction="#TextEnter" />
+      <Button layoutX="209.0" layoutY="456.0" mnemonicParsing="false" onAction="#creatingFunction" prefHeight="38.0" prefWidth="84.0" text="Создать" />
+   </children>
+</AnchorPane>
