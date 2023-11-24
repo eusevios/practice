@@ -10,18 +10,15 @@ public class TablePoint{
     Double y;
 
     public TablePoint() {
-
-        this.x = 0.0;
-        this.y = 0.0;
-
-
+        this.x = null;
+        this.y = null;
     }
 
-    public double getX() {
+    public Double getX() {
         return x;
     }
 
-    public  double getY(){
+    public  Double getY(){
         return y;
     }
 

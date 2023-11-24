@@ -2,12 +2,15 @@ package ui;
 
 import functions.TabulatedFunction;
 import functions.factory.ArrayTabulatedFunctionFactory;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.converter.DoubleStringConverter;
 
@@ -31,27 +34,44 @@ public class uiController implements Initializable {
     @FXML
     private TableColumn<TablePoint, Double> yColumn;
 
+    @FXML
+    private Button creationButton;
 
+    @FXML
+    private AnchorPane anchorPane;
+
+    @FXML
+    private VBox vBox;
 
     @FXML
     void TextEnter(ActionEvent event) {
 
         int size = Integer.parseInt(textF.getText());
+
+        if (size<0) UIException.showException(new ArithmeticException());
+
         for(int i = 0; i<size; i++){
             Table.getItems().add(new TablePoint());
         }
-        editableCols();
-        xColumn.setCellValueFactory(new PropertyValueFactory<>("x"));
-        yColumn.setCellValueFactory(new PropertyValueFactory<>("y"));
+
         textF.setVisible(false);
         EnterSize.setVisible(false);
         Table.setVisible(true);
+        creationButton.setVisible(true);
 
 
 
     }
 
-    private void editableCols(){
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        Table.setFixedCellSize(30);
+        Table.prefHeightProperty().bind(Table.fixedCellSizeProperty().multiply(Bindings.size(Table.getItems()).add(1.01)));
+
+        xColumn.setCellValueFactory(new PropertyValueFactory<>("x"));
+        yColumn.setCellValueFactory(new PropertyValueFactory<>("y"));
+
         DoubleStringConverter stringConverter = new DoubleStringConverter();
 
         xColumn.setCellFactory(TextFieldTableCell.forTableColumn(stringConverter));
@@ -61,13 +81,10 @@ public class uiController implements Initializable {
         yColumn.setOnEditCommit(e->e.getTableView().getItems().get(e.getTablePosition().getRow()).setY(e.getNewValue()));
 
         Table.setEditable(true);
-    }
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
         Table.setVisible(false);
+        creationButton.setVisible(false);
+
 
     }
 
