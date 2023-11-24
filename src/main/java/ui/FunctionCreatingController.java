@@ -17,13 +17,13 @@ import javafx.util.converter.DoubleStringConverter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class uiController implements Initializable {
+public class FunctionCreatingController implements Initializable {
 
     @FXML
-    private Text EnterSize;
+    private Text enterSize;
 
     @FXML
-    private TableView<TablePoint> Table;
+    private TableView<TablePoint> table;
 
     @FXML
     private TextField textF;
@@ -51,23 +51,22 @@ public class uiController implements Initializable {
         if (size<0) UIException.showException(new ArithmeticException());
 
         for(int i = 0; i<size; i++){
-            Table.getItems().add(new TablePoint());
+            table.getItems().add(new TablePoint());
         }
 
         textF.setVisible(false);
-        EnterSize.setVisible(false);
-        Table.setVisible(true);
+        enterSize.setVisible(false);
+
+        table.setVisible(true);
         creationButton.setVisible(true);
-
-
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        Table.setFixedCellSize(30);
-        Table.prefHeightProperty().bind(Table.fixedCellSizeProperty().multiply(Bindings.size(Table.getItems()).add(1.01)));
+        table.setFixedCellSize(30);
+        table.prefHeightProperty().bind(table.fixedCellSizeProperty().multiply(Bindings.size(table.getItems()).add(1.01)));
 
         xColumn.setCellValueFactory(new PropertyValueFactory<>("x"));
         yColumn.setCellValueFactory(new PropertyValueFactory<>("y"));
@@ -80,9 +79,9 @@ public class uiController implements Initializable {
         yColumn.setCellFactory(TextFieldTableCell.forTableColumn(stringConverter));
         yColumn.setOnEditCommit(e->e.getTableView().getItems().get(e.getTablePosition().getRow()).setY(e.getNewValue()));
 
-        Table.setEditable(true);
+        table.setEditable(true);
 
-        Table.setVisible(false);
+        table.setVisible(false);
         creationButton.setVisible(false);
 
 
@@ -93,12 +92,12 @@ public class uiController implements Initializable {
 
         ArrayTabulatedFunctionFactory factory = new ArrayTabulatedFunctionFactory();
 
-        double[] xValues = new double[Table.getItems().size()];
-        double[] yValues = new double[Table.getItems().size()];
+        double[] xValues = new double[table.getItems().size()];
+        double[] yValues = new double[table.getItems().size()];
 
-        for(int i = 0; i<Table.getItems().size(); i++){
-            xValues[i] = Table.getItems().get(i).x;
-            yValues[i] = Table.getItems().get(i).y;
+        for(int i = 0; i<table.getItems().size(); i++){
+            xValues[i] = table.getItems().get(i).x;
+            yValues[i] = table.getItems().get(i).y;
         }
 
         TabulatedFunction func = factory.create(xValues, yValues);

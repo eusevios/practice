@@ -1,5 +1,6 @@
 package functions.factory;
 
+import functions.MathFunction;
 import functions.StrictTabulatedFunction;
 import functions.TabulatedFunction;
 import functions.UnmodifiableTabulatedFunction;
@@ -7,6 +8,8 @@ import functions.UnmodifiableTabulatedFunction;
 public interface TabulatedFunctionFactory {
 
     TabulatedFunction create(double[] xValues, double[] yValues);
+
+    TabulatedFunction createWithSecondConstructor(MathFunction function, double xFrom, double xTo, int size);
 
     default TabulatedFunction createUnmodifiable(double[] xValues, double[] yValues) {
 

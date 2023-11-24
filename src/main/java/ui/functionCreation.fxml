@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.uiController">
+<AnchorPane fx:id="anchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.FunctionCreatingController">
    <children>
       <VBox fx:id="vBox" layoutX="127.0" layoutY="32.0" prefHeight="355.0" prefWidth="249.0">
          <children>
-            <TableView fx:id="Table" maxHeight="400.0" minWidth="100.0" prefHeight="360.0" prefWidth="249.0">
+            <TableView fx:id="table" maxHeight="400.0" minWidth="100.0" prefHeight="360.0" prefWidth="249.0">
               <columns>
                 <TableColumn prefWidth="124.0" text="X" fx:id="xColumn" />
                 <TableColumn fx:id="yColumn" prefWidth="123.0" text="Y" />
@@ -20,7 +20,7 @@
             </TableView>
          </children>
       </VBox>
-      <Text fx:id="EnterSize" layoutX="178.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите количество точек" wrappingWidth="144.990234375" />
+      <Text fx:id="enterSize" layoutX="178.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите количество точек" wrappingWidth="144.990234375" />
       <TextField fx:id="textF" layoutX="176.0" layoutY="431.0" onAction="#TextEnter" />
       <Button fx:id="creationButton" layoutX="208.0" layoutY="418.0" mnemonicParsing="false" onAction="#creatingFunction" prefHeight="38.0" prefWidth="84.0" text="Создать" />
    </children>

@@ -3,6 +3,7 @@ package ui;
 import exceptions.ArrayIsNotSortedException;
 import functions.ArrayTabulatedFunction;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -19,6 +20,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+import javafx.stage.WindowEvent;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -34,15 +37,21 @@ public class Window extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        File f = new File("C:\\Users\\Иван\\IdeaProjects\\practice\\src\\main\\java\\ui\\ui.fxml");
+
+        File f = new File("C:\\Users\\Иван\\IdeaProjects\\practice\\src\\main\\java\\ui\\mainWindow.fxml");
         URL url = f.toURI().toURL();
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         Scene scene = new Scene(root, 500, 500);
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Приветики");
+        primaryStage.setTitle("Создание табулированной функции");
         primaryStage.show();
+
+        primaryStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
 
     }
 

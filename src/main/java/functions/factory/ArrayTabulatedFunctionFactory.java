@@ -1,6 +1,8 @@
 package functions.factory;
 
 import functions.ArrayTabulatedFunction;
+import functions.LinkedListTabulatedFunction;
+import functions.MathFunction;
 import functions.TabulatedFunction;
 
 public class ArrayTabulatedFunctionFactory implements TabulatedFunctionFactory {
@@ -10,4 +12,11 @@ public class ArrayTabulatedFunctionFactory implements TabulatedFunctionFactory {
         return new ArrayTabulatedFunction(xValues, yValues);
 
     }
+
+    @Override
+    public TabulatedFunction createWithSecondConstructor(MathFunction function, double xFrom, double xTo, int size) {
+        return new ArrayTabulatedFunction(function, xFrom, xTo, size);
+    }
+
+
 }
