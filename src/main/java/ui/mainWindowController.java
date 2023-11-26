@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Objects;
 
 public class mainWindowController {
 
@@ -27,10 +28,9 @@ public class mainWindowController {
     @FXML
     void toCreateFunction(ActionEvent event) throws IOException {
 
-        File f = new File("C:\\Users\\Иван\\IdeaProjects\\practice\\src\\main\\java\\ui\\functionCreation.fxml");
+        File f = new File("C:\\Users\\Иван\\IdeaProjects\\practice\\src\\main\\resources\\functionCreation.fxml");
         URL url = f.toURI().toURL();
-        FXMLLoader loader = new FXMLLoader(url);
-        Parent root = loader.load();
+        Parent root = FXMLLoader.load(url);
         Scene scene = new Scene(root, 300, 300);
         Stage stage = new Stage();
 

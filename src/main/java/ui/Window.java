@@ -38,7 +38,7 @@ public class Window extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        File f = new File("C:\\Users\\Иван\\IdeaProjects\\practice\\src\\main\\java\\ui\\mainWindow.fxml");
+        File f = new File("C:\\Users\\Иван\\IdeaProjects\\practice\\src\\main\\resources\\mainWindow.fxml");
         URL url = f.toURI().toURL();
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();

@@ -1,5 +1,6 @@
 package ui;
 
+import exceptions.ArrayIsNotSortedException;
 import functions.TabulatedFunction;
 import functions.factory.ArrayTabulatedFunctionFactory;
 import javafx.beans.binding.Bindings;
@@ -12,8 +13,10 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.util.Subscription;
 import javafx.util.converter.DoubleStringConverter;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -44,22 +47,27 @@ public class FunctionCreatingController implements Initializable {
     private VBox vBox;
 
     @FXML
-    void TextEnter(ActionEvent event) {
+    void TextEnter(ActionEvent event) throws IOException {
 
         int size = Integer.parseInt(textF.getText());
 
-        if (size<0) UIException.showException(new ArithmeticException());
+        try {
+            if (size < 2) throw new IllegalArgumentException("Размер массива должен быть >=2");
 
-        for(int i = 0; i<size; i++){
-            table.getItems().add(new TablePoint());
+            for (int i = 0; i < size; i++) {
+                table.getItems().add(new TablePoint());
+            }
+
+            textF.setVisible(false);
+            enterSize.setVisible(false);
+
+            table.setVisible(true);
+            creationButton.setVisible(true);
         }
-
-        textF.setVisible(false);
-        enterSize.setVisible(false);
-
-        table.setVisible(true);
-        creationButton.setVisible(true);
-
+        catch (IllegalArgumentException e){
+            UIException.showException(e);
+            textF.clear();
+        }
     }
 
     @Override
@@ -88,7 +96,7 @@ public class FunctionCreatingController implements Initializable {
     }
 
     @FXML
-    void creatingFunction(){
+    void creatingFunction() throws IOException {
 
         ArrayTabulatedFunctionFactory factory = new ArrayTabulatedFunctionFactory();
 
@@ -99,10 +107,16 @@ public class FunctionCreatingController implements Initializable {
             xValues[i] = table.getItems().get(i).x;
             yValues[i] = table.getItems().get(i).y;
         }
+        try {
+            TabulatedFunction func = factory.create(xValues, yValues);
+            System.out.println(func);
+        }
+        catch (ArrayIsNotSortedException e){
 
-        TabulatedFunction func = factory.create(xValues, yValues);
+            UIException.showException(new ArrayIsNotSortedException("Значения в таблице должны быть отсортированы!"));
 
-        System.out.println(func);
+        }
+
 
     }
 
