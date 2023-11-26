@@ -28,9 +28,8 @@ public class mainWindowController {
     @FXML
     void toCreateFunction(ActionEvent event) throws IOException {
 
-        File f = new File("C:\\Users\\Иван\\IdeaProjects\\practice\\src\\main\\resources\\functionCreation.fxml");
-        URL url = f.toURI().toURL();
-        Parent root = FXMLLoader.load(url);
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/functionCreation.fxml"));
+        Parent root = loader.load();
         Scene scene = new Scene(root, 300, 300);
         Stage stage = new Stage();
 
@@ -44,9 +43,7 @@ public class mainWindowController {
     @FXML
     void toCreateFunctionWithSecondConstructor() throws IOException {
 
-        File f = new File("C:\\Users\\Иван\\IdeaProjects\\practice\\src\\main\\java\\ui\\secondConstructorTabulatedFunction.fxml");
-        URL url = f.toURI().toURL();
-        FXMLLoader loader = new FXMLLoader(url);
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/secondConstructorTabulatedFunction.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 300, 300);
         Stage stage = new Stage();

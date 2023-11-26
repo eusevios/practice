@@ -38,9 +38,7 @@ public class Window extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        File f = new File("C:\\Users\\Honor\\OneDrive\\Рабочий стол\\MyLab\\practice\\src\\resources\\mainWindow.fxml");
-        URL url = f.toURI().toURL();
-        FXMLLoader loader = new FXMLLoader(url);
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/mainWindow.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 900, 600);
         primaryStage.setScene(scene);
