@@ -14,49 +14,52 @@
    <children>
       <ImageView fitHeight="616.0" fitWidth="963.0" layoutX="-16.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@background.jpg" />
+            <Image url="@../../../../target/classes/ui/background.jpg" />
          </image>
       </ImageView>
-      <Pane accessibleRole="PAGE_ITEM" layoutX="223.0" layoutY="79.0" prefHeight="438.0" prefWidth="454.0" styleClass="pane" stylesheets="@style.css">
+      <Pane accessibleRole="PAGE_ITEM" layoutX="223.0" layoutY="79.0" prefHeight="438.0" prefWidth="454.0" styleClass="pane" stylesheets="@../../../../target/classes/ui/style.css">
          <children>
-            <Text fx:id="toText" layoutX="225.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="До:" wrappingWidth="40.0">
-               <font>
-                  <Font name="Verdana Bold" size="20.0" />
-               </font>
-            </Text>
             <Text fx:id="selectFuncitonText" layoutX="25.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Выберите функцию:" wrappingWidth="220.0">
                <font>
                   <Font name="Verdana Bold" size="18.0" />
                </font>
             </Text>
-            <ChoiceBox fx:id="dropDownMenu" layoutX="253.0" layoutY="53.0" prefHeight="46.0" prefWidth="176.0" styleClass="button" stylesheets="@style.css" />
-            <TextField fx:id="sizeTextField" layoutX="274.0" layoutY="120.0" onAction="#getSize" prefHeight="46.0" prefWidth="139.0" styleClass="button" stylesheets="@style.css" />
+            <ChoiceBox fx:id="dropDownMenu" layoutX="253.0" layoutY="53.0" prefHeight="46.0" prefWidth="176.0" styleClass="button" stylesheets="@../../../../target/classes/ui/style.css" />
             <Text fx:id="sizeText" layoutX="24.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Укажите количество точек:" wrappingWidth="250.0">
                <font>
                   <Font name="Verdana Bold" size="15.0" />
                </font>
             </Text>
+            <TextField fx:id="sizeTextField" layoutX="274.0" layoutY="120.0" onAction="#getSize" prefHeight="46.0" prefWidth="139.0" styleClass="button" stylesheets="@../../../../target/classes/ui/style.css">
+               <font>
+                  <Font name="Verdana Bold" size="16.0" />
+               </font></TextField>
             <Text layoutX="24.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Укажите интервал разбиения:" wrappingWidth="320.0">
                <font>
                   <Font name="Verdana Bold" size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="fromTextField" layoutX="274.0" layoutY="229.0" onAction="#getFrom" prefHeight="45.0" prefWidth="90.0" styleClass="button" stylesheets="@style.css">
-               <font>
-                  <Font name="Verdana Bold" size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="toTextField" layoutX="104.0" layoutY="229.0" onAction="#getTo" prefHeight="45.0" prefWidth="90.0" styleClass="button" stylesheets="@style.css">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
             <Text fx:id="fromText" layoutX="58.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="От:" wrappingWidth="40.0">
                <font>
                   <Font name="Verdana Bold" size="20.0" />
                </font>
             </Text>
-            <Button fx:id="creationFunctionButton" layoutX="122.0" layoutY="328.0" mnemonicParsing="false" onAction="#toCreateFunction" prefHeight="66.0" prefWidth="211.0" stylesheets="@style.css" text="Создать функцию" textAlignment="CENTER" wrapText="true">
+            <TextField fx:id="fromTextField" layoutX="274.0" layoutY="229.0" onAction="#getFrom" prefHeight="45.0" prefWidth="90.0" styleClass="button" stylesheets="@../../../../target/classes/ui/style.css">
+               <font>
+                  <Font name="Verdana Bold" size="14.0" />
+               </font>
+            </TextField>
+            <Text fx:id="toText" layoutX="225.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="До:" wrappingWidth="40.0">
+               <font>
+                  <Font name="Verdana Bold" size="20.0" />
+               </font>
+            </Text>
+            <TextField fx:id="toTextField" layoutX="104.0" layoutY="229.0" onAction="#getTo" prefHeight="45.0" prefWidth="90.0" styleClass="button" stylesheets="@../../../../target/classes/ui/style.css">
+               <font>
+                  <Font name="Verdana Bold" size="14.0" />
+               </font>
+            </TextField>
+            <Button fx:id="creationFunctionButton" layoutX="122.0" layoutY="328.0" mnemonicParsing="false" onAction="#toCreateFunction" prefHeight="66.0" prefWidth="211.0" stylesheets="@../../../../target/classes/ui/style.css" text="Создать функцию" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Verdana Bold" size="17.0" />
                </font>
