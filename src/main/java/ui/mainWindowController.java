@@ -60,6 +60,7 @@ public class mainWindowController {
         Parent root = loader.load();
         Scene scene = new Scene(root, 900, 600);
         Stage stage = new Stage();
+        stage.setResizable(false);
 
         stage.setScene(scene);
         stage.setTitle("Операции над табулированными функциями");

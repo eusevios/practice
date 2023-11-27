@@ -42,6 +42,7 @@ public class Window extends Application {
         Parent root = loader.load();
         Scene scene = new Scene(root, 900, 600);
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.setTitle("Создание табулированной функции");
         primaryStage.show();
 

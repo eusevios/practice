@@ -111,6 +111,7 @@ public class OperationsController {
 
         stage.setScene(scene);
         stage.setTitle("Создание табулированной функции");
+        stage.setResizable(false);
         stage.show();
         FunctionCreatingController controller =   loader.getController();
         controller.setMainController(this);
@@ -123,6 +124,7 @@ public class OperationsController {
         Parent root = loader.load();
         Scene scene = new Scene(root, 900, 600);
         Stage stage = new Stage();
+        stage.setResizable(false);
 
         stage.setScene(scene);
         stage.setTitle("Создание табулированной функции");
