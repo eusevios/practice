@@ -33,3 +33,18 @@
     -fx-background-radius: 40;
     -fx-background-color: #3CB37193;
 }
+
+.table
+{
+    -fx-border-width: 4;
+    -fx-border-color: #AFEEEE;
+    -fx-background-color: #E0FFFF;
+}
+
+#colx
+{
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(to bottom, azure, #5F9EA0);
+    -fx-border-color: #AFEEEE;
+}
