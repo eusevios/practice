@@ -23,11 +23,7 @@
             <Font name="Cascadia Code Regular" size="44.0" />
          </font>
       </Text>
-      <Button fx:id="functionCreating" alignment="CENTER" contentDisplay="CENTER" layoutX="312.0" layoutY="288.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#toCreateFunction" prefHeight="74.0" prefWidth="276.0" stylesheets="@style.css" text="Создать функцию по таблице" textAlignment="CENTER" wrapText="true">
-         <font>
-            <Font name="Verdana Bold" size="14.0" />
-         </font></Button>
-      <Button fx:id="secondConstructorFunction" alignment="CENTER" contentDisplay="CENTER" layoutX="312.0" layoutY="376.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#toCreateFunctionWithSecondConstructor" prefHeight="74.0" prefWidth="276.0" stylesheets="@style.css" text="Создать функцию по другой функции" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="functionsOperationsButton" alignment="CENTER" contentDisplay="CENTER" layoutX="312.0" layoutY="263.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#functionsOperations" prefHeight="74.0" prefWidth="276.0" stylesheets="@style.css" text="Операции над функциями" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font></Button>
