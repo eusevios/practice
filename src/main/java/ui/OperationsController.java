@@ -77,6 +77,7 @@ public class OperationsController {
     void firstCreationTable(ActionEvent event) throws IOException {
 
         firstSetTable(firstTable);
+        System.out.println(2);
 
 
     }
@@ -85,6 +86,7 @@ public class OperationsController {
     void firstFunctionCreate(ActionEvent event) throws IOException {
 
         secondSetTable(firstTable);
+        System.out.println(2);
 
     }
 
@@ -104,7 +106,7 @@ public class OperationsController {
 
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/functionCreation.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 300, 300);
+        Scene scene = new Scene(root, 900, 600);
         Stage stage = new Stage();
 
         stage.setScene(scene);
@@ -119,7 +121,7 @@ public class OperationsController {
 
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/secondConstructorTabulatedFunction.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 300, 300);
+        Scene scene = new Scene(root, 900, 600);
         Stage stage = new Stage();
 
         stage.setScene(scene);
