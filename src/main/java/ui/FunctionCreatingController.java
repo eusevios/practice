@@ -1,5 +1,6 @@
 package ui;
 
+import concurrent.SynchronizedTabulatedFunction;
 import exceptions.ArrayIsNotSortedException;
 import functions.TabulatedFunction;
 import functions.factory.ArrayTabulatedFunctionFactory;
@@ -45,6 +46,12 @@ public class FunctionCreatingController implements Initializable {
 
     @FXML
     private VBox vBox;
+
+    private OperationsController controller;
+
+    void setMainController(OperationsController controller){
+        this.controller = controller;
+    }
 
     @FXML
     void TextEnter(ActionEvent event) throws IOException {
@@ -109,7 +116,7 @@ public class FunctionCreatingController implements Initializable {
         }
         try {
             TabulatedFunction func = factory.create(xValues, yValues);
-            System.out.println(func);
+            controller.buffer=func;
         }
         catch (ArrayIsNotSortedException e){
 

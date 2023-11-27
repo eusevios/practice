@@ -19,39 +19,50 @@ import java.util.Objects;
 public class mainWindowController {
 
     public AnchorPane anchorPane;
+    public Button functionsOperationsButton;
     @FXML
     private Button functionCreating;
 
     @FXML
     private Text textLab;
 
-    @FXML
-    void toCreateFunction(ActionEvent event) throws IOException {
+//    @FXML
+//    void toCreateFunction(ActionEvent event) throws IOException {
+//
+//        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/functionCreation.fxml"));
+//        Parent root = loader.load();
+//        Scene scene = new Scene(root, 300, 300);
+//        Stage stage = new Stage();
+//
+//        stage.setScene(scene);
+//        stage.setTitle("Создание табулированной функции");
+//        stage.show();
+//
+//
+//    }
 
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/functionCreation.fxml"));
+//    @FXML
+//    void toCreateFunctionWithSecondConstructor() throws IOException {
+//
+//        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/secondConstructorTabulatedFunction.fxml"));
+//        Parent root = loader.load();
+//        Scene scene = new Scene(root, 300, 300);
+//        Stage stage = new Stage();
+//
+//        stage.setScene(scene);
+//        stage.setTitle("Создание табулированной функции из другой функции");
+//        stage.show();
+//
+//    }
+
+    public void functionsOperations(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/operations.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 300, 300);
         Stage stage = new Stage();
 
         stage.setScene(scene);
-        stage.setTitle("Создание табулированной функции");
+        stage.setTitle("Операции над табулированными функциями");
         stage.show();
-
-
     }
-
-    @FXML
-    void toCreateFunctionWithSecondConstructor() throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/secondConstructorTabulatedFunction.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root, 300, 300);
-        Stage stage = new Stage();
-
-        stage.setScene(scene);
-        stage.setTitle("Создание табулированной функции из другой функции");
-        stage.show();
-
-    }
-
 }
