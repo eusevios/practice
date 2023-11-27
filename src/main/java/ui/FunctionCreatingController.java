@@ -67,6 +67,7 @@ public class FunctionCreatingController implements Initializable {
 
             textF.setVisible(false);
             enterSize.setVisible(false);
+            anchorPane.setVisible(false);
 
             table.setVisible(true);
             creationButton.setVisible(true);

@@ -58,7 +58,7 @@ public class mainWindowController {
     public void functionsOperations(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/operations.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 300, 300);
+        Scene scene = new Scene(root, 900, 600);
         Stage stage = new Stage();
 
         stage.setScene(scene);
