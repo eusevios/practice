@@ -43,7 +43,7 @@
 
 .column.table-cell
 {
-    -fx-background-color: red;
+    -fx-background-color: linear-gradient(white, silver);
 }
 
 .column.column-header
