@@ -15,7 +15,9 @@ public class UIException {
 
     static void showException(Exception e) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(UIException.class.getClassLoader().getResource("ui/exceptionController.fxml"));
+        File f = new File("C:\\Users\\Honor\\OneDrive\\Рабочий стол\\MyLab\\practice\\src\\main\\resources\\exceptionController.fxml");
+        URL url = f.toURI().toURL();
+        FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         Scene scene = new Scene(root, 300, 300);
         Stage stage = new Stage();

@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Subscription;
@@ -45,6 +46,9 @@ public class FunctionCreatingController implements Initializable {
     private AnchorPane anchorPane;
 
     @FXML
+    private Pane Pane;
+
+    @FXML
     private VBox vBox;
 
     private OperationsController controller;
@@ -65,9 +69,7 @@ public class FunctionCreatingController implements Initializable {
                 table.getItems().add(new TablePoint());
             }
 
-            textF.setVisible(false);
-            enterSize.setVisible(false);
-            anchorPane.setVisible(false);
+            Pane.setVisible(false);
 
             table.setVisible(true);
             creationButton.setVisible(true);
