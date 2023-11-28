@@ -41,7 +41,12 @@
     -fx-background-color: #E0FFFF;
 }
 
-#colx
+.column.table-cell
+{
+    -fx-background-color: red;
+}
+
+.column.column-header
 {
     -fx-font-size: 15;
     -fx-font-weight: bold;
