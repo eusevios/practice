@@ -22,7 +22,7 @@
             <GaussianBlur />
          </effect>
       </ImageView>
-      <Pane layoutX="28.0" layoutY="59.0" prefHeight="478.0" prefWidth="862.0" styleClass="pane" stylesheets="@style.css">
+      <Pane layoutX="19.0" layoutY="14.0" prefHeight="568.0" prefWidth="862.0" styleClass="pane" stylesheets="@style.css">
          <children>
             <Button fx:id="secondCreationTableButton" layoutX="331.0" layoutY="362.0" mnemonicParsing="false" onAction="#secondCreationTable" prefHeight="34.0" prefWidth="200.0" stylesheets="@style.css" text="Создать по таблице">
                <font>
@@ -75,6 +75,11 @@
             <Button fx:id="firstFunctionCreateButton" layoutX="33.0" layoutY="405.0" mnemonicParsing="false" onAction="#firstFunctionCreate" prefHeight="36.0" prefWidth="200.0" stylesheets="@style.css" text="Создать по функции">
                <font>
                   <Font name="Verdana Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="firstFileButton" layoutX="34.0" layoutY="450.0" mnemonicParsing="false" onAction="#openDir" prefHeight="36.0" prefWidth="200.0" text="Загрузить">
+               <font>
+                  <Font name="Verdana Bold" size="16.0" />
                </font>
             </Button>
          </children>

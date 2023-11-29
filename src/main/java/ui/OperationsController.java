@@ -6,16 +6,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import ui.TablePoint;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class OperationsController {
 
@@ -67,11 +67,22 @@ public class OperationsController {
     @FXML
     private TableColumn<TablePoint, Double> thirdYColumn;
 
+    @FXML
+    private Button firstFileButton;
+
     protected TabulatedFunction firstFunction;
 
     protected TabulatedFunction secondFunction;
 
     protected TabulatedFunction buffer;
+
+    @FXML
+    void openDir(ActionEvent event){
+
+        FileChooser chooser = new FileChooser();
+        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+        List<File> f = chooser.showOpenMultipleDialog(null);
+    }
 
     @FXML
     void firstCreationTable(ActionEvent event) throws IOException {
