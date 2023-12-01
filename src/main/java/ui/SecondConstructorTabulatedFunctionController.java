@@ -21,7 +21,7 @@ import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class secondConstructorTabulatedFunctionController implements Initializable {
+public class SecondConstructorTabulatedFunctionController implements Initializable {
 
     @FXML
     private AnchorPane acnhorPane;

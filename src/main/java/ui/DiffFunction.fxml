@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="886.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.DiffFunctionController">
+   <children>
+      <Pane layoutX="50.0" layoutY="14.0" prefHeight="553.0" prefWidth="312.0">
+         <fx:include fx:id="funcTable" source="Table.fxml" />
+      </Pane>
+      <TableView fx:id="diffFuncTable" layoutX="564.0" layoutY="39.0" prefHeight="351.0" prefWidth="229.0">
+        <columns>
+          <TableColumn prefWidth="113.0" text="C1" fx:id="xColumn" />
+          <TableColumn fx:id="yColumn" prefWidth="115.0" text="C2" />
+        </columns>
+      </TableView>
+      <Button fx:id="toDiff" layoutX="367.0" layoutY="229.0" mnemonicParsing="false" onAction="#diffFunction" prefHeight="25.0" prefWidth="162.0" text="Дифференцировать" />
+   </children>
+</AnchorPane>

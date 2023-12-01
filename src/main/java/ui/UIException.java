@@ -13,16 +13,14 @@ import java.net.URL;
 public class UIException {
 
 
-    static void showException(Exception e) throws IOException {
+    static public void showException(Exception e) throws IOException {
 
-        File f = new File("C:\\Users\\Honor\\OneDrive\\Рабочий стол\\MyLab\\practice\\src\\main\\resources\\exceptionController.fxml");
-        URL url = f.toURI().toURL();
-        FXMLLoader loader = new FXMLLoader(url);
+        FXMLLoader loader = new FXMLLoader(UIException.class.getClassLoader().getResource("ui/Exception.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 300, 300);
         Stage stage = new Stage();
         ExceptionController exceptionController = loader.getController();
-        exceptionController.setWarningMessage(e);
+        exceptionController.setWarningMessage(e.getMessage());
         stage.initModality(Modality.APPLICATION_MODAL);
 
         stage.setScene(scene);

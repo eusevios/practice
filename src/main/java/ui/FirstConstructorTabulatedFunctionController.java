@@ -1,6 +1,5 @@
 package ui;
 
-import concurrent.SynchronizedTabulatedFunction;
 import exceptions.ArrayIsNotSortedException;
 import functions.TabulatedFunction;
 import functions.factory.ArrayTabulatedFunctionFactory;
@@ -12,17 +11,16 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.util.Subscription;
+import javafx.stage.Stage;
 import javafx.util.converter.DoubleStringConverter;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FunctionCreatingController implements Initializable {
+public class FirstConstructorTabulatedFunctionController implements Initializable {
 
     @FXML
     private Text enterSize;
@@ -46,14 +44,11 @@ public class FunctionCreatingController implements Initializable {
     private AnchorPane anchorPane;
 
     @FXML
-    private Pane Pane;
-
-    @FXML
     private VBox vBox;
 
-    private OperationsController controller;
+    private TableController controller;
 
-    void setMainController(OperationsController controller){
+    void setMainController(TableController controller){
         this.controller = controller;
     }
 
@@ -63,13 +58,14 @@ public class FunctionCreatingController implements Initializable {
         int size = Integer.parseInt(textF.getText());
 
         try {
-            if (size < 2) throw new IllegalArgumentException("Размер массива должен быть >=2");
+            if (size < 2) throw new IllegalArgumentException("Размер массива должен быть >=2!");
 
             for (int i = 0; i < size; i++) {
                 table.getItems().add(new TablePoint());
             }
 
-            Pane.setVisible(false);
+            textF.setVisible(false);
+            enterSize.setVisible(false);
 
             table.setVisible(true);
             creationButton.setVisible(true);
@@ -118,8 +114,12 @@ public class FunctionCreatingController implements Initializable {
             yValues[i] = table.getItems().get(i).y;
         }
         try {
+
             TabulatedFunction func = factory.create(xValues, yValues);
-            controller.buffer=func;
+            controller.functionPresentation(func);
+            Stage stage = (Stage)creationButton.getScene().getWindow();
+            stage.close();
+
         }
         catch (ArrayIsNotSortedException e){
 

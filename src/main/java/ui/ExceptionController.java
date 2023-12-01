@@ -12,8 +12,10 @@ public class ExceptionController {
     @FXML
     private Text warningText;
 
-    public void setWarningMessage(Exception e){
-        warningText.setText(e.getMessage());
+    public void setWarningMessage(String str){
+
+        warningText.setText(str);
+
     }
 
 }

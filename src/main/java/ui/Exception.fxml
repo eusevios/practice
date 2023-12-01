@@ -7,7 +7,8 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="140.0" prefWidth="320.0" styleClass="exception" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="140.0" prefWidth="320.0" styleClass="exception" stylesheets="@style.css"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ExceptionController">
    <children>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="58.0" prefWidth="330.0" styleClass="exception-header" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -20,7 +21,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <Text layoutX="18.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="283.7367706298828">
+      <Text layoutX="18.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="283.7367706298828" fx:id="warningText">
          <font>
             <Font size="18.0" />
          </font>
