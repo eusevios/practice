@@ -50,7 +50,7 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
     @FXML
     private Button creationFunctionButton;
 
-    private TableController controller;
+    private Displayable controller;
 
     @FXML
     double getFrom(ActionEvent event) {
@@ -67,7 +67,7 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
     @FXML
     double getSize(ActionEvent event) {
 
-        return Integer.parseInt(fromTextField.getText());
+        return Integer.parseInt(sizeText.getText());
 
     }
 
@@ -84,6 +84,7 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
 
         TabulatedFunction function = Settings.getInstance().getFactory().createWithSecondConstructor(map.get(dropDownMenu.getValue()), Double.parseDouble(fromTextField.getText()), Double.parseDouble(toTextField.getText()), Integer.parseInt(sizeTextField.getText()));
         controller.functionPresentation(function);
+        System.out.println(function);
         Stage stage = (Stage) creationFunctionButton.getScene().getWindow();
         stage.close();
 
@@ -96,7 +97,7 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
         dropDownMenu.getItems().addAll(list);
     }
 
-    public void setMainController(TableController tableController) {
+    public void setMainController(Displayable tableController) {
 
         this.controller = tableController;
 

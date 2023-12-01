@@ -23,7 +23,7 @@ import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TableController implements Initializable {
+public class TableController implements Initializable, Displayable {
 
     public Button saveButton;
     public Button loadButton;
@@ -96,8 +96,6 @@ public class TableController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        table.setFixedCellSize(30);
-        table.prefHeightProperty().bind(table.fixedCellSizeProperty().multiply(Bindings.size(table.getItems()).add(1.01)));
 
         xColumn.setCellValueFactory(new PropertyValueFactory<>("x"));
         yColumn.setCellValueFactory(new PropertyValueFactory<>("y"));
@@ -115,29 +113,13 @@ public class TableController implements Initializable {
 
     public void saveFunction(ActionEvent event) throws IOException {
 
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Bin files", "*.bin"));
-
-        File file = fileChooser.showSaveDialog(null);
-
-        FileOutputStream outputStream = new FileOutputStream(file);
-        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
-
-        FunctionsIO.serialize(bufferedOutputStream, function);
+        UIInputOutput.saveBin(function);
 
     }
 
     public void loadFunction(ActionEvent event) throws IOException, ClassNotFoundException {
 
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Bin files", "*.bin"));
-
-        File file = fileChooser.showOpenDialog(null);
-
-        FileInputStream inputStream = new FileInputStream(file);
-        BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
-
-        function = FunctionsIO.deserialize(bufferedInputStream);
+        function = UIInputOutput.loadBin();
 
         System.out.println(function);
 

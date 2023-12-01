@@ -16,6 +16,9 @@ public class MainWindowController {
 
     public AnchorPane anchorPane;
     public Button functionsOperationsButton;
+    public Button diffFunctionButton;
+    public Button settingsButton;
+    public Button chartButton;
     @FXML
     private Button functionCreating;
 
@@ -58,5 +61,19 @@ public class MainWindowController {
         stage.setScene(scene);
         stage.setTitle("Настройки");
         stage.show();
+    }
+
+    public void chart(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/Chart.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root, 1200, 900);
+        Stage stage = new Stage();
+        stage.setResizable(false);
+
+        stage.setScene(scene);
+        stage.setTitle("Графики");
+        stage.show();
+
     }
 }

@@ -113,7 +113,7 @@ final public class FunctionsIO {
         return (TabulatedFunction) objIn.readObject();
     }
 
-    public static void serializeXml(BufferedWriter writer, ArrayTabulatedFunction function) throws IOException {
+    public static void serializeXml(BufferedWriter writer, TabulatedFunction function) throws IOException {
         XStream xStream = new XStream();
         writer.write(xStream.toXML(function));
         writer.flush();

@@ -7,38 +7,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="ui.MainWindowController">
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainWindowController">
     <children>
-        <ImageView fitHeight="610.0" fitWidth="966.0" layoutX="-33.0" layoutY="-2.0" opacity="0.85" pickOnBounds="true"
-                   preserveRatio="true">
+        <ImageView fitHeight="610.0" fitWidth="966.0" layoutX="-33.0" layoutY="-2.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@background.jpg"/>
+                <Image url="@background.jpg" />
             </image>
             <effect>
-                <GaussianBlur/>
+                <GaussianBlur />
             </effect>
         </ImageView>
-        <Text fx:id="textLab" fill="#bbdaff" layoutX="147.0" layoutY="211.0" lineSpacing="4.0" strokeType="OUTSIDE"
-              strokeWidth="0.0" text="Лабораторная работа 7" textAlignment="CENTER" underline="true"
-              wrappingWidth="605.0734415054321" AnchorPane.leftAnchor="147.0"
-              AnchorPane.rightAnchor="147.92655849456787">
+        <Text fx:id="textLab" fill="#bbdaff" layoutX="147.0" layoutY="211.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Лабораторная работа 7" textAlignment="CENTER" underline="true" wrappingWidth="605.0734415054321" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="147.92655849456787">
             <font>
-                <Font name="Cascadia Code Regular" size="44.0"/>
+                <Font name="Cascadia Code Regular" size="44.0" />
             </font>
         </Text>
-        <Button fx:id="functionsOperationsButton" alignment="CENTER" contentDisplay="CENTER" layoutX="312.0"
-                layoutY="263.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false"
-                onAction="#functionsOperations" prefHeight="74.0" prefWidth="276.0" stylesheets="@style.css"
-                text="Операции над функциями" textAlignment="CENTER" wrapText="true">
+        <Button fx:id="functionsOperationsButton" alignment="CENTER" contentDisplay="CENTER" layoutX="312.0" layoutY="263.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#functionsOperations" prefHeight="74.0" prefWidth="276.0" stylesheets="@style.css" text="Операции над функциями" textAlignment="CENTER" wrapText="true">
             <font>
-                <Font name="Verdana Bold" size="14.0"/>
+                <Font name="Verdana Bold" size="14.0" />
             </font>
         </Button>
-        <Button fx:id="diffFunctionButton" layoutX="317.0" layoutY="358.0" mnemonicParsing="false"
-                onAction="#diffFunction" prefHeight="74.0" prefWidth="266.0" text="Дифференцирование функций"/>
-        <Button fx:id="settingsButton" layoutX="318.0" layoutY="458.0" mnemonicParsing="false" onAction="#settings"
-                prefHeight="51.0" prefWidth="266.0" text="Настройки"/>
+        <Button fx:id="diffFunctionButton" layoutX="317.0" layoutY="358.0" mnemonicParsing="false" onAction="#diffFunction" prefHeight="74.0" prefWidth="266.0" text="Дифференцирование функций" />
+        <Button fx:id="settingsButton" layoutX="319.0" layoutY="448.0" mnemonicParsing="false" onAction="#settings" prefHeight="51.0" prefWidth="266.0" text="Настройки" />
+      <Button fx:id="chartButton" layoutX="598.0" layoutY="274.0" mnemonicParsing="false" onAction="#chart" prefHeight="51.0" prefWidth="266.0" text="Графики" />
     </children>
 </AnchorPane>

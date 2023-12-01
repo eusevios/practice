@@ -49,9 +49,9 @@ public class FirstConstructorTabulatedFunctionController implements Initializabl
     @FXML
     private VBox vBox;
 
-    private TableController controller;
+    private Displayable controller;
 
-    void setMainController(TableController controller) {
+    void setMainController(Displayable controller) {
         this.controller = controller;
     }
 
