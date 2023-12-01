@@ -19,6 +19,6 @@
             <Font name="Verdana Bold" size="16.0" />
          </font>
       </Text>
-      <ChoiceBox layoutX="84.0" layoutY="160.0" prefHeight="34.0" prefWidth="166.0" styleClass="button" stylesheets="@style.css" />
+      <ChoiceBox fx:id="dropDownMenu" layoutX="84.0" layoutY="160.0" prefHeight="34.0" prefWidth="166.0" styleClass="button" stylesheets="@style.css" />
    </children>
 </AnchorPane>
