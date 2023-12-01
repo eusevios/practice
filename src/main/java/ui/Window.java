@@ -1,32 +1,14 @@
 package ui;
 
-import exceptions.ArrayIsNotSortedException;
-import functions.ArrayTabulatedFunction;
+import functions.factory.ArrayTabulatedFunctionFactory;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.scene.control.TextField;
-import javafx.stage.WindowEvent;
 
-import java.awt.*;
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.nio.file.Paths;
 
 
 public class Window extends Application {
@@ -45,6 +27,7 @@ public class Window extends Application {
         primaryStage.setResizable(false);
         primaryStage.setTitle("Создание табулированной функции");
         primaryStage.show();
+        Settings.getInstance().setFactory(new ArrayTabulatedFunctionFactory());
 
         primaryStage.setOnCloseRequest(t -> {
             Platform.exit();

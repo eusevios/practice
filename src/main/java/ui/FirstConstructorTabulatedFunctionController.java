@@ -7,7 +7,10 @@ import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
@@ -48,7 +51,7 @@ public class FirstConstructorTabulatedFunctionController implements Initializabl
 
     private TableController controller;
 
-    void setMainController(TableController controller){
+    void setMainController(TableController controller) {
         this.controller = controller;
     }
 
@@ -69,8 +72,7 @@ public class FirstConstructorTabulatedFunctionController implements Initializabl
 
             table.setVisible(true);
             creationButton.setVisible(true);
-        }
-        catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             UIException.showException(e);
             textF.clear();
         }
@@ -88,10 +90,10 @@ public class FirstConstructorTabulatedFunctionController implements Initializabl
         DoubleStringConverter stringConverter = new DoubleStringConverter();
 
         xColumn.setCellFactory(TextFieldTableCell.forTableColumn(stringConverter));
-        xColumn.setOnEditCommit(e->e.getTableView().getItems().get(e.getTablePosition().getRow()).setX(e.getNewValue()));
+        xColumn.setOnEditCommit(e -> e.getTableView().getItems().get(e.getTablePosition().getRow()).setX(e.getNewValue()));
 
         yColumn.setCellFactory(TextFieldTableCell.forTableColumn(stringConverter));
-        yColumn.setOnEditCommit(e->e.getTableView().getItems().get(e.getTablePosition().getRow()).setY(e.getNewValue()));
+        yColumn.setOnEditCommit(e -> e.getTableView().getItems().get(e.getTablePosition().getRow()).setY(e.getNewValue()));
 
         table.setEditable(true);
 
@@ -109,19 +111,19 @@ public class FirstConstructorTabulatedFunctionController implements Initializabl
         double[] xValues = new double[table.getItems().size()];
         double[] yValues = new double[table.getItems().size()];
 
-        for(int i = 0; i<table.getItems().size(); i++){
+        for (int i = 0; i < table.getItems().size(); i++) {
             xValues[i] = table.getItems().get(i).x;
             yValues[i] = table.getItems().get(i).y;
         }
         try {
 
-            TabulatedFunction func = factory.create(xValues, yValues);
+            TabulatedFunction func = Settings.getInstance().getFactory().create(xValues, yValues);
+            System.out.println(func);
             controller.functionPresentation(func);
-            Stage stage = (Stage)creationButton.getScene().getWindow();
+            Stage stage = (Stage) creationButton.getScene().getWindow();
             stage.close();
 
-        }
-        catch (ArrayIsNotSortedException e){
+        } catch (ArrayIsNotSortedException e) {
 
             UIException.showException(new ArrayIsNotSortedException("Значения в таблице должны быть отсортированы!"));
 

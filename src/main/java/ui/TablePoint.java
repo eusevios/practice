@@ -1,9 +1,6 @@
 package ui;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.scene.control.TableRow;
-
-public class TablePoint{
+public class TablePoint {
 
     Double x;
 
@@ -14,7 +11,7 @@ public class TablePoint{
         this.y = null;
     }
 
-    public TablePoint(double x, double y){
+    public TablePoint(double x, double y) {
         this.x = x;
         this.y = y;
     }
@@ -23,7 +20,7 @@ public class TablePoint{
         return x;
     }
 
-    public  Double getY(){
+    public Double getY() {
         return y;
     }
 

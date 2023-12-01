@@ -1,8 +1,6 @@
 package ui;
 
 import functions.*;
-import functions.factory.ArrayTabulatedFunctionFactory;
-import functions.factory.TabulatedFunctionFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,14 +8,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.HashMap;
-import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -53,8 +50,7 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
     @FXML
     private Button creationFunctionButton;
 
-    TabulatedFunctionFactory factory = new ArrayTabulatedFunctionFactory();
-
+    private TableController controller;
 
     @FXML
     double getFrom(ActionEvent event) {
@@ -65,13 +61,13 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
 
     @FXML
     double getTo(ActionEvent event) {
-        return  Double.parseDouble(fromTextField.getText());
+        return Double.parseDouble(fromTextField.getText());
     }
 
     @FXML
     double getSize(ActionEvent event) {
 
-        return  Integer.parseInt(fromTextField.getText());
+        return Integer.parseInt(fromTextField.getText());
 
     }
 
@@ -86,8 +82,10 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
         map.put("Натуральный Логарифм", new NaturalLogarithm());
         map.put("Тождественная функция", new IdentityFunction());
 
-        TabulatedFunction function = factory.createWithSecondConstructor(map.get(dropDownMenu.getValue()), Double.parseDouble(fromTextField.getText()),  Double.parseDouble(toTextField.getText()),  Integer.parseInt(sizeTextField.getText()));
-        System.out.println(function);
+        TabulatedFunction function = Settings.getInstance().getFactory().createWithSecondConstructor(map.get(dropDownMenu.getValue()), Double.parseDouble(fromTextField.getText()), Double.parseDouble(toTextField.getText()), Integer.parseInt(sizeTextField.getText()));
+        controller.functionPresentation(function);
+        Stage stage = (Stage) creationFunctionButton.getScene().getWindow();
+        stage.close();
 
     }
 
@@ -96,5 +94,11 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> list = FXCollections.observableArrayList("y=0", "y=1", "y=-1*(x + pi/2)", "Квадратичная функция", "Натуральный Логарифм", "Тождественная функция");
         dropDownMenu.getItems().addAll(list);
+    }
+
+    public void setMainController(TableController tableController) {
+
+        this.controller = tableController;
+
     }
 }

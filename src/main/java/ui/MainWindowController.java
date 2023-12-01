@@ -10,11 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Objects;
 
 public class MainWindowController {
 
@@ -50,5 +46,17 @@ public class MainWindowController {
         stage.setTitle("Дифференцирование табулированных функций");
         stage.show();
 
+    }
+
+    public void settings(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/settings.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root, 335, 300);
+        Stage stage = new Stage();
+        stage.setResizable(false);
+
+        stage.setScene(scene);
+        stage.setTitle("Настройки");
+        stage.show();
     }
 }

@@ -27,13 +27,12 @@ public class IntegrationTask implements Callable<Double> {
             --condition;
         }
         for (int i = from; i < condition; i++) {
-            if(points[i].y*points[i+1].y<0){
-                double x0 = (-points[i].y/(points[i+1].y-points[i].y))*(points[i+1].x-points[i].x)+points[i].x;
-                partialSum+=Math.abs((points[i].y ) * (x0 - points[i].x) / 2);
-                partialSum+=Math.abs((points[i+1].y ) * ( points[i].x -x0) / 2);
+            if (points[i].y * points[i + 1].y < 0) {
+                double x0 = (-points[i].y / (points[i + 1].y - points[i].y)) * (points[i + 1].x - points[i].x) + points[i].x;
+                partialSum += Math.abs((points[i].y) * (x0 - points[i].x) / 2);
+                partialSum += Math.abs((points[i + 1].y) * (points[i].x - x0) / 2);
 
-            }
-            else {
+            } else {
                 partialSum += Math.abs((points[i].y + points[i + 1].y) * (points[i + 1].x - points[i].x) / 2);
             }
         }

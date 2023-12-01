@@ -49,6 +49,16 @@ public class TableController implements Initializable {
 
     public void onFunctionCreation(ActionEvent event) throws IOException {
 
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/SecondConstructorTabulatedFunction.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root, 900, 600);
+        Stage stage = new Stage();
+        SecondConstructorTabulatedFunctionController controller = loader.getController();
+        controller.setMainController(this);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setTitle("Создание табулированной функции");
+        stage.show();
 
     }
 
@@ -68,13 +78,13 @@ public class TableController implements Initializable {
 
     }
 
-    public void functionPresentation(TabulatedFunction function){
+    public void functionPresentation(TabulatedFunction function) {
 
         this.function = function;
 
         table.getItems().clear();
 
-        for(int i = 0; i<function.getCount(); i++){
+        for (int i = 0; i < function.getCount(); i++) {
             table.getItems().add(new TablePoint(function.getX(i), function.getY(i)));
         }
 
@@ -95,7 +105,7 @@ public class TableController implements Initializable {
         DoubleStringConverter stringConverter = new DoubleStringConverter();
 
         yColumn.setCellFactory(TextFieldTableCell.forTableColumn(stringConverter));
-        yColumn.setOnEditCommit(e->e.getTableView().getItems().get(e.getTablePosition().getRow()).setY(e.getNewValue()));
+        yColumn.setOnEditCommit(e -> e.getTableView().getItems().get(e.getTablePosition().getRow()).setY(e.getNewValue()));
 
         table.setEditable(true);
 
@@ -106,7 +116,7 @@ public class TableController implements Initializable {
     public void saveFunction(ActionEvent event) throws IOException {
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Bin files","*.bin"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Bin files", "*.bin"));
 
         File file = fileChooser.showSaveDialog(null);
 
@@ -120,7 +130,7 @@ public class TableController implements Initializable {
     public void loadFunction(ActionEvent event) throws IOException, ClassNotFoundException {
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Bin files","*.bin"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Bin files", "*.bin"));
 
         File file = fileChooser.showOpenDialog(null);
 

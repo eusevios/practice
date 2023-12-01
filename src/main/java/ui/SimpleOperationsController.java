@@ -7,25 +7,22 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import javafx.util.converter.DoubleStringConverter;
-import operations.TabulatedFunctionOperationService;
-import ui.TablePoint;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
+import operations.TabulatedFunctionOperationService;
 
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class SimpleOperationsController implements Initializable {
@@ -40,11 +37,15 @@ public class SimpleOperationsController implements Initializable {
     public TableView<TablePoint> table;
     public Button saveResultButton;
 
-    @FXML Parent firstTable;
+    @FXML
+    Parent firstTable;
 
-    @FXML Parent secondTable;
-    @FXML TableController firstTableController;
-    @FXML TableController secondTableController;
+    @FXML
+    Parent secondTable;
+    @FXML
+    TableController firstTableController;
+    @FXML
+    TableController secondTableController;
     @FXML
     public Pane pane;
 
@@ -52,14 +53,16 @@ public class SimpleOperationsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> list = FXCollections.observableArrayList("+","-","*",":");
+        ObservableList<String> list = FXCollections.observableArrayList("+", "-", "*", ":");
         opChoice.getItems().addAll(list);
 
-            table.setFixedCellSize(30);
-            table.prefHeightProperty().bind(table.fixedCellSizeProperty().multiply(Bindings.size(table.getItems()).add(1.01)));
+        table.setFixedCellSize(30);
+        table.prefHeightProperty().bind(table.fixedCellSizeProperty().multiply(Bindings.size(table.getItems()).add(1.01)));
 
-            xColumn.setCellValueFactory(new PropertyValueFactory<>("x"));
-            yColumn.setCellValueFactory(new PropertyValueFactory<>("y"));
+        xColumn.setCellValueFactory(new PropertyValueFactory<>("x"));
+        yColumn.setCellValueFactory(new PropertyValueFactory<>("y"));
+
+        opChoice.getSelectionModel().select(0);
 
     }
 
@@ -67,7 +70,7 @@ public class SimpleOperationsController implements Initializable {
 
         TabulatedFunctionOperationService operationService = new TabulatedFunctionOperationService();
 
-        switch (opChoice.getValue()){
+        switch (opChoice.getValue()) {
 
             case "+":
                 function = operationService.toAdd(firstTableController.function, secondTableController.function);
@@ -89,7 +92,7 @@ public class SimpleOperationsController implements Initializable {
 
         table.getItems().clear();
 
-        for(int i = 0; i<function.getCount(); i++){
+        for (int i = 0; i < function.getCount(); i++) {
             table.getItems().add(new TablePoint(function.getX(i), function.getY(i)));
         }
 
@@ -99,7 +102,7 @@ public class SimpleOperationsController implements Initializable {
     public void saveResult(ActionEvent event) throws IOException {
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Bin files","*.bin"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Bin files", "*.bin"));
 
         File file = fileChooser.showSaveDialog(null);
 

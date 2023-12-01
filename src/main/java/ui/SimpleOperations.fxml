@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="958.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.SimpleOperationsController">
-    <ImageView fitHeight="631.0" fitWidth="984.0" layoutX="-6.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="958.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ui.SimpleOperationsController">
+    <ImageView fitHeight="631.0" fitWidth="984.0" layoutX="-6.0" layoutY="-7.0" pickOnBounds="true"
+               preserveRatio="true">
         <effect>
-            <GaussianBlur />
+            <GaussianBlur/>
         </effect>
-        <Image url="@background.jpg" />
+        <Image url="@background.jpg"/>
     </ImageView>
     <Pane fx:id="pane" layoutX="305.0" layoutY="34.0" prefHeight="471.0" prefWidth="299.0">
-        <fx:include fx:id="secondTable" source="Table.fxml" />
+        <fx:include fx:id="secondTable" source="Table.fxml"/>
     </Pane>
     <Pane layoutY="33.0" prefHeight="471.0" prefWidth="278.0">
 
-        <fx:include fx:id="firstTable" source="Table.fxml" />
+        <fx:include fx:id="firstTable" source="Table.fxml"/>
 
     </Pane>
     <TableView fx:id="table" layoutX="638.0" layoutY="59.0" prefHeight="351.0" prefWidth="234.0">
-      <columns>
-          <TableColumn prefWidth="121.0" text="C1" fx:id="xColumn" />
-          <TableColumn fx:id="yColumn" prefWidth="111.0" text="C2" />
-      </columns>
+        <columns>
+            <TableColumn prefWidth="121.0" text="C1" fx:id="xColumn"/>
+            <TableColumn fx:id="yColumn" prefWidth="111.0" text="C2"/>
+        </columns>
     </TableView>
-    <ChoiceBox fx:id="opChoice" layoutX="294.0" layoutY="244.0" prefHeight="25.0" prefWidth="36.0" />
-   <Button layoutX="590.0" layoutY="235.0" mnemonicParsing="false" onAction="#doOperation" prefHeight="25.0" prefWidth="44.0" text="=">
-      <font>
-         <Font size="14.0" />
-      </font>
-   </Button>
-   <Button fx:id="saveResultButton" layoutX="638.0" layoutY="431.0" mnemonicParsing="false" onAction="#saveResult" prefHeight="30.0" prefWidth="234.0" text="Сохранить" />
+    <ChoiceBox fx:id="opChoice" layoutX="294.0" layoutY="244.0" prefHeight="25.0" prefWidth="36.0"/>
+    <Button layoutX="590.0" layoutY="235.0" mnemonicParsing="false" onAction="#doOperation" prefHeight="25.0"
+            prefWidth="44.0" text="=">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </Button>
+    <Button fx:id="saveResultButton" layoutX="638.0" layoutY="431.0" mnemonicParsing="false" onAction="#saveResult"
+            prefHeight="30.0" prefWidth="234.0" text="Сохранить"/>
 </AnchorPane>

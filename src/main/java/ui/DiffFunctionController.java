@@ -2,8 +2,6 @@ package ui;
 
 import functions.TabulatedFunction;
 import javafx.beans.binding.Bindings;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,7 +10,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
-import operations.DifferentialOperator;
 import operations.TabulatedDifferentialOperator;
 
 import java.net.URL;
@@ -25,12 +22,13 @@ public class DiffFunctionController implements Initializable {
     public Pane funcTable;
 
     @FXML
-    public  TableController funcTableController;
+    public TableController funcTableController;
     public Button toDiff;
     public TableColumn<TablePoint, Double> xColumn;
     public TableColumn<TablePoint, Double> yColumn;
 
-    @FXML TableView<TablePoint> diffFuncTable;
+    @FXML
+    TableView<TablePoint> diffFuncTable;
 
     TabulatedFunction function;
 
@@ -43,7 +41,7 @@ public class DiffFunctionController implements Initializable {
 
         diffFuncTable.getItems().clear();
 
-        for(int i = 0; i<function.getCount(); i++){
+        for (int i = 0; i < function.getCount(); i++) {
             diffFuncTable.getItems().add(new TablePoint(function.getX(i), function.getY(i)));
         }
 

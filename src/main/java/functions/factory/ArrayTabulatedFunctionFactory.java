@@ -1,7 +1,6 @@
 package functions.factory;
 
 import functions.ArrayTabulatedFunction;
-import functions.LinkedListTabulatedFunction;
 import functions.MathFunction;
 import functions.TabulatedFunction;
 
