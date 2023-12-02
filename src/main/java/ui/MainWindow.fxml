@@ -18,18 +18,27 @@
                 <GaussianBlur />
             </effect>
         </ImageView>
-        <Text fx:id="textLab" fill="#bbdaff" layoutX="147.0" layoutY="211.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Лабораторная работа 7" textAlignment="CENTER" underline="true" wrappingWidth="605.0734415054321" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="147.92655849456787">
+        <Text fx:id="textLab" fill="#bbdaff" layoutX="154.0" layoutY="197.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Лабораторная работа 7" textAlignment="CENTER" underline="true" wrappingWidth="605.0734415054321" AnchorPane.leftAnchor="154.0" AnchorPane.rightAnchor="140.92655849456787">
             <font>
                 <Font name="Cascadia Code Regular" size="44.0" />
             </font>
         </Text>
-        <Button fx:id="functionsOperationsButton" alignment="CENTER" contentDisplay="CENTER" layoutX="312.0" layoutY="263.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#functionsOperations" prefHeight="74.0" prefWidth="276.0" stylesheets="@style.css" text="Операции над функциями" textAlignment="CENTER" wrapText="true">
+        <Button fx:id="functionsOperationsButton" alignment="CENTER" contentDisplay="CENTER" layoutX="319.0" layoutY="258.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#functionsOperations" prefHeight="51.0" prefWidth="276.0" stylesheets="@style.css" text="Простейшие операции" textAlignment="CENTER" wrapText="true">
             <font>
-                <Font name="Verdana Bold" size="14.0" />
+                <Font name="Verdana Bold" size="18.0" />
             </font>
         </Button>
-        <Button fx:id="diffFunctionButton" layoutX="317.0" layoutY="358.0" mnemonicParsing="false" onAction="#diffFunction" prefHeight="74.0" prefWidth="266.0" text="Дифференцирование функций" />
-        <Button fx:id="settingsButton" layoutX="319.0" layoutY="448.0" mnemonicParsing="false" onAction="#settings" prefHeight="51.0" prefWidth="266.0" text="Настройки" />
-      <Button fx:id="chartButton" layoutX="598.0" layoutY="274.0" mnemonicParsing="false" onAction="#chart" prefHeight="51.0" prefWidth="266.0" text="Графики" />
+        <Button fx:id="diffFunctionButton" layoutX="319.0" layoutY="324.0" mnemonicParsing="false" onAction="#diffFunction" prefHeight="51.0" prefWidth="276.0" stylesheets="@style.css" text="Дифференцирование" textAlignment="CENTER">
+         <font>
+            <Font name="Verdana Bold" size="18.0" />
+         </font></Button>
+        <Button fx:id="settingsButton" layoutX="319.0" layoutY="386.0" mnemonicParsing="false" onAction="#settings" prefHeight="51.0" prefWidth="276.0" stylesheets="@style.css" text="Настройки">
+         <font>
+            <Font name="Verdana Bold" size="18.0" />
+         </font></Button>
+      <Button fx:id="chartButton" layoutX="324.0" layoutY="447.0" mnemonicParsing="false" onAction="#chart" prefHeight="51.0" prefWidth="266.0" stylesheets="@style.css" text="Графики">
+         <font>
+            <Font name="Verdana Bold" size="18.0" />
+         </font></Button>
     </children>
 </AnchorPane>

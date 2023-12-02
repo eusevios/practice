@@ -67,7 +67,7 @@ public class MainWindowController {
 
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/Chart.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 1200, 900);
+        Scene scene = new Scene(root, 1200, 800);
         Stage stage = new Stage();
         stage.setResizable(false);
 

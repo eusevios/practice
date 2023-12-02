@@ -1,34 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<AnchorPane prefHeight="140.0" prefWidth="320.0" styleClass="exception" stylesheets="@style.css"
-            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="ui.ExceptionController">
+
+<AnchorPane prefHeight="140.0" prefWidth="300.0" styleClass="exception" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ExceptionController">
     <children>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="58.0" prefWidth="330.0" styleClass="exception-header"
-                    stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                    AnchorPane.topAnchor="0.0">
-            <children>
-                <Circle fill="RED" layoutX="36.0" layoutY="30.0" radius="18.0" stroke="BLACK" strokeType="INSIDE"/>
-                <FontAwesomeIconView fill="WHITE" glyphName="TIMES" layoutX="18.0" layoutY="38.0" size="25"
-                                     textAlignment="CENTER" wrappingWidth="35.200008392333984"/>
-                <Text layoutX="70.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ERROR"
-                      wrappingWidth="242.0">
+      <Pane prefHeight="58.0" prefWidth="315.0" styleClass="exception-header" stylesheets="@style.css" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="-1.0">
+         <children>
+                <Circle fill="RED" layoutX="38.0" layoutY="29.0" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
+                <FontAwesomeIconView fill="WHITE" glyphName="TIMES" layoutX="26.0" layoutY="37.0" size="25" textAlignment="CENTER" wrappingWidth="23.99993896484375" />
+                <Text layoutX="72.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ERROR" wrappingWidth="228.4000244140625">
                     <font>
-                        <Font name="Verdana Bold" size="19.0"/>
+                        <Font name="Verdana Bold" size="19.0" />
                     </font>
                 </Text>
-            </children>
-        </AnchorPane>
-        <Text layoutX="18.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text"
-              wrappingWidth="283.7367706298828" fx:id="warningText">
+         </children>
+      </Pane>
+        <Text fx:id="warningText" layoutX="34.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="271.7367706298828">
             <font>
-                <Font size="18.0"/>
+                <Font size="18.0" />
             </font>
         </Text>
     </children>

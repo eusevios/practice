@@ -2,26 +2,18 @@
 {
     -fx-border-width: 4;
     -fx-border-color: #228B22;
-    -fx-border-radius: 30;
-    -fx-background-radius: 40;
+    -fx-border-radius: 20;
+    -fx-background-radius: 30;
     -fx-background-color: #00FA9A;
 }
 
 .button:hover
 {
-    -fx-border-width: 4;
-    -fx-border-color: #228B22;
-    -fx-border-radius: 30;
-    -fx-background-radius: 40;
     -fx-background-color: #98FB98;
 }
 
 .button:pressed
 {
-    -fx-border-width: 4;
-    -fx-border-color: #228B22;
-    -fx-border-radius: 30;
-    -fx-background-radius: 40;
     -fx-background-color: #98FB98;
 }
 
@@ -29,8 +21,8 @@
 {
     -fx-border-width: 4;
     -fx-border-color: #2E8B57;
-    -fx-border-radius: 30;
-    -fx-background-radius: 40;
+    -fx-border-radius: 20;
+    -fx-background-radius: 30;
     -fx-background-color: #3CB37193;
 }
 
@@ -56,12 +48,19 @@
 
 .exception-header
 {
-    -fx-background-color: gainsboro;
-    -fx-border-color: darkgray;
+    -fx-background-color: linear-gradient(to bottom, azure, #5F9EA0);
+    -fx-border-color: #48D1CC;
 }
 
 .exception
 {
+    -fx-background-color: #AFEEEE;
     -fx-border-width: 2;
     -fx-border-color: black;
+}
+
+.graph
+{
+    -fx-background-color: #DCDCDC;
+    -fx-background-radius: 20;
 }

@@ -15,7 +15,7 @@ public class UIException {
 
         FXMLLoader loader = new FXMLLoader(UIException.class.getClassLoader().getResource("ui/Exception.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 330, 180);
+        Scene scene = new Scene(root, 300, 140);
         Stage stage = new Stage();
         ExceptionController exceptionController = loader.getController();
         exceptionController.setWarningMessage(e.getMessage());
