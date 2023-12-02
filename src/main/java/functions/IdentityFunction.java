@@ -1,5 +1,8 @@
 package functions;
 
+import ui.Functions;
+
+@Functions(name = "Тождественная функция y=x", priority = 1)
 public class IdentityFunction implements MathFunction {
     public double apply(double x) {
         return x;

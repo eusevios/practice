@@ -21,10 +21,10 @@
             <children>
                 <Text fx:id="selectFuncitonText" layoutX="25.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Выберите функцию:" wrappingWidth="220.0">
                     <font>
-                        <Font name="Verdana Bold" size="18.0" />
+                        <Font name="Verdana Bold" size="16.0" />
                     </font>
                 </Text>
-                <ChoiceBox fx:id="dropDownMenu" layoutX="253.0" layoutY="53.0" prefHeight="46.0" prefWidth="176.0" styleClass="button" stylesheets="@style.css" />
+                <ChoiceBox fx:id="dropDownMenu" layoutX="224.0" layoutY="54.0" prefHeight="46.0" prefWidth="211.0" styleClass="button" stylesheets="@style.css" />
                 <Text fx:id="sizeText" layoutX="24.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Укажите количество точек:" wrappingWidth="250.0">
                     <font>
                         <Font name="Verdana Bold" size="15.0" />

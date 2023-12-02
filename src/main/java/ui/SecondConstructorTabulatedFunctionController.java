@@ -12,11 +12,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.reflections.Reflections;
 
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
+
+import java.lang.Class;
 
 public class SecondConstructorTabulatedFunctionController implements Initializable {
 
@@ -72,17 +74,16 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
     }
 
     @FXML
-    void toCreateFunction(ActionEvent event) {
+    void toCreateFunction(ActionEvent event) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        Set<Class<?>> classes = new Reflections("functions").getTypesAnnotatedWith(Functions.class);
 
-        Map<String, MathFunction> map = new HashMap<String, MathFunction>();
-        map.put("y=0", new ZeroFunction());
-        map.put("y=1", new UnitFunction());
-        map.put("y=-1*(x + pi/2)", new AdditionalFunction());
-        map.put("Квадратичная функция", new SqrFunction());
-        map.put("Натуральный Логарифм", new NaturalLogarithm());
-        map.put("Тождественная функция", new IdentityFunction());
+        Map<String, Class<?>> map = new HashMap<>();
+        for(Class<?> curr_class : classes){
+            map.put(curr_class.getAnnotation(Functions.class).name(), (Class<?>) curr_class.getConstructor().newInstance());
+        }
 
-        TabulatedFunction function = Settings.getInstance().getFactory().createWithSecondConstructor(map.get(dropDownMenu.getValue()), Double.parseDouble(fromTextField.getText()), Double.parseDouble(toTextField.getText()), Integer.parseInt(sizeTextField.getText()));
+        TabulatedFunction function = Settings.getInstance().getFactory().
+                createWithSecondConstructor((MathFunction) map.get(dropDownMenu.getValue()).getConstructor().newInstance(), Double.parseDouble(fromTextField.getText()), Double.parseDouble(toTextField.getText()), Integer.parseInt(sizeTextField.getText()));
         controller.functionPresentation(function);
         System.out.println(function);
         Stage stage = (Stage) creationFunctionButton.getScene().getWindow();
@@ -93,7 +94,13 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> list = FXCollections.observableArrayList("y=0", "y=1", "y=-1*(x + pi/2)", "Квадратичная функция", "Натуральный Логарифм", "Тождественная функция");
+        Set<Class<?>> classes = new Reflections("functions").getTypesAnnotatedWith(Functions.class);
+        ArrayList<String> names_list = new ArrayList<>(List.of(new String[classes.size()]));
+        for(Class<?> curr_class : classes){
+            Functions annotation = curr_class.getAnnotation(Functions.class);
+            names_list.set(annotation.priority() - 1, annotation.name());
+        }
+        ObservableList<String> list = FXCollections.observableArrayList(names_list);
         dropDownMenu.getItems().addAll(list);
     }
 
