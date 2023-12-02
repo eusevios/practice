@@ -13,24 +13,23 @@ import java.util.concurrent.Future;
 
 public class IntegrationOperator {
 
-    public static double integrate(TabulatedFunction tabFunc) throws ExecutionException, InterruptedException {
+    public static double integrate(TabulatedFunction tabFunc, int k) throws ExecutionException, InterruptedException {
 
         Point[] points = TabulatedFunctionOperationService.asPoints(tabFunc);
 
-        int countThread = Runtime.getRuntime().availableProcessors();
-        ArrayList<Integer> lengthList = new ArrayList<>(countThread);
+        ArrayList<Integer> lengthList = new ArrayList<>(k);
 
-        for (int i = 0; i < points.length % countThread; i++) {
-            int lengthTread = points.length / countThread + 1;
+        for (int i = 0; i < points.length % k; i++) {
+            int lengthTread = points.length / k + 1;
             lengthList.add(lengthTread);
         }
-        for (int i = 0; i < countThread - points.length % countThread; i++) {
-            int lengthTread = points.length / countThread;
+        for (int i = 0; i < k - points.length % k; i++) {
+            int lengthTread = points.length / k;
             if (lengthTread != 0) lengthList.add(lengthTread);
         }
 
 
-        ExecutorService service = Executors.newFixedThreadPool(countThread);
+        ExecutorService service = Executors.newFixedThreadPool(k);
         Future<Double>[] results = new Future[lengthList.size()];
         for (int i = 0, j = 0; i < points.length; i += lengthList.get(j), j++) {
             IntegrationTask task = new IntegrationTask(i, lengthList.get(j), points);

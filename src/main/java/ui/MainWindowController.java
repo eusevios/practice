@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,9 +29,10 @@ public class MainWindowController {
     public void functionsOperations(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/SimpleOperations.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 900, 600);
+        Scene scene = new Scene(root, 1200, 752);
         Stage stage = new Stage();
         stage.setResizable(false);
+        stage.initModality(Modality.WINDOW_MODAL);
 
         stage.setScene(scene);
         stage.setTitle("Операции над табулированными функциями");
@@ -41,9 +43,10 @@ public class MainWindowController {
 
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/DiffFunction.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 900, 600);
+        Scene scene = new Scene(root, 940, 728);
         Stage stage = new Stage();
         stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
 
         stage.setScene(scene);
         stage.setTitle("Дифференцирование табулированных функций");
@@ -57,6 +60,7 @@ public class MainWindowController {
         Scene scene = new Scene(root, 400, 350);
         Stage stage = new Stage();
         stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
 
         stage.setScene(scene);
         stage.setTitle("Настройки");
@@ -70,6 +74,7 @@ public class MainWindowController {
         Scene scene = new Scene(root, 1200, 800);
         Stage stage = new Stage();
         stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
 
         stage.setScene(scene);
         stage.setTitle("Графики");

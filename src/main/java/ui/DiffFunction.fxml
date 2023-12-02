@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="886.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.DiffFunctionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.DiffFunctionController">
     <children>
-      <ImageView fitHeight="596.0" fitWidth="930.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="736.0" fitWidth="1208.0" layoutX="-42.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@background.jpg" />
          </image>
@@ -20,10 +20,10 @@
             <GaussianBlur />
          </effect>
       </ImageView>
-        <Pane layoutX="50.0" layoutY="14.0" prefHeight="554.0" prefWidth="307.0">
+        <Pane layoutY="14.0" prefHeight="554.0" prefWidth="399.0">
             <fx:include fx:id="funcTable" source="Table.fxml" />
         </Pane>
-        <TableView fx:id="diffFuncTable" layoutX="574.0" layoutY="30.0" prefHeight="353.0" prefWidth="243.0" styleClass="table" stylesheets="@style.css">
+        <TableView fx:id="diffFuncTable" layoutX="594.0" layoutY="26.0" prefHeight="400.0" prefWidth="243.0" styleClass="table" stylesheets="@style.css">
             <columns>
                 <TableColumn prefWidth="113.0" styleClass="column" text="X" fx:id="xColumn" />
                 <TableColumn fx:id="yColumn" prefWidth="115.0" styleClass="column" text="Y" />
@@ -32,9 +32,10 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
         </TableView>
-        <Button fx:id="toDiff" layoutX="350.0" layoutY="189.0" mnemonicParsing="false" onAction="#diffFunction" prefHeight="36.0" prefWidth="205.0" stylesheets="@style.css" text="Дифференцировать">
+        <Button fx:id="toDiff" layoutX="363.0" layoutY="273.0" mnemonicParsing="false" onAction="#diffFunction" prefHeight="36.0" prefWidth="205.0" stylesheets="@style.css" text="Дифференцировать">
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font></Button>
+      <Button fx:id="saveButton" layoutX="594.0" layoutY="435.0" mnemonicParsing="false" onAction="#save" prefHeight="36.0" prefWidth="243.0" text="Сохранить" />
     </children>
 </AnchorPane>

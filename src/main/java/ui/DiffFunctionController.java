@@ -6,12 +6,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import operations.TabulatedDifferentialOperator;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -49,12 +51,17 @@ public class DiffFunctionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        diffFuncTable.setFixedCellSize(30);
-        diffFuncTable.prefHeightProperty().bind(diffFuncTable.fixedCellSizeProperty().multiply(Bindings.size(diffFuncTable.getItems()).add(1.01)));
+        diffFuncTable.setPlaceholder(new Label());
 
         xColumn.setCellValueFactory(new PropertyValueFactory<>("x"));
         yColumn.setCellValueFactory(new PropertyValueFactory<>("y"));
 
     }
+
+    public void save(ActionEvent event) throws IOException {
+
+        UIInputOutput.save(function);
+
+    }
+
 }

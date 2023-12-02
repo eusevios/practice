@@ -30,6 +30,7 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction, Se
 
     }
 
+
     abstract protected int floorIndexOfX(double x);
 
     abstract protected double extrapolateLeft(double x);

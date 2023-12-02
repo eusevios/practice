@@ -59,5 +59,6 @@ public class UnmodifiableTabulatedFunction implements TabulatedFunction {
     public Iterator<Point> iterator() {
         return function.iterator();
     }
+
 }
 

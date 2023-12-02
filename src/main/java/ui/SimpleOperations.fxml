@@ -11,22 +11,22 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="958.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.SimpleOperationsController">
-    <ImageView fitHeight="631.0" fitWidth="984.0" layoutX="-6.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.SimpleOperationsController">
+    <ImageView fitHeight="839.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
         <effect>
             <GaussianBlur />
         </effect>
         <Image url="@background.jpg" />
     </ImageView>
-    <Pane fx:id="pane" layoutX="305.0" layoutY="34.0" prefHeight="471.0" prefWidth="299.0">
+    <Pane fx:id="pane" layoutX="407.0" layoutY="-5.0" prefHeight="703.0" prefWidth="387.0">
         <fx:include fx:id="secondTable" source="Table.fxml" />
     </Pane>
-    <Pane layoutY="33.0" prefHeight="471.0" prefWidth="278.0">
+    <Pane layoutX="-42.0" layoutY="-5.0" prefHeight="600.0" prefWidth="372.0">
 
         <fx:include fx:id="firstTable" source="Table.fxml" />
 
     </Pane>
-    <TableView fx:id="table" layoutX="652.0" layoutY="46.0" prefHeight="356.0" prefWidth="234.0" styleClass="table" stylesheets="@style.css">
+    <TableView fx:id="table" layoutX="926.0" layoutY="14.0" prefHeight="397.0" prefWidth="234.0" styleClass="table" stylesheets="@style.css">
         <columns>
             <TableColumn prefWidth="121.0" sortable="false" styleClass="column" text="X" fx:id="xColumn" />
             <TableColumn fx:id="yColumn" prefWidth="111.0" sortable="false" styleClass="column" text="Y" />
@@ -35,14 +35,15 @@
          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
       </columnResizePolicy>
     </TableView>
-    <Button layoutX="594.0" layoutY="228.0" mnemonicParsing="false" onAction="#doOperation" prefHeight="25.0" prefWidth="44.0" stylesheets="@style.css" text="=">
+    <Button layoutX="803.0" layoutY="196.0" mnemonicParsing="false" onAction="#doOperation" prefHeight="25.0" prefWidth="44.0" stylesheets="@style.css" text="=">
         <font>
             <Font name="Verdana Bold" size="18.0" />
         </font>
     </Button>
-    <Button fx:id="saveResultButton" layoutX="652.0" layoutY="430.0" mnemonicParsing="false" onAction="#saveResult" prefHeight="30.0" prefWidth="234.0" stylesheets="@style.css" text="Сохранить">
+    <ChoiceBox fx:id="opChoice" layoutX="365.0" layoutY="201.0" prefHeight="34.0" prefWidth="55.0" styleClass="button" stylesheets="@style.css" />
+    <Button fx:id="saveResultButton" layoutX="946.0" layoutY="417.0" mnemonicParsing="false" onAction="#saveResult" prefHeight="36.0" prefWidth="195.0" stylesheets="@style.css" text="Сохранить">
       <font>
          <Font name="Verdana Bold" size="14.0" />
-      </font></Button>
-    <ChoiceBox fx:id="opChoice" layoutX="281.0" layoutY="233.0" prefHeight="34.0" prefWidth="55.0" styleClass="button" stylesheets="@style.css" />
+      </font>
+   </Button>
 </AnchorPane>

@@ -29,16 +29,16 @@
             </font>
         </Button>
         <Button fx:id="diffFunctionButton" layoutX="319.0" layoutY="324.0" mnemonicParsing="false" onAction="#diffFunction" prefHeight="51.0" prefWidth="276.0" stylesheets="@style.css" text="Дифференцирование" textAlignment="CENTER">
-         <font>
-            <Font name="Verdana Bold" size="18.0" />
-         </font></Button>
+            <font>
+                <Font name="Verdana Bold" size="18.0" />
+            </font></Button>
         <Button fx:id="settingsButton" layoutX="319.0" layoutY="386.0" mnemonicParsing="false" onAction="#settings" prefHeight="51.0" prefWidth="276.0" stylesheets="@style.css" text="Настройки">
-         <font>
-            <Font name="Verdana Bold" size="18.0" />
-         </font></Button>
-      <Button fx:id="chartButton" layoutX="324.0" layoutY="447.0" mnemonicParsing="false" onAction="#chart" prefHeight="51.0" prefWidth="266.0" stylesheets="@style.css" text="Графики">
-         <font>
-            <Font name="Verdana Bold" size="18.0" />
-         </font></Button>
+            <font>
+                <Font name="Verdana Bold" size="18.0" />
+            </font></Button>
+        <Button fx:id="chartButton" layoutX="324.0" layoutY="447.0" mnemonicParsing="false" onAction="#chart" prefHeight="51.0" prefWidth="266.0" stylesheets="@style.css" text="Графики">
+            <font>
+                <Font name="Verdana Bold" size="18.0" />
+            </font></Button>
     </children>
 </AnchorPane>

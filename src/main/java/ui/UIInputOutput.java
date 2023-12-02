@@ -11,7 +11,7 @@ import java.io.*;
 
 public class UIInputOutput {
 
-    static public void saveBin(TabulatedFunction function) throws IOException {
+    static public void save(TabulatedFunction function) throws IOException {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Bin files", "*.bin"), new FileChooser.ExtensionFilter("JSON files", "*.json"), new FileChooser.ExtensionFilter("XML files", "*.xml"));
@@ -38,7 +38,7 @@ public class UIInputOutput {
 
     }
 
-    static public TabulatedFunction loadBin() throws IOException, ClassNotFoundException {
+    static public TabulatedFunction load() throws IOException, ClassNotFoundException {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Bin files", "*.bin"), new FileChooser.ExtensionFilter("JSON files", "*.json"), new FileChooser.ExtensionFilter("XML files", "*.xml"));

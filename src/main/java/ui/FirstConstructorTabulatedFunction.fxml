@@ -18,7 +18,7 @@
             </image>
         </ImageView>
         <Pane fx:id="Pane" layoutX="318.0" layoutY="438.0" prefHeight="118.0" prefWidth="306.0" styleClass="pane"
-              stylesheets="@../../../../target/classes/ui/style.css">
+              stylesheets="@style.css">
             <children>
                 <Text fx:id="enterSize" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0"
                       text="Введите количество точек:" textAlignment="CENTER" wrappingWidth="269.8000030517578">

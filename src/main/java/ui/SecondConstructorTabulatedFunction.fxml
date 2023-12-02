@@ -55,12 +55,12 @@
                         <Font name="Verdana Bold" size="20.0" />
                     </font>
                 </Text>
-                <TextField fx:id="fromTextField" layoutX="104.0" layoutY="229.0" onAction="#getTo" prefHeight="45.0" prefWidth="90.0" styleClass="button" stylesheets="style.css">
+                <TextField fx:id="fromTextField" layoutX="104.0" layoutY="229.0" onAction="#getTo" prefHeight="45.0" prefWidth="90.0" styleClass="button" stylesheets="@style.css">
                     <font>
                         <Font name="Verdana Bold" size="14.0" />
                     </font>
                 </TextField>
-                <Button fx:id="creationFunctionButton" layoutX="122.0" layoutY="328.0" mnemonicParsing="false" onAction="#toCreateFunction" prefHeight="66.0" prefWidth="211.0" stylesheets="style.css" text="Создать функцию" textAlignment="CENTER" wrapText="true">
+                <Button fx:id="creationFunctionButton" layoutX="122.0" layoutY="328.0" mnemonicParsing="false" onAction="#toCreateFunction" prefHeight="66.0" prefWidth="211.0" stylesheets="@style.css" text="Создать функцию" textAlignment="CENTER" wrapText="true">
                     <font>
                         <Font name="Verdana Bold" size="17.0" />
                     </font>
