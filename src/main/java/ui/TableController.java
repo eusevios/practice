@@ -1,5 +1,6 @@
 package ui;
 
+import functions.ArrayTabulatedFunction;
 import functions.TabulatedFunction;
 import io.FunctionsIO;
 import javafx.beans.binding.Bindings;
@@ -113,7 +114,7 @@ public class TableController implements Initializable, Displayable {
 
     public void saveFunction(ActionEvent event) throws IOException {
 
-        UIInputOutput.saveBin(function);
+        UIInputOutput.saveBin( function);
 
     }
 
