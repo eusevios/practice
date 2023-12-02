@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.security.AnyTypePermission;
 import functions.ArrayTabulatedFunction;
+import functions.LinkedListTabulatedFunction;
 import functions.Point;
 import functions.TabulatedFunction;
 import functions.factory.TabulatedFunctionFactory;
@@ -119,21 +120,21 @@ final public class FunctionsIO {
         writer.flush();
     }
 
-    public static ArrayTabulatedFunction deserializeXml(BufferedReader reader) {
+    public static TabulatedFunction deserializeXml(BufferedReader reader) {
         XStream xStream = new XStream();
         xStream.addPermission(AnyTypePermission.ANY);
-        ArrayTabulatedFunction func = (ArrayTabulatedFunction) xStream.fromXML(reader);
+        TabulatedFunction func = (TabulatedFunction) xStream.fromXML(reader);
         return func;
     }
 
-    public static void serializeJson(BufferedWriter writer, ArrayTabulatedFunction function) throws IOException {
+    public static void serializeJson(BufferedWriter writer, TabulatedFunction function) throws IOException {
         ObjectMapper objMap = new ObjectMapper();
         writer.write(objMap.writeValueAsString(function));
         writer.flush();
     }
 
-    public static ArrayTabulatedFunction deserializeJson(BufferedReader reader) throws IOException {
+    public static TabulatedFunction deserializeJson(BufferedReader reader) throws IOException {
         ObjectMapper objMap = new ObjectMapper();
-        return (objMap.readerFor(ArrayTabulatedFunction.class)).readValue(reader);
+        return (objMap.readerFor(TabulatedFunction.class)).readValue(reader);
     }
 }

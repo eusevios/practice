@@ -1,5 +1,8 @@
 package functions;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Iterator;
@@ -9,8 +12,10 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
         implements Insertable, Removable, Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
+    @JsonFormat(shape = JsonFormat.Shape.OBJECT)
     private Node head;
 
+    @JsonCreator
     public LinkedListTabulatedFunction(double[] xValues, double[] yValues) {
         checkLengthIsTheSame(xValues, yValues);
         if (xValues.length < 2)
@@ -23,6 +28,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
         }
     }
 
+    @JsonCreator
     public LinkedListTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
         if (count < 2)
             throw new IllegalArgumentException("The length is less than min");
@@ -393,6 +399,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
         @Serial
         private static final long serialVersionUID = 1L;
         public Node next, prev;
+        @JsonFormat(shape = JsonFormat.Shape.NUMBER_FLOAT)
         public double x, y;
 
         @Override

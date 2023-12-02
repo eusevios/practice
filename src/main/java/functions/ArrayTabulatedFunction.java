@@ -36,7 +36,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     }
 
-
+    @JsonCreator
     public ArrayTabulatedFunction(MathFunction source, double xFrom, double xTo, int countOfThisValues) {
 
         arrayOfY = new double[countOfThisValues];
