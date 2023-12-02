@@ -54,7 +54,7 @@ public class MainWindowController {
     public void settings(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/settings.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 335, 300);
+        Scene scene = new Scene(root, 400, 350);
         Stage stage = new Stage();
         stage.setResizable(false);
 
