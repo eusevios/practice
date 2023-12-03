@@ -107,9 +107,9 @@ public class TableController implements Initializable, Displayable {
     }
 
     @Override
-    public void removePoint(int index) {
+    public void removePoint(double x) {
 
-        table.getItems().remove(index);
+        table.getItems().remove(function.indexOfX(x));
         if (table.getItems().isEmpty()){
             saveButton.setVisible(false);
             loadButton.setVisible(false);

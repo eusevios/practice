@@ -76,7 +76,7 @@ public class FirstConstructorTabulatedFunctionController implements Initializabl
             table.setVisible(true);
             creationButton.setVisible(true);
         } catch (IllegalArgumentException e) {
-            UIException.showException(e);
+            UIException.showException(e.getMessage());
             textF.clear();
         }
     }
@@ -128,7 +128,7 @@ public class FirstConstructorTabulatedFunctionController implements Initializabl
 
         } catch (ArrayIsNotSortedException e) {
 
-            UIException.showException(new ArrayIsNotSortedException("Значения в таблице должны быть отсортированы!"));
+            UIException.showException("Значения не сортированы!");
 
         }
 

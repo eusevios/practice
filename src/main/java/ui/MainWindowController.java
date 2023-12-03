@@ -43,7 +43,7 @@ public class MainWindowController {
 
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/DiffFunction.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 940, 728);
+        Scene scene = new Scene(root, 940, 750);
         Stage stage = new Stage();
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);

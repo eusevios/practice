@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import operations.TabulatedFunctionOperationService;
@@ -35,6 +36,7 @@ public class SimpleOperationsController implements Initializable {
     public TableView<TablePoint> table;
     public Button saveResultButton;
     public Button integrationButton;
+    public AnchorPane anchorPane;
 
     @FXML
     Parent firstTable;
