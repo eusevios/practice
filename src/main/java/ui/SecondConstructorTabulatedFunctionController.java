@@ -77,13 +77,13 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
     void toCreateFunction(ActionEvent event) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         Set<Class<?>> classes = new Reflections("functions").getTypesAnnotatedWith(Functions.class);
 
-        Map<String, Class<?>> map = new HashMap<>();
+        Map<String, MathFunction> map = new HashMap<>();
         for(Class<?> curr_class : classes){
-            map.put(curr_class.getAnnotation(Functions.class).name(), (Class<?>) curr_class.getConstructor().newInstance());
+            map.put(curr_class.getAnnotation(Functions.class).name(), (MathFunction) curr_class.getConstructor().newInstance());
         }
 
         TabulatedFunction function = Settings.getInstance().getFactory().
-                createWithSecondConstructor((MathFunction) map.get(dropDownMenu.getValue()).getConstructor().newInstance(), Double.parseDouble(fromTextField.getText()), Double.parseDouble(toTextField.getText()), Integer.parseInt(sizeTextField.getText()));
+                createWithSecondConstructor((MathFunction) map.get(dropDownMenu.getValue()), Double.parseDouble(fromTextField.getText()), Double.parseDouble(toTextField.getText()), Integer.parseInt(sizeTextField.getText()));
         controller.functionPresentation(function);
         System.out.println(function);
         Stage stage = (Stage) creationFunctionButton.getScene().getWindow();
@@ -95,10 +95,12 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Set<Class<?>> classes = new Reflections("functions").getTypesAnnotatedWith(Functions.class);
-        ArrayList<String> names_list = new ArrayList<>(List.of(new String[classes.size()]));
+
+        ArrayList<String> names_list = new ArrayList<>(classes.size());
+        for (int i = 0; i < classes.size(); i++){ names_list.add(i, " ");}
         for(Class<?> curr_class : classes){
             Functions annotation = curr_class.getAnnotation(Functions.class);
-            names_list.set(annotation.priority() - 1, annotation.name());
+            names_list.set(annotation.priority(), annotation.name());
         }
         ObservableList<String> list = FXCollections.observableArrayList(names_list);
         dropDownMenu.getItems().addAll(list);
