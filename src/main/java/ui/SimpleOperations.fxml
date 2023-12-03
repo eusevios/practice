@@ -26,7 +26,7 @@
         <fx:include fx:id="firstTable" source="Table.fxml" />
 
     </Pane>
-    <TableView fx:id="table" layoutX="924.0" layoutY="30.0" prefHeight="397.0" prefWidth="234.0" styleClass="table" stylesheets="@style.css">
+    <TableView fx:id="table" layoutX="913.0" layoutY="30.0" prefHeight="398.0" prefWidth="245.0" styleClass="table" stylesheets="@style.css">
         <columns>
             <TableColumn prefWidth="121.0" sortable="false" styleClass="column" text="X" fx:id="xColumn" />
             <TableColumn fx:id="yColumn" prefWidth="111.0" sortable="false" styleClass="column" text="Y" />
@@ -41,7 +41,7 @@
         </font>
     </Button>
     <ChoiceBox fx:id="opChoice" layoutX="357.0" layoutY="221.0" prefHeight="34.0" prefWidth="65.0" styleClass="button" stylesheets="@style.css" />
-    <Button fx:id="saveResultButton" layoutX="941.0" layoutY="448.0" mnemonicParsing="false" onAction="#saveResult" prefHeight="36.0" prefWidth="195.0" stylesheets="@style.css" text="Сохранить">
+    <Button fx:id="saveResultButton" layoutX="938.0" layoutY="446.0" mnemonicParsing="false" onAction="#saveResult" prefHeight="36.0" prefWidth="195.0" stylesheets="@style.css" text="Сохранить">
       <font>
          <Font name="Verdana Bold" size="14.0" />
       </font>
