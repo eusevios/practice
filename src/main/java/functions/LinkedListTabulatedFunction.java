@@ -292,17 +292,24 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
     public void remove(int index) {
 
         if (count > 0) {
-            if (index == 0) head = head.next;
+            if (index == 0){
+                Node removeNode = head;
+                head = head.next;
+                head.prev = removeNode.prev;
+                removeNode.prev.next = head;
 
-            Node removeNode = getNode(index);
-            (removeNode.prev).next = removeNode.next;
-            (removeNode.next).prev = removeNode.prev;
+                removeNode.prev = null;
+                removeNode.next = null;
+            }
+            else{
+                Node removeNode = getNode(index);
+                (removeNode.prev).next = removeNode.next;
+                (removeNode.next).prev = removeNode.prev;
 
-            removeNode.prev = null;
-            removeNode.next = null;
-
+                removeNode.prev = null;
+                removeNode.next = null;
+            }
             count--;
-
         }
     }
 

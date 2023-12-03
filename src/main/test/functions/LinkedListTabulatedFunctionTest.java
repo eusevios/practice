@@ -246,14 +246,19 @@ class LinkedListTabulatedFunctionTest {
     @Test
     void remove() {
 
+        System.out.println(Tab_Func.toString());
+
         Tab_Func.remove(2);
         assertEquals(Tab_Func.getX(2), 8);
         assertEquals(Tab_Func.getY(2), 0.23);
+
+        System.out.println(Tab_Func.toString());
 
         Tab_Func.remove(0);
         assertEquals(Tab_Func.leftBound(), 2);
         assertEquals(Tab_Func.getY(0), 3.5);
 
+        System.out.println(Tab_Func.toString());
     }
 
 
