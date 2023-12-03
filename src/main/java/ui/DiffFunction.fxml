@@ -32,10 +32,13 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
         </TableView>
-        <Button fx:id="toDiff" layoutX="363.0" layoutY="273.0" mnemonicParsing="false" onAction="#diffFunction" prefHeight="36.0" prefWidth="205.0" stylesheets="@style.css" text="Дифференцировать">
+        <Button fx:id="toDiff" layoutX="353.0" layoutY="206.0" mnemonicParsing="false" onAction="#diffFunction" prefHeight="39.0" prefWidth="218.0" stylesheets="@style.css" text="Дифференцировать">
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font></Button>
-      <Button fx:id="saveButton" layoutX="594.0" layoutY="435.0" mnemonicParsing="false" onAction="#save" prefHeight="36.0" prefWidth="243.0" text="Сохранить" />
+      <Button fx:id="saveButton" layoutX="607.0" layoutY="444.0" mnemonicParsing="false" onAction="#save" prefHeight="39.0" prefWidth="217.0" stylesheets="@style.css" text="Сохранить">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font></Button>
     </children>
 </AnchorPane>

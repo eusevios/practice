@@ -15,7 +15,7 @@ public class ArrayTabulatedFunctionJsonSerialization {
 
             double[] arrX = {1.3, 3.5, 10};
             double[] arrY = {5.13, -7.32, 1.73};
-            ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+            TabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
 
             FunctionsIO.serializeJson(bufWriter, func);
 

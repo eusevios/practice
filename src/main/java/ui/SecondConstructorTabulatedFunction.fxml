@@ -25,12 +25,12 @@
                     </font>
                 </Text>
                 <ChoiceBox fx:id="dropDownMenu" layoutX="224.0" layoutY="54.0" prefHeight="46.0" prefWidth="211.0" styleClass="button" stylesheets="@style.css" />
-                <Text fx:id="sizeText" layoutX="24.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Укажите количество точек:" wrappingWidth="250.0">
+                <Text fx:id="sizeText" layoutX="25.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Укажите количество точек:" wrappingWidth="266.0">
                     <font>
-                        <Font name="Verdana Bold" size="15.0" />
+                        <Font name="Verdana Bold" size="16.0" />
                     </font>
                 </Text>
-                <TextField fx:id="sizeTextField" layoutX="274.0" layoutY="120.0" onAction="#getSize" prefHeight="46.0" prefWidth="139.0" styleClass="button" stylesheets="@style.css">
+                <TextField fx:id="sizeTextField" alignment="CENTER" layoutX="298.0" layoutY="118.0" onAction="#getSize" prefHeight="45.0" prefWidth="93.0" stylesheets="@style.css">
                     <font>
                         <Font name="Verdana Bold" size="16.0" />
                     </font>
@@ -45,17 +45,17 @@
                         <Font name="Verdana Bold" size="20.0" />
                     </font>
                 </Text>
-                <TextField fx:id="toTextField" layoutX="274.0" layoutY="229.0" onAction="#getFrom" prefHeight="45.0" prefWidth="90.0" styleClass="button" stylesheets="@style.css">
+                <TextField fx:id="toTextField" alignment="CENTER" layoutX="285.0" layoutY="229.0" onAction="#getFrom" prefHeight="45.0" prefWidth="80.0" stylesheets="@style.css">
                     <font>
                         <Font name="Verdana Bold" size="14.0" />
                     </font>
                 </TextField>
-                <Text fx:id="toText" layoutX="225.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="До:" wrappingWidth="40.0">
+                <Text fx:id="toText" layoutX="234.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="До:" wrappingWidth="40.0">
                     <font>
                         <Font name="Verdana Bold" size="20.0" />
                     </font>
                 </Text>
-                <TextField fx:id="fromTextField" layoutX="104.0" layoutY="229.0" onAction="#getTo" prefHeight="45.0" prefWidth="90.0" styleClass="button" stylesheets="@style.css">
+                <TextField fx:id="fromTextField" alignment="CENTER" layoutX="109.0" layoutY="229.0" onAction="#getTo" prefHeight="45.0" prefWidth="80.0" stylesheets="@style.css">
                     <font>
                         <Font name="Verdana Bold" size="14.0" />
                     </font>

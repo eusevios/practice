@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -49,6 +50,9 @@ public class FirstConstructorTabulatedFunctionController implements Initializabl
     @FXML
     private VBox vBox;
 
+    @FXML
+    private Pane pane;
+
     private Displayable controller;
 
     void setMainController(Displayable controller) {
@@ -67,8 +71,7 @@ public class FirstConstructorTabulatedFunctionController implements Initializabl
                 table.getItems().add(new TablePoint());
             }
 
-            textF.setVisible(false);
-            enterSize.setVisible(false);
+            pane.setVisible(false);
 
             table.setVisible(true);
             creationButton.setVisible(true);

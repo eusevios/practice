@@ -188,7 +188,7 @@ public class ChartController implements Displayable, Initializable {
 
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/Integration.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 400, 400);
+        Scene scene = new Scene(root, 320, 240);
         Stage stage = new Stage();
         IntegrationController controller = loader.getController();
         controller.setMainController(this);

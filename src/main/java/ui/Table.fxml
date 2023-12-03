@@ -33,7 +33,13 @@
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font></Button>
-      <Button fx:id="changeButton" layoutX="104.0" layoutY="641.0" mnemonicParsing="false" onAction="#changeTable" prefHeight="36.0" prefWidth="198.0" text="Редактировать..." />
-      <Button fx:id="integrateButton" layoutX="104.0" layoutY="597.0" mnemonicParsing="false" onAction="#toIntegrate" prefHeight="36.0" prefWidth="198.0" text="Интегрировать" />
+      <Button fx:id="changeButton" layoutX="104.0" layoutY="641.0" mnemonicParsing="false" onAction="#changeTable" prefHeight="36.0" prefWidth="198.0" stylesheets="@style.css" text="Редактировать...">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font></Button>
+      <Button fx:id="integrateButton" layoutX="104.0" layoutY="597.0" mnemonicParsing="false" onAction="#toIntegrate" prefHeight="36.0" prefWidth="198.0" stylesheets="@style.css" text="Интегрировать">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font></Button>
     </children>
 </Pane>

@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.IntegrationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.IntegrationController">
    <children>
-      <Text fx:id="enterText" layoutX="144.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите число потоков:" wrappingWidth="146.13671875" />
-      <TextField fx:id="textField" layoutX="169.0" layoutY="151.0" onAction="#toIntegrate" prefHeight="25.0" prefWidth="96.0" />
-      <Text fx:id="integralText" layoutX="121.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Интеграл равен:" wrappingWidth="96.0" />
-      <Text fx:id="integralValueText" layoutX="226.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="38.13671875" />
+      <ImageView fitHeight="260.0" fitWidth="426.0" layoutX="-55.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@background.jpg" />
+         </image>
+         <effect>
+            <GaussianBlur />
+         </effect>
+      </ImageView>
+      <Pane layoutX="26.0" layoutY="20.0" prefHeight="200.0" prefWidth="274.0" styleClass="pane" stylesheets="@style.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+         <children>
+            <Text fx:id="enterText" layoutX="27.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите число потоков:" wrappingWidth="226.13671875">
+               <font>
+                  <Font name="Verdana Bold" size="16.0" />
+               </font>
+            </Text>
+            <TextField fx:id="textField" alignment="CENTER" layoutX="92.0" layoutY="79.0" onAction="#toIntegrate" prefHeight="35.0" prefWidth="95.0" stylesheets="@style.css" />
+            <Text fx:id="integralText" layoutX="27.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Интеграл равен:" wrappingWidth="156.0">
+               <font>
+                  <Font name="Verdana Bold" size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="integralValueText" layoutX="187.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="70.936767578125">
+               <font>
+                  <Font name="Verdana Bold" size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

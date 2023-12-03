@@ -1,6 +1,6 @@
 .button
 {
-    -fx-border-width: 4;
+    -fx-border-width: 2;
     -fx-border-color: #228B22;
     -fx-border-radius: 20;
     -fx-background-radius: 30;
@@ -59,8 +59,19 @@
     -fx-border-color: black;
 }
 
-.graph
+.text-field
 {
-    -fx-background-color: #DCDCDC;
-    -fx-background-radius: 20;
+    -fx-alignment: center;
+    -fx-background-color:  #7FFFD4;
+    -fx-background-radius: 7;
+}
+
+.text-field:hover
+{
+    -fx-background-color:  #E0FFFF;
+}
+
+.text-field:pressed
+{
+    -fx-background-color:  #E0FFFF;
 }
