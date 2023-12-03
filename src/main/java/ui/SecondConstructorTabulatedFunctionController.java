@@ -83,7 +83,7 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
         }
 
         TabulatedFunction function = Settings.getInstance().getFactory().
-                createWithSecondConstructor((MathFunction) map.get(dropDownMenu.getValue()), Double.parseDouble(fromTextField.getText()), Double.parseDouble(toTextField.getText()), Integer.parseInt(sizeTextField.getText()));
+                createWithSecondConstructor(map.get(dropDownMenu.getValue()), Double.parseDouble(fromTextField.getText()), Double.parseDouble(toTextField.getText()), Integer.parseInt(sizeTextField.getText()));
         controller.functionPresentation(function);
         System.out.println(function);
         Stage stage = (Stage) creationFunctionButton.getScene().getWindow();

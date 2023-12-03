@@ -75,3 +75,7 @@
 {
     -fx-background-color:  #E0FFFF;
 }
+
+.choice-box .context-menu {
+    -fx-background-color: red;
+}

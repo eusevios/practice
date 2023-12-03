@@ -126,9 +126,10 @@ public class ChartController implements Displayable, Initializable {
     }
 
     @Override
-    public void removePoint(int index) {
+    public void removePoint(double x) {
 
-        series.getData().removeIf(data -> data.getXValue() == function.getX(index));
+        series.getData().removeIf(data -> data.getXValue() == x);
+
         if(series.getData().isEmpty()){
             saveButton.setVisible(false);
             loadButton.setVisible(false);
@@ -153,6 +154,8 @@ public class ChartController implements Displayable, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        xAxis.setLabel("Ось X");
+        yAxis.setLabel("Ось Y");
 
         saveButton.setVisible(false);
         loadButton.setVisible(false);

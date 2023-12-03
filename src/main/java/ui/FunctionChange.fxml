@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="363.0" prefWidth="363.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.FunctionChangeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="399.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.FunctionChangeController">
    <children>
-      <ImageView fitHeight="379.0" fitWidth="608.0" layoutX="-120.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="547.0" fitWidth="714.0" layoutX="-120.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@background.jpg" />
          </image>
@@ -21,22 +21,22 @@
             <GaussianBlur />
          </effect>
       </ImageView>
-      <Pane layoutX="9.0" layoutY="14.0" prefHeight="336.0" prefWidth="345.0" styleClass="pane" stylesheets="@style.css">
+      <Pane layoutX="21.0" layoutY="29.0" prefHeight="342.0" prefWidth="346.0" styleClass="pane" stylesheets="@style.css">
          <children>
             <Label layoutX="68.0" layoutY="29.0" text="Редактирование">
                <font>
                   <Font name="Verdana Bold" size="22.0" />
                </font>
             </Label>
-            <Pane layoutX="23.0" layoutY="103.0" prefHeight="74.0" prefWidth="302.0" style="-fx-background-color: #52D3A280;" styleClass="pane" stylesheets="@style.css">
+            <Pane layoutX="17.0" layoutY="104.0" prefHeight="74.0" prefWidth="311.0" style="-fx-background-color: #52D3A280;" styleClass="pane" stylesheets="@style.css">
                <children>
-                  <Text fx:id="indText" layoutX="21.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Индекс:" wrappingWidth="69.0">
+                  <Text fx:id="indText" layoutX="56.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X:" wrappingWidth="30.33673095703125">
                      <font>
                         <Font name="Verdana Bold" size="14.0" />
                      </font>
                   </Text>
                   <TextField fx:id="indTextField" alignment="CENTER" layoutX="96.0" layoutY="24.0" prefHeight="25.0" prefWidth="69.0" styleClass="text-field" stylesheets="@style.css" />
-                  <Button fx:id="deleteButton" layoutX="188.0" layoutY="20.0" mnemonicParsing="false" onAction="#toDelete" prefHeight="28.0" prefWidth="91.0" text="Удалить" textAlignment="CENTER">
+                  <Button fx:id="deleteButton" layoutX="179.0" layoutY="20.0" mnemonicParsing="false" onAction="#toDelete" prefHeight="32.0" prefWidth="116.0" text="Удалить" textAlignment="CENTER">
                      <font>
                         <Font name="Verdana Bold" size="14.0" />
                      </font>
@@ -57,7 +57,7 @@
                      </font>
                   </Text>
                   <TextField fx:id="yField" alignment="CENTER" layoutX="184.0" layoutY="26.0" prefHeight="27.0" prefWidth="69.0" stylesheets="@style.css" />
-                  <Button fx:id="addButton" layoutX="101.0" layoutY="69.0" mnemonicParsing="false" onAction="#toAdd" prefHeight="31.0" prefWidth="100.0" text="Добавить">
+                  <Button fx:id="addButton" layoutX="88.0" layoutY="68.0" mnemonicParsing="false" onAction="#toAdd" prefHeight="32.0" prefWidth="126.0" text="Добавить">
                      <font>
                         <Font name="Verdana Bold" size="14.0" />
                      </font>

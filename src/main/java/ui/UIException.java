@@ -11,14 +11,14 @@ import java.io.IOException;
 public class UIException {
 
 
-    static public void showException(Exception e) throws IOException {
+    static public void showException(String warn) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(UIException.class.getClassLoader().getResource("ui/Exception.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 300, 140);
         Stage stage = new Stage();
         ExceptionController exceptionController = loader.getController();
-        exceptionController.setWarningMessage(e.getMessage());
+        exceptionController.setWarningMessage(warn);
         stage.initModality(Modality.APPLICATION_MODAL);
 
         stage.setScene(scene);

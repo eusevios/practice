@@ -89,8 +89,8 @@ public class FunctionChangeController implements Initializable {
 
     public void toDelete(ActionEvent event) {
 
-        mainController.removePoint(Integer.parseInt(indTextField.getText()));
-        ((Removable)mainController.getFunc()).remove(Integer.parseInt(indTextField.getText()));
+        mainController.removePoint(Double.parseDouble(indTextField.getText()));
+        ((Removable)mainController.getFunc()).remove(mainController.getFunc().indexOfX(  Double.parseDouble(indTextField.getText())));
 
 
     }

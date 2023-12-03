@@ -7,7 +7,7 @@ public interface Displayable {
 
     void addPoint(double x, double y);
 
-    void removePoint(int index);
+    void removePoint(double x);
 
     TabulatedFunction getFunc();
 
