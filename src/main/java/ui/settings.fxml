@@ -33,7 +33,7 @@
                       <Font name="Verdana Bold" size="16.0" />
                   </font>
               </Text>
-              <ChoiceBox fx:id="dropDownMenu" layoutX="54.0" layoutY="119.0" prefHeight="34.0" prefWidth="166.0" styleClass="button" stylesheets="@style.css" />
+              <ChoiceBox fx:id="dropDownMenu" layoutX="70.0" layoutY="125.0" prefHeight="30.0" prefWidth="135.0" styleClass="choice-box1" stylesheets="@style.css" />
               <Button fx:id="saveButton" layoutX="76.0" layoutY="177.0" mnemonicParsing="false" onAction="#toChooseFactory" prefHeight="33.0" prefWidth="121.0" stylesheets="@style.css" text="Сохранить">
                <font>
                   <Font name="Verdana Bold" size="14.0" />

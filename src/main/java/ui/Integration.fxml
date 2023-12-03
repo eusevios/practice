@@ -26,7 +26,10 @@
                   <Font name="Verdana Bold" size="16.0" />
                </font>
             </Text>
-            <TextField fx:id="textField" alignment="CENTER" layoutX="92.0" layoutY="79.0" onAction="#toIntegrate" prefHeight="35.0" prefWidth="95.0" stylesheets="@style.css" />
+            <TextField fx:id="textField" alignment="CENTER" layoutX="92.0" layoutY="79.0" onAction="#toIntegrate" prefHeight="35.0" prefWidth="95.0" stylesheets="@style.css">
+               <font>
+                  <Font name="Verdana Bold" size="14.0" />
+               </font></TextField>
             <Text fx:id="integralText" layoutX="62.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Интеграл равен:" wrappingWidth="156.0">
                <font>
                   <Font name="Verdana Bold" size="16.0" />

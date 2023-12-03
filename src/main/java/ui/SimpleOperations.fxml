@@ -35,12 +35,12 @@
          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
       </columnResizePolicy>
     </TableView>
-    <Button layoutX="773.0" layoutY="216.0" mnemonicParsing="false" onAction="#doOperation" prefHeight="44.0" prefWidth="65.0" stylesheets="@style.css" text="=">
+    <Button layoutX="773.0" layoutY="220.0" mnemonicParsing="false" onAction="#doOperation" prefHeight="44.0" prefWidth="65.0" stylesheets="@style.css" text="=">
         <font>
             <Font name="Verdana Bold" size="18.0" />
         </font>
     </Button>
-    <ChoiceBox fx:id="opChoice" layoutX="355.0" layoutY="219.0" prefHeight="34.0" prefWidth="65.0" styleClass="button" stylesheets="@style.css" />
+    <ChoiceBox fx:id="opChoice" layoutX="357.0" layoutY="220.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" prefWidth="51.0" styleClass="choice-box1" stylesheets="@style.css" />
     <Button fx:id="saveResultButton" layoutX="912.0" layoutY="505.0" mnemonicParsing="false" onAction="#saveResult" prefHeight="30.0" prefWidth="195.0" stylesheets="@style.css" text="Сохранить">
       <font>
          <Font name="Verdana Bold" size="14.0" />

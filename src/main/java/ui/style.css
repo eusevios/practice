@@ -75,3 +75,56 @@
 {
     -fx-background-color:  #E0FFFF;
 }
+
+.choice-box1
+{
+    -fx-background-color: #7FFFD4;
+}
+
+.choice-box1 .context-menu
+{
+    -fx-background-color: #7FFFD4;
+}
+
+.choice-box1 .context-menu .menu-item:hover
+{
+    -fx-background-color: #E0FFFF;
+}
+
+.choice-box1 .context-menu .menu-item:focused
+{
+    -fx-background-color: #E0FFFF;
+}
+
+.choice-box .text
+{
+    -fx-fill: black;
+    -fx-font-family: Verdana;
+    -fx-font-weight: Bold;
+    -fx-font-size: 14;
+}
+
+.choice-box2
+{
+    -fx-border-width: 2;
+    -fx-border-color: #228B22;
+    -fx-border-radius: 10;
+    -fx-background-radius: 15;
+    -fx-background-color: #00FA9A;
+}
+
+.choice-box2 .context-menu
+{
+    -fx-background-color: #00FA9A;
+    -fx-background-radius: 7;
+}
+
+.choice-box2 .context-menu .menu-item:hover
+{
+    -fx-background-color: #98FB98;
+}
+
+.choice-box2 .context-menu .menu-item:focused
+{
+    -fx-background-color: #98FB98;
+}
