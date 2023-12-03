@@ -56,34 +56,18 @@ public class TableController implements Initializable, Displayable {
 
     public void onFunctionCreation(ActionEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/SecondConstructorTabulatedFunction.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root, 900, 600);
-        Stage stage = new Stage();
+        FXMLLoader loader = WindowOpener.openWindow("ui/SecondConstructorTabulatedFunction.fxml", "Создание функции", 900, 600);
         SecondConstructorTabulatedFunctionController controller = loader.getController();
         controller.setMainController(this);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Создание табулированной функции");
-        stage.show();
 
     }
 
     public void tableCreation(ActionEvent event) throws IOException {
 
 
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/FirstConstructorTabulatedFunction.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root, 900, 600);
-        Stage stage = new Stage();
+        FXMLLoader loader = WindowOpener.openWindow("ui/FirstConstructorTabulatedFunction.fxml", "Создание функции", 900, 600);
         FirstConstructorTabulatedFunctionController controller = loader.getController();
         controller.setMainController(this);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Создание табулированной функции");
-        stage.show();
 
     }
 
@@ -183,35 +167,19 @@ public class TableController implements Initializable, Displayable {
     public void changeTable(ActionEvent event) throws IOException {
 
 
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/FunctionChange.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root, 400, 400);
-        Stage stage = new Stage();
+        FXMLLoader loader = WindowOpener.openWindow("ui/FunctionChange.fxml", "Редактирование", 400, 400);
         FunctionChangeController controller = loader.getController();
         controller.setMainController(this);
-        controller.setFunction(function);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Редактирование");
-        stage.show();
+
 
 
     }
 
     public void toIntegrate(ActionEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ui/Integration.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root, 400, 400);
-        Stage stage = new Stage();
-        IntegrationController controller = loader.getController();
-        controller.setMainController(this);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Интегрирование");
-        stage.show();
+        IntegrationController controller = WindowOpener.openWindow("ui/Integration.fxml", "Интегрирование", 320, 240).getController();
+        controller.setFunction(function);
 
     }
+
 }

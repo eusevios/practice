@@ -1,10 +1,20 @@
 package functions;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import exceptions.ArrayIsNotSortedException;
 import exceptions.DifferentLengthOfArraysException;
 
 import java.io.Serial;
 import java.io.Serializable;
+
+@JsonTypeInfo( use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+
+        @JsonSubTypes.Type(value = ArrayTabulatedFunction.class, name = "array"),
+        @JsonSubTypes.Type(value = LinkedListTabulatedFunction.class, name = "llist"),
+
+})
 
 public abstract class AbstractTabulatedFunction implements TabulatedFunction, Serializable {
 

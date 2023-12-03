@@ -28,7 +28,7 @@ public class UIInputOutput {
                 break;
             case "json":
                 BufferedWriter writer = new BufferedWriter( new FileWriter(file));
-                FunctionsIO.serializeJson(writer, (ArrayTabulatedFunction) function);
+                FunctionsIO.serializeJson(writer, function);
                 break;
             case "xml":
                 BufferedWriter writer1 = new BufferedWriter( new FileWriter(file));

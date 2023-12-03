@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
@@ -33,6 +34,7 @@ public class SimpleOperationsController implements Initializable {
     @FXML
     public TableView<TablePoint> table;
     public Button saveResultButton;
+    public Button integrationButton;
 
     @FXML
     Parent firstTable;
@@ -52,6 +54,8 @@ public class SimpleOperationsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         table.setPlaceholder(new Label(""));
+        saveResultButton.setVisible(false);
+        integrationButton.setVisible(false);
 
         ObservableList<String> list = FXCollections.observableArrayList("+", "-", "*", ":");
         opChoice.getItems().addAll(list);
@@ -93,6 +97,9 @@ public class SimpleOperationsController implements Initializable {
             table.getItems().add(new TablePoint(function.getX(i), function.getY(i)));
         }
 
+        saveResultButton.setVisible(true);
+        integrationButton.setVisible(true);
+
     }
 
 
@@ -107,6 +114,14 @@ public class SimpleOperationsController implements Initializable {
         BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
 
         FunctionsIO.serialize(bufferedOutputStream, function);
+
+    }
+
+    public void toIntegrate(ActionEvent event) throws IOException {
+
+        IntegrationController controller = WindowOpener.openWindow("ui/Integration.fxml", "Интегрирование", 320, 240).getController();
+        controller.setFunction(function);
+
 
     }
 }

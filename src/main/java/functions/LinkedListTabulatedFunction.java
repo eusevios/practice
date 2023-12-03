@@ -1,7 +1,6 @@
 package functions;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.*;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -12,7 +11,6 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
         implements Insertable, Removable, Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
-    @JsonFormat(shape = JsonFormat.Shape.OBJECT)
     private Node head;
 
     @JsonCreator
@@ -405,9 +403,20 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
 
         @Serial
         private static final long serialVersionUID = 1L;
+        @JsonManagedReference
         public Node next, prev;
         @JsonFormat(shape = JsonFormat.Shape.NUMBER_FLOAT)
         public double x, y;
+
+        @JsonCreator
+        public Node(double x, double y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        public Node(){
+
+        }
 
         @Override
         public String toString() {

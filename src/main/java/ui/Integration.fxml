@@ -19,7 +19,7 @@
             <GaussianBlur />
          </effect>
       </ImageView>
-      <Pane layoutX="26.0" layoutY="20.0" prefHeight="200.0" prefWidth="274.0" styleClass="pane" stylesheets="@style.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+      <Pane layoutX="20.0" layoutY="22.0" prefHeight="200.0" prefWidth="274.0" styleClass="pane" stylesheets="@style.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
          <children>
             <Text fx:id="enterText" layoutX="27.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите число потоков:" wrappingWidth="226.13671875">
                <font>
@@ -27,14 +27,14 @@
                </font>
             </Text>
             <TextField fx:id="textField" alignment="CENTER" layoutX="92.0" layoutY="79.0" onAction="#toIntegrate" prefHeight="35.0" prefWidth="95.0" stylesheets="@style.css" />
-            <Text fx:id="integralText" layoutX="27.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Интеграл равен:" wrappingWidth="156.0">
+            <Text fx:id="integralText" layoutX="62.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Интеграл равен:" wrappingWidth="156.0">
                <font>
                   <Font name="Verdana Bold" size="16.0" />
                </font>
             </Text>
-            <Text fx:id="integralValueText" layoutX="187.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="70.936767578125">
+            <Text fx:id="integralValueText" layoutX="73.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="134.936767578125">
                <font>
-                  <Font name="Verdana Bold" size="14.0" />
+                  <Font name="Verdana Bold" size="18.0" />
                </font>
             </Text>
          </children>

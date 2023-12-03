@@ -28,6 +28,8 @@ public class DiffFunctionController implements Initializable {
     public Button toDiff;
     public TableColumn<TablePoint, Double> xColumn;
     public TableColumn<TablePoint, Double> yColumn;
+    public Button saveButton;
+    public Button integrationButton;
 
     @FXML
     TableView<TablePoint> diffFuncTable;
@@ -47,6 +49,9 @@ public class DiffFunctionController implements Initializable {
             diffFuncTable.getItems().add(new TablePoint(function.getX(i), function.getY(i)));
         }
 
+        saveButton.setVisible(true);
+        integrationButton.setVisible(true);
+
     }
 
     @Override
@@ -56,6 +61,9 @@ public class DiffFunctionController implements Initializable {
         xColumn.setCellValueFactory(new PropertyValueFactory<>("x"));
         yColumn.setCellValueFactory(new PropertyValueFactory<>("y"));
 
+        saveButton.setVisible(false);
+        integrationButton.setVisible(false);
+
     }
 
     public void save(ActionEvent event) throws IOException {
@@ -64,4 +72,9 @@ public class DiffFunctionController implements Initializable {
 
     }
 
+    public void toIntegrate(ActionEvent event) throws IOException {
+
+        IntegrationController controller = WindowOpener.openWindow("ui/Integration.fxml", "Интегрирование", 320, 240).getController();
+        controller.setFunction(function);
+    }
 }

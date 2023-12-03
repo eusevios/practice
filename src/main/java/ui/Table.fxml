@@ -8,7 +8,7 @@
 
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="405.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.TableController">
     <children>
-        <TableView fx:id="table" layoutX="80.0" layoutY="14.0" prefHeight="399.0" prefWidth="245.0" styleClass="table" stylesheets="@style.css">
+        <TableView fx:id="table" layoutX="81.0" prefHeight="472.0" prefWidth="245.0" styleClass="table" stylesheets="@style.css">
             <columns>
                 <TableColumn prefWidth="122.0" sortable="false" styleClass="column" text="X" fx:id="xColumn" />
                 <TableColumn fx:id="yColumn" prefWidth="122.0" sortable="false" styleClass="column" text="Y" />
@@ -17,27 +17,27 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
         </TableView>
-        <Button fx:id="functionButton" layoutX="104.0" layoutY="425.0" mnemonicParsing="false" onAction="#onFunctionCreation" prefHeight="36.0" prefWidth="198.0" stylesheets="@style.css" text="Создать  по функции">
+        <Button fx:id="functionButton" layoutX="105.0" layoutY="478.0" mnemonicParsing="false" onAction="#onFunctionCreation" prefHeight="36.0" prefWidth="198.0" stylesheets="@style.css" text="Создать  по функции">
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font></Button>
-        <Button fx:id="tableButton" layoutX="104.0" layoutY="468.0" mnemonicParsing="false" onAction="#tableCreation" prefHeight="36.0" prefWidth="198.0" stylesheets="@style.css" text="Создать по таблице">
+        <Button fx:id="tableButton" layoutX="104.0" layoutY="522.0" mnemonicParsing="false" onAction="#tableCreation" prefHeight="12.0" prefWidth="198.0" stylesheets="@style.css" text="Создать по таблице">
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font></Button>
-        <Button fx:id="saveButton" layoutX="104.0" layoutY="510.0" mnemonicParsing="false" onAction="#saveFunction" prefHeight="36.0" prefWidth="198.0" stylesheets="@style.css" text="Сохранить">
+        <Button fx:id="saveButton" layoutX="104.0" layoutY="562.0" mnemonicParsing="false" onAction="#saveFunction" prefHeight="0.0" prefWidth="198.0" stylesheets="@style.css" text="Сохранить">
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font></Button>
-        <Button fx:id="loadButton" layoutX="104.0" layoutY="552.0" mnemonicParsing="false" onAction="#loadFunction" prefHeight="36.0" prefWidth="198.0" stylesheets="@style.css" text="Загрузить">
+        <Button fx:id="loadButton" layoutX="104.0" layoutY="604.0" mnemonicParsing="false" onAction="#loadFunction" prefHeight="13.0" prefWidth="198.0" stylesheets="@style.css" text="Загрузить">
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font></Button>
-      <Button fx:id="changeButton" layoutX="104.0" layoutY="641.0" mnemonicParsing="false" onAction="#changeTable" prefHeight="36.0" prefWidth="198.0" stylesheets="@style.css" text="Редактировать...">
+      <Button fx:id="changeButton" layoutX="104.0" layoutY="684.0" mnemonicParsing="false" onAction="#changeTable" prefHeight="16.0" prefWidth="198.0" stylesheets="@style.css" text="Редактировать...">
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font></Button>
-      <Button fx:id="integrateButton" layoutX="104.0" layoutY="597.0" mnemonicParsing="false" onAction="#toIntegrate" prefHeight="36.0" prefWidth="198.0" stylesheets="@style.css" text="Интегрировать">
+      <Button fx:id="integrateButton" layoutX="104.0" layoutY="644.0" mnemonicParsing="false" onAction="#toIntegrate" prefHeight="17.0" prefWidth="198.0" stylesheets="@style.css" text="Интегрировать">
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font></Button>
