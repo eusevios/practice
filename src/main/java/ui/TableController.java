@@ -142,7 +142,7 @@ public class TableController implements Initializable, Displayable {
         });
 
         table.setEditable(true);
-
+        table.getSelectionModel().setCellSelectionEnabled(true);
     }
 
     public void saveFunction(ActionEvent event) throws IOException {

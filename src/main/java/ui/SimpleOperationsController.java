@@ -1,5 +1,7 @@
 package ui;
 
+import exceptions.DifferentLengthOfArraysException;
+import exceptions.InconsistentFunctionsException;
 import functions.TabulatedFunction;
 import io.FunctionsIO;
 import javafx.beans.binding.Bindings;
@@ -94,10 +96,14 @@ public class SimpleOperationsController implements Initializable {
 
             }
         }
+        catch (ArithmeticException e){
+            UIException.showException("Деление на 0... Классика");
+        }
+        catch (InconsistentFunctionsException e){
+            UIException.showException("Функции несовместимы!");
+        }
         catch (NullPointerException e){
-
             UIException.showException("Заполните таблицы!");
-
         }
 
         table.getItems().clear();
@@ -114,23 +120,12 @@ public class SimpleOperationsController implements Initializable {
 
     public void saveResult(ActionEvent event) throws IOException {
 
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Bin files", "*.bin"));
-
-        File file = fileChooser.showSaveDialog(null);
-
-        FileOutputStream outputStream = new FileOutputStream(file);
-        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
-
-        FunctionsIO.serialize(bufferedOutputStream, function);
-
+        UIInputOutput.save(function);
     }
 
     public void toIntegrate(ActionEvent event) throws IOException {
 
         IntegrationController controller = WindowOpener.openWindow("ui/Integration.fxml", "Интегрирование", 320, 240).getController();
         controller.setFunction(function);
-
-
     }
 }

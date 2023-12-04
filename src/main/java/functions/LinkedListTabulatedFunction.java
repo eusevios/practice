@@ -1,7 +1,5 @@
 package functions;
 
-import com.fasterxml.jackson.annotation.*;
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Iterator;
@@ -13,7 +11,6 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
     private static final long serialVersionUID = 1L;
     private Node head;
 
-    @JsonCreator
     public LinkedListTabulatedFunction(double[] xValues, double[] yValues) {
         checkLengthIsTheSame(xValues, yValues);
         if (xValues.length < 2)
@@ -26,29 +23,23 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
         }
     }
 
-    @JsonCreator
     public LinkedListTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
         if (count < 2)
             throw new IllegalArgumentException("The length is less than min");
 
-        if (xFrom == xTo) {
-            double source_val = Math.round(source.apply(xFrom) * 1000.0) / 1000.0;
-            while (count-- > 0) {
-                this.addNode(xFrom, source_val);
-            }
-        } else {
-            if (xFrom > xTo) {
-                double temp = xFrom;
-                xFrom = xTo;
-                xTo = temp;
-            }
-
+        if (xFrom >= xTo) {
+                throw new ArrayIndexOutOfBoundsException();
+        }
+        else{
             // Дискретизация
             int count_split_interval = count - 1;
             double split_interval = (xTo - xFrom) / count_split_interval;
 
             for (double curr_x = xFrom; count > 0; count--, curr_x += split_interval) {
-                this.addNode(curr_x, Math.round(source.apply(curr_x) * 1000.0) / 1000.0);
+                this.addNode((Math.round(curr_x) * 1000000.0) / 1000000.0, Math.round(source.apply(curr_x) * 1000000.0) / 1000000.0);
+                if (Double.isInfinite(source.apply(curr_x)) || Double.isNaN(source.apply(curr_x))){
+                    throw new ArithmeticException();
+                }
             }
         }
     }
@@ -178,7 +169,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
     protected double extrapolateLeft(double x) {
 
         double newY = head.y + (((head.next).y - head.y) / ((head.next).x - head.x)) * (x - head.x);
-        newY = Math.round(newY * 1000.0) / 1000.0;
+        newY = Math.round(newY * 1000000.0) / 1000000.0;
 
         this.addNode(x, newY);
         head = head.prev;
@@ -191,7 +182,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
         Node last = head.prev;
         double newY = penultimate.y + ((last.y - penultimate.y) / (last.x - penultimate.x))
                 * (x - penultimate.x);
-        newY = Math.round(newY * 1000.0) / 1000.0;
+        newY = Math.round(newY * 1000000.0) / 1000000.0;
 
         this.addNode(x, newY);
         return newY;
@@ -205,7 +196,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
         double x_floor = getX(floorIndex);
         double newY = y_floor + ((getY(floorIndex + 1) - y_floor) /
                 (getX(floorIndex + 1) - x_floor)) * (x - x_floor);
-        newY = Math.round(newY * 1000.0) / 1000.0;
+        newY = Math.round(newY * 1000000.0) / 1000000.0;
 
         Node newNode = new Node();
         newNode.x = x;
@@ -223,7 +214,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
     protected double interpolate(double x, double leftX, double rightX, double leftY, double rightY) {
 
         double newY = leftY + ((rightY - leftY) / (rightX - leftX)) * (x - leftX);
-        newY = Math.round(newY * 1000.0) / 1000.0;
+        newY = Math.round(newY * 1000000.0) / 1000000.0;
 
         Node newNode = new Node();
         newNode.x = x;
@@ -403,12 +394,10 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction
 
         @Serial
         private static final long serialVersionUID = 1L;
-        @JsonManagedReference
         public Node next, prev;
-        @JsonFormat(shape = JsonFormat.Shape.NUMBER_FLOAT)
         public double x, y;
 
-        @JsonCreator
+
         public Node(double x, double y) {
             this.x = x;
             this.y = y;

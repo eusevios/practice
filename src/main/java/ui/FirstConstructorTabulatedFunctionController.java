@@ -78,16 +78,12 @@ public class FirstConstructorTabulatedFunctionController implements Initializabl
             table.setVisible(true);
             creationButton.setVisible(true);
         }
-
         catch (NumberFormatException e){
-
             UIException.showException("Некорректный ввод!");
             textF.clear();
-
         }
-
         catch (IllegalArgumentException e){
-            UIException.showException("Размер массива должен быть >=2!");
+            UIException.showException("Кол-во точек >= 2!");
             textF.clear();
         }
     }
@@ -114,36 +110,32 @@ public class FirstConstructorTabulatedFunctionController implements Initializabl
         table.setVisible(false);
         creationButton.setVisible(false);
 
-
+        table.getSelectionModel().setCellSelectionEnabled(true);
     }
 
     @FXML
     void creatingFunction() throws IOException {
 
-        ArrayTabulatedFunctionFactory factory = new ArrayTabulatedFunctionFactory();
-
-        double[] xValues = new double[table.getItems().size()];
-        double[] yValues = new double[table.getItems().size()];
-
-        for (int i = 0; i < table.getItems().size(); i++) {
-            xValues[i] = table.getItems().get(i).x;
-            yValues[i] = table.getItems().get(i).y;
-        }
         try {
+            double[] xValues = new double[table.getItems().size()];
+            double[] yValues = new double[table.getItems().size()];
 
+            for (int i = 0; i < table.getItems().size(); i++) {
+                xValues[i] = table.getItems().get(i).x;
+                yValues[i] = table.getItems().get(i).y;
+            }
             TabulatedFunction func = Settings.getInstance().getFactory().create(xValues, yValues);
             System.out.println(func);
             controller.functionPresentation(func);
             Stage stage = (Stage) creationButton.getScene().getWindow();
             stage.close();
-
-        } catch (ArrayIsNotSortedException e) {
-
-            UIException.showException("Значения не сортированы!");
-
         }
-
-
+        catch (NullPointerException e){
+            UIException.showException("Заполните таблицу!");
+        }
+        catch (ArrayIsNotSortedException e) {
+            UIException.showException("Значения X не отсортированы!");
+        }
     }
 
 }

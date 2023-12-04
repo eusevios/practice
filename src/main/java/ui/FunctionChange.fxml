@@ -35,7 +35,10 @@
                         <Font name="Verdana Bold" size="14.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="indTextField" alignment="CENTER" layoutX="96.0" layoutY="24.0" prefHeight="25.0" prefWidth="69.0" styleClass="text-field" stylesheets="@style.css" />
+                  <TextField fx:id="indTextField" alignment="CENTER" layoutX="96.0" layoutY="24.0" prefHeight="25.0" prefWidth="69.0" styleClass="text-field" stylesheets="@style.css">
+                     <font>
+                        <Font name="Verdana Bold" size="14.0" />
+                     </font></TextField>
                   <Button fx:id="deleteButton" layoutX="179.0" layoutY="20.0" mnemonicParsing="false" onAction="#toDelete" prefHeight="32.0" prefWidth="116.0" text="Удалить" textAlignment="CENTER">
                      <font>
                         <Font name="Verdana Bold" size="14.0" />
@@ -50,13 +53,19 @@
                         <Font name="Verdana Bold" size="16.0" />
                      </font>
                   </Text>
-                  <TextField alignment="CENTER" layoutX="52.0" layoutY="27.0" prefHeight="25.0" prefWidth="69.0" stylesheets="@style.css" fx:id="xField" />
+                  <TextField alignment="CENTER" layoutX="52.0" layoutY="27.0" prefHeight="25.0" prefWidth="69.0" stylesheets="@style.css" fx:id="xField">
+                     <font>
+                        <Font name="Verdana Bold" size="14.0" />
+                     </font></TextField>
                   <Text fx:id="yText" layoutX="160.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Y:" textAlignment="CENTER">
                      <font>
                         <Font name="Verdana Bold" size="16.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="yField" alignment="CENTER" layoutX="184.0" layoutY="26.0" prefHeight="27.0" prefWidth="69.0" stylesheets="@style.css" />
+                  <TextField fx:id="yField" alignment="CENTER" layoutX="184.0" layoutY="26.0" prefHeight="27.0" prefWidth="69.0" stylesheets="@style.css">
+                     <font>
+                        <Font name="Verdana Bold" size="14.0" />
+                     </font></TextField>
                   <Button fx:id="addButton" layoutX="88.0" layoutY="68.0" mnemonicParsing="false" onAction="#toAdd" prefHeight="32.0" prefWidth="126.0" text="Добавить">
                      <font>
                         <Font name="Verdana Bold" size="14.0" />

@@ -3,6 +3,7 @@ package functions;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import exceptions.ArrayIsNotSortedException;
 import exceptions.InterpolationException;
 
 import java.io.Serial;
@@ -39,16 +40,12 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     public ArrayTabulatedFunction(MathFunction source, double xFrom, double xTo, int countOfThisValues) {
 
-        if(xTo<xFrom){
-            double temp;
-            temp = xFrom;
-            xFrom = xTo;
-            xTo = temp;
-        }
-        if(xFrom == xTo){
-
+        if(countOfThisValues < 2){
             throw new IllegalArgumentException();
+        }
 
+        if (xFrom >= xTo) {
+            throw new ArrayIsNotSortedException();
         }
 
         arrayOfY = new double[countOfThisValues];
@@ -56,10 +53,16 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         count = countOfThisValues;
 
         arrayOfX[0] = xFrom;
-        arrayOfY[0] = source.apply(xFrom);
+        arrayOfY[0] = Math.round(source.apply(xFrom)) * 1000000.0 / 1000000.0;
+        if (Double.isInfinite(source.apply(xFrom)) || Double.isNaN(source.apply(xFrom))){
+            throw new ArithmeticException();
+        }
 
         arrayOfX[countOfThisValues - 1] = xTo;
-        arrayOfY[countOfThisValues - 1] = source.apply(xTo);
+        arrayOfY[countOfThisValues - 1] = Math.round(source.apply(xTo) * 1000000.0) / 1000000.0;
+        if (Double.isInfinite(source.apply(xTo)) || Double.isNaN(source.apply(xTo))){
+            throw new ArithmeticException();
+        }
 
         double samplingFrequency = (xTo - xFrom) /
                 (countOfThisValues - 1);
@@ -67,8 +70,11 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
         int current_index = 1;
         while (current_index != countOfThisValues - 1) {
-            arrayOfX[current_index] = currentX;
-            arrayOfY[current_index] = source.apply(currentX);
+            arrayOfX[current_index] = Math.round((currentX) * 1000000.0) / 1000000.0;
+            arrayOfY[current_index] = Math.round(source.apply(currentX) * 1000000.0) / 1000000.0;
+            if (Double.isInfinite(source.apply(currentX)) || Double.isNaN(source.apply(currentX))){
+                throw new ArithmeticException();
+            }
             ++current_index;
             currentX += samplingFrequency;
         }
@@ -149,6 +155,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         if (count == 1) return arrayOfY[0];
 
         double newY = interpolationFormula(0, 1, x);
+        newY = Math.round(newY * 1000000.0) / 1000000.0;
 
         insert(x, newY);
 
@@ -161,6 +168,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         if (count == 1) return arrayOfY[0];
 
         double newY = interpolationFormula(count - 2, count - 1, x);
+        newY = Math.round(newY * 1000000.0) / 1000000.0;
 
         insert(x, newY);
 
@@ -175,6 +183,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         if (count == 1) return arrayOfY[0];
 
         double newY = interpolationFormula(floorIndex, floorIndex + 1, x);
+        newY = Math.round(newY * 1000000.0) / 1000000.0;
 
         insert(x, newY);
 
@@ -288,8 +297,6 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         arrayOfX = newArrayOfX;
         arrayOfY = newArrayOfY;
         count--;
-
-
     }
 
 //    @Override

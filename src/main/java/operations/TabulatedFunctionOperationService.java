@@ -55,8 +55,7 @@ public class TabulatedFunctionOperationService {
             if (aArray[i].x == bArray[i].x) xValues[i] = aArray[i].x;
             else throw new InconsistentFunctionsException("X-values is not equals");
 
-            yValues[i] = operation.apply(aArray[i].y, bArray[i].y);
-
+            yValues[i] = Math.round(operation.apply(aArray[i].y, bArray[i].y) * 1000000.0) / 1000000.0;
         }
 
         TabulatedFunction func = factory.create(xValues, yValues);
@@ -81,6 +80,9 @@ public class TabulatedFunctionOperationService {
     }
 
     public TabulatedFunction toDivide(TabulatedFunction firstFunction, TabulatedFunction secondFunction) {
+        if (secondFunction.indexOfY(0) >= 0){
+            throw new ArithmeticException();
+        }
         BiOperation operation = (u, v) -> u / v;
         return doOperation(firstFunction, secondFunction, operation);
     }

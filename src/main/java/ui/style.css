@@ -33,9 +33,30 @@
     -fx-background-color: #E0FFFF;
 }
 
+
+
 .column.table-cell
 {
     -fx-background-color: linear-gradient(white, silver);
+    -fx-text-fill: black;
+}
+
+.column.table-cell:hover
+{
+    -fx-background-color: linear-gradient(white, Teal);
+}
+
+.column.table-cell:focused
+{
+    -fx-background-color: linear-gradient(white, Teal);
+}
+
+.column .text
+{
+    -fx-fill: black;
+    -fx-font-family: Verdana;
+    -fx-font-weight: Bold;
+    -fx-font-size: 14;
 }
 
 .column.column-header

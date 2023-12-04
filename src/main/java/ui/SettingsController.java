@@ -43,5 +43,9 @@ public class SettingsController implements Initializable {
         ObservableList<String> list = FXCollections.observableArrayList("Массив", "Список");
         dropDownMenu.getItems().addAll(list);
         dropDownMenu.getSelectionModel().select(0);
+
+        if(Settings.getInstance().getFactory().getClass() == LinkedListTabulatedFunctionFactory.class){
+            dropDownMenu.getSelectionModel().select(1);
+        }
     }
 }

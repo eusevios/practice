@@ -70,28 +70,30 @@ public class FunctionChangeController implements Initializable {
 
     }
 
-    public void toAdd(ActionEvent event){
+    public void toAdd(ActionEvent event) throws IOException {
+        try {
+            mainController.addPoint(Double.parseDouble(xField.getText()), Double.parseDouble(yField.getText()));
 
-        mainController.addPoint(Double.parseDouble(xField.getText()), Double.parseDouble(yField.getText()));
+            if (mainController.getFunc().indexOfX(Double.parseDouble(xField.getText())) < 0) {
 
-        if(mainController.getFunc().indexOfX(Double.parseDouble(xField.getText()))<0){
+                ((Insertable) mainController.getFunc()).insert(Double.parseDouble(xField.getText()), Double.parseDouble(yField.getText()));
+            }
 
-            ((Insertable)mainController.getFunc()).insert(Double.parseDouble(xField.getText()), Double.parseDouble(yField.getText()));
+            else {
+                mainController.getFunc().setY(mainController.getFunc().indexOfX(Double.parseDouble(xField.getText())),  Double.parseDouble(yField.getText()));
+            }
         }
-
-        else {
-
-            mainController.getFunc().setY(mainController.getFunc().indexOfX(Double.parseDouble(xField.getText())),  Double.parseDouble(yField.getText()));
-
+        catch (NumberFormatException e){
+            UIException.showException("Некорректный ввод!");
         }
-
-
+        finally {
+            yField.clear();
+            xField.clear();
+        }
     }
 
     public void toDelete(ActionEvent event) throws IOException {
-
         try {
-
             if (mainController.getFunc().indexOfX(Double.parseDouble(indTextField.getText())) == -1)
                 throw new IllegalArgumentException();
 
@@ -99,16 +101,14 @@ public class FunctionChangeController implements Initializable {
             ((Removable) mainController.getFunc()).remove(mainController.getFunc().indexOfX(Double.parseDouble(indTextField.getText())));
         }
         catch (NumberFormatException e){
-
             UIException.showException("Некорректный ввод!");
-
         }
         catch (IllegalArgumentException e){
-
             UIException.showException("Точки не существует!");
-
         }
-
+        finally {
+            indTextField.clear();
+        }
 
     }
 

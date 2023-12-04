@@ -47,8 +47,7 @@ public class UIInputOutput {
     static public TabulatedFunction load() throws IOException, ClassNotFoundException {
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Bin files", "*.bin"), new FileChooser.ExtensionFilter("XML files", "*.xml"));
-        if(Settings.getInstance().getFactory().getClass() == ArrayTabulatedFunctionFactory.class) fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON files", "*.json"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Bin files", "*.bin"), new FileChooser.ExtensionFilter("XML files", "*.xml"), new FileChooser.ExtensionFilter("JSON files", "*.json"));
         File file = fileChooser.showOpenDialog(null);
 
         TabulatedFunction function = null;
