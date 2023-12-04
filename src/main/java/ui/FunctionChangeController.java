@@ -14,6 +14,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -87,10 +88,26 @@ public class FunctionChangeController implements Initializable {
 
     }
 
-    public void toDelete(ActionEvent event) {
+    public void toDelete(ActionEvent event) throws IOException {
 
-        mainController.removePoint(Double.parseDouble(indTextField.getText()));
-        ((Removable)mainController.getFunc()).remove(mainController.getFunc().indexOfX(  Double.parseDouble(indTextField.getText())));
+        try {
+
+            if (mainController.getFunc().indexOfX(Double.parseDouble(indTextField.getText())) == -1)
+                throw new IllegalArgumentException();
+
+            mainController.removePoint(Double.parseDouble(indTextField.getText()));
+            ((Removable) mainController.getFunc()).remove(mainController.getFunc().indexOfX(Double.parseDouble(indTextField.getText())));
+        }
+        catch (NumberFormatException e){
+
+            UIException.showException("Некорректный ввод!");
+
+        }
+        catch (IllegalArgumentException e){
+
+            UIException.showException("Точки не существует!");
+
+        }
 
 
     }

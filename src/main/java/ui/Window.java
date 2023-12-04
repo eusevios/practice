@@ -25,7 +25,7 @@ public class Window extends Application {
         Scene scene = new Scene(root, 900, 600);
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
-        primaryStage.setTitle("Создание табулированной функции");
+        primaryStage.setTitle("Лаба седьмая");
         primaryStage.show();
         Settings.getInstance().setFactory(new ArrayTabulatedFunctionFactory());
 

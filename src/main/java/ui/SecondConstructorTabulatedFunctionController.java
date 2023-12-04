@@ -58,6 +58,8 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
     @FXML
     void getFrom(ActionEvent event) {
 
+        System.out.println(3);
+
         Double.parseDouble(fromTextField.getText());
 
     }
@@ -90,14 +92,20 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
         }
 
         try {
+
+            if(Integer.parseInt(sizeTextField.getText())<2) throw new IllegalArgumentException();
+
             TabulatedFunction function = Settings.getInstance().getFactory().
                     createWithSecondConstructor(map.get(dropDownMenu.getValue()), Double.parseDouble(fromTextField.getText()), Double.parseDouble(toTextField.getText()), Integer.parseInt(sizeTextField.getText()));
             controller.functionPresentation(function);
             Stage stage = (Stage) creationFunctionButton.getScene().getWindow();
             stage.close();
         }
-        catch (Exception e){
+        catch (NumberFormatException e){
             UIException.showException("Некорректный ввод!");
+        }
+        catch (IllegalArgumentException e){
+            UIException.showException("Количество точек должно быть >=2!");
         }
 
     }

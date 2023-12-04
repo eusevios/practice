@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import operations.IntegrationOperator;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
@@ -25,14 +26,32 @@ public class IntegrationController implements Initializable {
     private TabulatedFunction function;
 
     @FXML
-    void toIntegrate(ActionEvent event) throws ExecutionException, InterruptedException {
+    void toIntegrate(ActionEvent event) throws ExecutionException, InterruptedException, IOException {
 
-        integralValueText.setText(""+IntegrationOperator.integrate(function, Integer.parseInt(textField.getText())));
+        try {
 
-        integralText.setVisible(true);
-        integralValueText.setVisible(true);
-        enterText.setVisible(false);
-        textField.setVisible(false);
+            int size = Integer.parseInt(textField.getText());
+            if (size<2) throw new IllegalArgumentException();
+            integralValueText.setText("" + IntegrationOperator.integrate(function, Integer.parseInt(textField.getText())));
+            integralText.setVisible(true);
+            integralValueText.setVisible(true);
+            enterText.setVisible(false);
+            textField.setVisible(false);
+        }
+
+        catch (NumberFormatException e){
+
+            UIException.showException("Некорректный ввод!");
+
+        }
+
+        catch (IllegalArgumentException e){
+
+            UIException.showException("Количество потоков должно быть >=1!");
+
+        }
+
+
 
     }
 

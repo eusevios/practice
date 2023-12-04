@@ -79,8 +79,15 @@ public class FirstConstructorTabulatedFunctionController implements Initializabl
             creationButton.setVisible(true);
         }
 
-        catch (Exception e){
+        catch (NumberFormatException e){
+
             UIException.showException("Некорректный ввод!");
+            textF.clear();
+
+        }
+
+        catch (IllegalArgumentException e){
+            UIException.showException("Размер массива должен быть >=2!");
             textF.clear();
         }
     }
