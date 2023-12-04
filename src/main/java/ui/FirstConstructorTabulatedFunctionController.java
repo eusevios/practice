@@ -2,7 +2,6 @@ package ui;
 
 import exceptions.ArrayIsNotSortedException;
 import functions.TabulatedFunction;
-import functions.factory.ArrayTabulatedFunctionFactory;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,7 +21,6 @@ import javafx.util.converter.DoubleStringConverter;
 
 import java.io.IOException;
 import java.net.URL;
-import java.text.ParseException;
 import java.util.ResourceBundle;
 
 public class FirstConstructorTabulatedFunctionController implements Initializable {
@@ -61,7 +59,7 @@ public class FirstConstructorTabulatedFunctionController implements Initializabl
     }
 
     @FXML
-    void TextEnter(ActionEvent event) throws IOException {
+    void sizeEnter(ActionEvent event) throws IOException {
 
 
         try {
@@ -92,7 +90,7 @@ public class FirstConstructorTabulatedFunctionController implements Initializabl
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         table.setFixedCellSize(30);
-        table.prefHeightProperty().bind(table.fixedCellSizeProperty().multiply(Bindings.size(table.getItems()).add(1.01)));
+        table.prefHeightProperty().bind(table.fixedCellSizeProperty().multiply(Bindings.size(table.getItems()).add(1.4)));
 
         xColumn.setCellValueFactory(new PropertyValueFactory<>("x"));
         yColumn.setCellValueFactory(new PropertyValueFactory<>("y"));
@@ -125,7 +123,6 @@ public class FirstConstructorTabulatedFunctionController implements Initializabl
                 yValues[i] = table.getItems().get(i).y;
             }
             TabulatedFunction func = Settings.getInstance().getFactory().create(xValues, yValues);
-            System.out.println(func);
             controller.functionPresentation(func);
             Stage stage = (Stage) creationButton.getScene().getWindow();
             stage.close();

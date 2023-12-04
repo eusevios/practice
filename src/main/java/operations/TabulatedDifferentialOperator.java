@@ -44,7 +44,7 @@ public class TabulatedDifferentialOperator implements DifferentialOperator<Tabul
         int i = 0;
         while (i < arrayOfX.length - 1) {
             arrayOfX[i] = arrayOfPoints[i].x;
-            arrayOfY[i] = Math.round((arrayOfPoints[i + 1].y - arrayOfPoints[i].y) / (arrayOfPoints[i + 1].x - arrayOfPoints[i].x) * 10000000.0) / 1000000.0;
+            arrayOfY[i] = Math.round((arrayOfPoints[i + 1].y - arrayOfPoints[i].y) / (arrayOfPoints[i + 1].x - arrayOfPoints[i].x) * 1000000.0) / 1000000.0;
             ++i;
         }
         arrayOfX[i] = arrayOfPoints[i].x;

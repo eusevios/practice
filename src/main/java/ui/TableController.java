@@ -94,7 +94,6 @@ public class TableController implements Initializable, Displayable {
         TablePoint point = new TablePoint(x,y);
 
         if(function.indexOfX(x)<0) {
-            System.out.println(2);
             int k;
             for(k = 0; k<function.getCount(); k++){
                 if(function.getX(k)>x) break;

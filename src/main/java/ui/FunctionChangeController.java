@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -99,6 +100,10 @@ public class FunctionChangeController implements Initializable {
 
             mainController.removePoint(Double.parseDouble(indTextField.getText()));
             ((Removable) mainController.getFunc()).remove(mainController.getFunc().indexOfX(Double.parseDouble(indTextField.getText())));
+            if(mainController.getFunc().getCount()==0){
+                Stage stage = (Stage)yField.getScene().getWindow();
+                stage.close();
+            }
         }
         catch (NumberFormatException e){
             UIException.showException("Некорректный ввод!");

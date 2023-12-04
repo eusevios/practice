@@ -98,7 +98,6 @@ public class ChartController implements Displayable, Initializable {
         chart.getData().clear();
 
         this.function = function;
-        System.out.println(function);
 
         series = new XYChart.Series<>();
 
@@ -115,7 +114,6 @@ public class ChartController implements Displayable, Initializable {
     public void addPoint(double x, double y) {
 
         if(function.indexOfX(x)>=0) {
-            System.out.println(3);
             for (XYChart.Data<Double, Double> data : series.getData()) {
                 if (data.getXValue() == x) {
                     data.setYValue(y);

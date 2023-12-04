@@ -95,6 +95,10 @@ public class SimpleOperationsController implements Initializable {
                     break;
 
             }
+            table.getItems().clear();
+            for (int i = 0; i < function.getCount(); i++) {
+                table.getItems().add(new TablePoint(function.getX(i), function.getY(i)));
+            }
         }
         catch (ArithmeticException e){
             UIException.showException("Деление на 0... Классика");
@@ -104,12 +108,6 @@ public class SimpleOperationsController implements Initializable {
         }
         catch (NullPointerException e){
             UIException.showException("Заполните таблицы!");
-        }
-
-        table.getItems().clear();
-
-        for (int i = 0; i < function.getCount(); i++) {
-            table.getItems().add(new TablePoint(function.getX(i), function.getY(i)));
         }
 
         saveResultButton.setVisible(true);
