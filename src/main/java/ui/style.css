@@ -33,12 +33,10 @@
     -fx-background-color: #E0FFFF;
 }
 
-
-
 .column.table-cell
 {
     -fx-background-color: linear-gradient(white, silver);
-    -fx-text-fill: black;
+    -fx-alignment: center;
 }
 
 .column.table-cell:hover
@@ -51,7 +49,7 @@
     -fx-background-color: linear-gradient(white, Teal);
 }
 
-.column .text
+.column.table-cell .text
 {
     -fx-fill: black;
     -fx-font-family: Verdana;
@@ -70,7 +68,7 @@
 .exception-header
 {
     -fx-background-color: linear-gradient(to bottom, azure, #5F9EA0);
-    -fx-border-color: #48D1CC;
+        -fx-border-color: #48D1CC;
 }
 
 .exception
