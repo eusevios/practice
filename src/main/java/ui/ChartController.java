@@ -72,9 +72,13 @@ public class ChartController implements Displayable, Initializable {
     @FXML
     void toLoad(ActionEvent event) throws IOException, ClassNotFoundException {
 
-        function = UIInputOutput.load();
-        functionPresentation(function);
+        TabulatedFunction func = UIInputOutput.load();
 
+        if(func !=null) {
+            function = func;
+
+            this.functionPresentation(function);
+        }
     }
 
     @FXML
@@ -88,7 +92,6 @@ public class ChartController implements Displayable, Initializable {
     public void functionPresentation(TabulatedFunction function) {
 
         saveButton.setVisible(true);
-        loadButton.setVisible(true);
         changeButton.setVisible(true);
         integrationButton.setVisible(true);
 
@@ -132,7 +135,6 @@ public class ChartController implements Displayable, Initializable {
 
         if(series.getData().isEmpty()){
             saveButton.setVisible(false);
-            loadButton.setVisible(false);
             changeButton.setVisible(false);
             integrationButton.setVisible(false);
         }
@@ -158,7 +160,6 @@ public class ChartController implements Displayable, Initializable {
         yAxis.setLabel("Ось Y");
 
         saveButton.setVisible(false);
-        loadButton.setVisible(false);
         changeButton.setVisible(false);
         integrationButton.setVisible(false);
 

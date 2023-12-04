@@ -72,24 +72,31 @@ public class SimpleOperationsController implements Initializable {
     public void doOperation(ActionEvent action) throws IOException {
 
         TabulatedFunctionOperationService operationService = new TabulatedFunctionOperationService();
+        try {
 
-        switch (opChoice.getValue()) {
+            switch (opChoice.getValue()) {
 
-            case "+":
-                function = operationService.toAdd(firstTableController.function, secondTableController.function);
-                break;
+                case "+":
+                    function = operationService.toAdd(firstTableController.function, secondTableController.function);
+                    break;
 
-            case "-":
-                function = operationService.toSubstract(firstTableController.function, secondTableController.function);
-                break;
+                case "-":
+                    function = operationService.toSubstract(firstTableController.function, secondTableController.function);
+                    break;
 
-            case "*":
-                function = operationService.toMultiply(firstTableController.function, secondTableController.function);
-                break;
+                case "*":
+                    function = operationService.toMultiply(firstTableController.function, secondTableController.function);
+                    break;
 
-            case ":":
-                function = operationService.toDivide(firstTableController.function, secondTableController.function);
-                break;
+                case ":":
+                    function = operationService.toDivide(firstTableController.function, secondTableController.function);
+                    break;
+
+            }
+        }
+        catch (NullPointerException e){
+
+            UIException.showException("Заполните таблицы!");
 
         }
 

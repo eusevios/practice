@@ -20,6 +20,7 @@ public class UIException {
         ExceptionController exceptionController = loader.getController();
         exceptionController.setWarningMessage(warn);
         stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
 
         stage.setScene(scene);
 

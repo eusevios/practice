@@ -82,7 +82,6 @@ public class TableController implements Initializable, Displayable {
         }
 
         saveButton.setVisible(true);
-        loadButton.setVisible(true);
         changeButton.setVisible(true);
         integrateButton.setVisible(true);
 
@@ -112,7 +111,6 @@ public class TableController implements Initializable, Displayable {
         table.getItems().remove(function.indexOfX(x));
         if (table.getItems().isEmpty()){
             saveButton.setVisible(false);
-            loadButton.setVisible(false);
             changeButton.setVisible(false);
             integrateButton.setVisible(false);
         }
@@ -129,7 +127,6 @@ public class TableController implements Initializable, Displayable {
         table.setPlaceholder(new Label(""));
 
         saveButton.setVisible(false);
-        loadButton.setVisible(false);
         changeButton.setVisible(false);
         integrateButton.setVisible(false);
 
@@ -156,11 +153,13 @@ public class TableController implements Initializable, Displayable {
 
     public void loadFunction(ActionEvent event) throws IOException, ClassNotFoundException {
 
-        function = UIInputOutput.load();
+        TabulatedFunction func = UIInputOutput.load();
 
-        System.out.println(function);
+        if(func !=null) {
+            function = func;
 
-        this.functionPresentation(function);
+            this.functionPresentation(function);
+        }
 
     }
 

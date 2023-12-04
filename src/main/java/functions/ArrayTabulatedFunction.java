@@ -39,6 +39,18 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     public ArrayTabulatedFunction(MathFunction source, double xFrom, double xTo, int countOfThisValues) {
 
+        if(xTo<xFrom){
+            double temp;
+            temp = xFrom;
+            xFrom = xTo;
+            xTo = temp;
+        }
+        if(xFrom == xTo){
+
+            throw new IllegalArgumentException();
+
+        }
+
         arrayOfY = new double[countOfThisValues];
         arrayOfX = new double[countOfThisValues];
         count = countOfThisValues;

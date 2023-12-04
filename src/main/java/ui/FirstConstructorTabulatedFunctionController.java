@@ -22,6 +22,7 @@ import javafx.util.converter.DoubleStringConverter;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 
 public class FirstConstructorTabulatedFunctionController implements Initializable {
@@ -62,10 +63,11 @@ public class FirstConstructorTabulatedFunctionController implements Initializabl
     @FXML
     void TextEnter(ActionEvent event) throws IOException {
 
-        int size = Integer.parseInt(textF.getText());
 
         try {
-            if (size < 2) throw new IllegalArgumentException("Размер массива должен быть >=2!");
+            int size = Integer.parseInt(textF.getText());
+
+            if (size < 2) throw new IllegalArgumentException();
 
             for (int i = 0; i < size; i++) {
                 table.getItems().add(new TablePoint());
@@ -75,8 +77,10 @@ public class FirstConstructorTabulatedFunctionController implements Initializabl
 
             table.setVisible(true);
             creationButton.setVisible(true);
-        } catch (IllegalArgumentException e) {
-            UIException.showException(e.getMessage());
+        }
+
+        catch (Exception e){
+            UIException.showException("Некорректный ввод!");
             textF.clear();
         }
     }

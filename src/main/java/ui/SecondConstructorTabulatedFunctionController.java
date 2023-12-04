@@ -14,6 +14,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.reflections.Reflections;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.*;
@@ -55,26 +56,32 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
     private Displayable controller;
 
     @FXML
-    double getFrom(ActionEvent event) {
+    void getFrom(ActionEvent event) {
 
-        return Double.parseDouble(fromTextField.getText());
-
-    }
-
-    @FXML
-    double getTo(ActionEvent event) {
-        return Double.parseDouble(fromTextField.getText());
-    }
-
-    @FXML
-    double getSize(ActionEvent event) {
-
-        return Integer.parseInt(sizeText.getText());
+        Double.parseDouble(fromTextField.getText());
 
     }
 
     @FXML
-    void toCreateFunction(ActionEvent event) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    void getTo(ActionEvent event) {
+         Double.parseDouble(fromTextField.getText());
+    }
+
+    @FXML
+    void getSize(ActionEvent event) throws IOException {
+
+        try {
+            int size = Integer.parseInt(sizeTextField.getText());
+            if (size<2) throw new NumberFormatException();
+        }
+        catch (NumberFormatException e){
+            UIException.showException("Некорректный ввод!");
+            sizeTextField.clear();
+        }
+    }
+
+    @FXML
+    void toCreateFunction(ActionEvent event) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, IOException {
         Set<Class<?>> classes = new Reflections("functions").getTypesAnnotatedWith(Functions.class);
 
         Map<String, MathFunction> map = new HashMap<>();
@@ -82,12 +89,16 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
             map.put(curr_class.getAnnotation(Functions.class).name(), (MathFunction) curr_class.getConstructor().newInstance());
         }
 
-        TabulatedFunction function = Settings.getInstance().getFactory().
-                createWithSecondConstructor(map.get(dropDownMenu.getValue()), Double.parseDouble(fromTextField.getText()), Double.parseDouble(toTextField.getText()), Integer.parseInt(sizeTextField.getText()));
-        controller.functionPresentation(function);
-        System.out.println(function);
-        Stage stage = (Stage) creationFunctionButton.getScene().getWindow();
-        stage.close();
+        try {
+            TabulatedFunction function = Settings.getInstance().getFactory().
+                    createWithSecondConstructor(map.get(dropDownMenu.getValue()), Double.parseDouble(fromTextField.getText()), Double.parseDouble(toTextField.getText()), Integer.parseInt(sizeTextField.getText()));
+            controller.functionPresentation(function);
+            Stage stage = (Stage) creationFunctionButton.getScene().getWindow();
+            stage.close();
+        }
+        catch (Exception e){
+            UIException.showException("Некорректный ввод!");
+        }
 
     }
 
@@ -104,6 +115,8 @@ public class SecondConstructorTabulatedFunctionController implements Initializab
         }
         ObservableList<String> list = FXCollections.observableArrayList(names_list);
         dropDownMenu.getItems().addAll(list);
+        dropDownMenu.getSelectionModel().select(0);
+
     }
 
     public void setMainController(Displayable tableController) {

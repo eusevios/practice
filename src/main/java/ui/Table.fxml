@@ -25,11 +25,11 @@
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font></Button>
-        <Button fx:id="saveButton" layoutX="104.0" layoutY="562.0" mnemonicParsing="false" onAction="#saveFunction" prefHeight="30.0" prefWidth="198.0" stylesheets="@style.css" text="Сохранить">
+        <Button fx:id="saveButton" layoutX="104.0" layoutY="604.0" mnemonicParsing="false" onAction="#saveFunction" prefHeight="30.0" prefWidth="198.0" stylesheets="@style.css" text="Сохранить">
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font></Button>
-        <Button fx:id="loadButton" layoutX="104.0" layoutY="604.0" mnemonicParsing="false" onAction="#loadFunction" prefHeight="30.0" prefWidth="198.0" stylesheets="@style.css" text="Загрузить">
+        <Button fx:id="loadButton" layoutX="104.0" layoutY="562.0" mnemonicParsing="false" onAction="#loadFunction" prefHeight="30.0" prefWidth="198.0" stylesheets="@style.css" text="Загрузить">
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font></Button>
