@@ -37,20 +37,26 @@ public class DiffFunctionController implements Initializable {
     TabulatedFunction function;
 
 
-    public void diffFunction(ActionEvent event) {
+    public void diffFunction(ActionEvent event) throws IOException {
 
         TabulatedDifferentialOperator oper = new TabulatedDifferentialOperator();
 
-        function = oper.derive(funcTableController.function);
+        try {
 
-        diffFuncTable.getItems().clear();
+            function = oper.derive(funcTableController.function);
 
-        for (int i = 0; i < function.getCount(); i++) {
-            diffFuncTable.getItems().add(new TablePoint(function.getX(i), function.getY(i)));
+            diffFuncTable.getItems().clear();
+
+            for (int i = 0; i < function.getCount(); i++) {
+                diffFuncTable.getItems().add(new TablePoint(function.getX(i), function.getY(i)));
+            }
+
+            saveButton.setVisible(true);
+            integrationButton.setVisible(true);
         }
-
-        saveButton.setVisible(true);
-        integrationButton.setVisible(true);
+        catch (NullPointerException e){
+            UIException.showException("Заполните таблицу!");
+        }
 
     }
 
